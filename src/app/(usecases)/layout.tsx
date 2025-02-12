@@ -8,7 +8,6 @@ import ToggleIcon from "../../assets/images/toggle-icon.png";
 import NotificationIcon from "../../assets/images/Bell.png";
 import CountryFlag from "../../assets/images/flag.png";
 import Profile from "../../assets/images/user-profile.png";
-import Dashboard from "../../assets/images/dashboard.png";
 import Link from "next/link";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
@@ -32,10 +31,6 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                             <ul className="nav-list">
                                 <li className="active">
                                     <Link href="/dashboard">
-                                        <Image 
-                                            src={Dashboard}
-                                            alt="icon"
-                                        />
                                         Dashboard
                                     </Link>
                                 </li>
