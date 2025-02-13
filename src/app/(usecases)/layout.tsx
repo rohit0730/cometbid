@@ -9,6 +9,15 @@ import NotificationIcon from "../../assets/images/Bell.png";
 import CountryFlag from "../../assets/images/flag.png";
 import Profile from "../../assets/images/user-profile.png";
 import Link from "next/link";
+import { RiDashboardLine } from "react-icons/ri";
+import { FaRegUser } from "react-icons/fa";
+import { HiOutlineBell } from "react-icons/hi2";
+import { LuUsers } from "react-icons/lu";
+import { FiCalendar } from "react-icons/fi";
+import { ImFileOpenoffice } from "react-icons/im";
+import { LuUserCog } from "react-icons/lu";
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import { IoFileTrayStacked } from "react-icons/io5";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
@@ -34,12 +43,25 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                         <div className="sidebar-menu">
                             <ul className="nav-list">
                                 <li className="active">
-                                    <Link href="/dashboard">Dashboard</Link>
+                                    <Link href="/dashboard">
+                                        <RiDashboardLine /> Dashboard
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link href="/personal-information">Personal Information</Link>
+                                    <Link href="/personal-information"> <FaRegUser /> Personal Information</Link>
                                 </li>
-                                <li className="dropdown">
+                                <li>
+                                    <Link href="/personal-information"> <HiOutlineBell /> Notifications</Link>
+                                </li>
+                                <li>
+                                    <Link href="/personal-information"> <LuUsers /> Members</Link>
+                                </li>
+                                <li>
+                                    <Link href="/personal-information"> <FiCalendar /> Schedules</Link>
+                                </li>
+
+                                <hr className="menu-divider" />
+                                {/* <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
                                         Events
                                     </button>
@@ -53,9 +75,25 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             </li>
                                         </ul>
                                     )}
+                                </li> */}
+                                <li>
+                                    <Link href="/personal-information"> <FaRegUser /> Your Collaborations</Link>
                                 </li>
                                 <li>
-                                    <Link href="/settings">Settings</Link>
+                                    <Link href="/personal-information"> <ImFileOpenoffice /> Your Projects</Link>
+                                </li>
+                                <li>
+                                    <Link href="/personal-information"> <LuUsers /> Your Organization Profile</Link>
+                                </li>
+                                <hr className="menu-divider" />
+                                <li>
+                                    <Link href="/personal-information"> <LuUserCog /> Account Settings</Link>
+                                </li>
+                                <li>
+                                    <Link href="/personal-information"> <MdOutlinePrivacyTip /> Privacy Settings</Link>
+                                </li>
+                                <li>
+                                    <Link href="/personal-information"> <IoFileTrayStacked /> Activity Logs</Link>
                                 </li>
                             </ul>
                         </div>
@@ -112,6 +150,18 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                             </div>
                         </div>
                         {children}
+                        <div className="page-footer">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div className="copyright">
+                                    <p>Copyright @ The Cometbid Software Foundation. All Rights Reserved.</p>
+                                </div>
+                                <div className="policy">
+                                    <a href="#">Privacy Policy</a>
+                                    <a href="#">Terms of use</a>
+                                    <a href="#">Copyright Agent</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

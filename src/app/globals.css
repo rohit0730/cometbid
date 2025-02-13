@@ -74,7 +74,7 @@ body {
 
 .main-content {
   margin-left: 250px;
-  padding: 105px 20px;
+  padding: 105px 20px 0px 20px;
   flex: 1;
   overflow-y: auto;
 }
@@ -170,7 +170,7 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-menu a {
+.sidebar-menu a, .siebar-menu button {
   text-decoration: none;
   color: #fff;
   display: flex;
@@ -179,6 +179,11 @@ body {
   padding: 10px 20px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.sidebar-menu a svg, .siebar-menu button svg {
+  font-size: 16px;
 }
 
 .sidebar-menu a:hover {
@@ -191,7 +196,6 @@ body {
 }
 
 .nav-list li {
-  padding: 10px 15px;
   cursor: pointer;
 }
 
@@ -202,6 +206,7 @@ body {
   cursor: pointer;
   width: 100%;
   text-align: left;
+  padding: 10px 20px;
 }
 
 .nav-list .dropdown-menu {
@@ -217,3 +222,50 @@ body {
 ul.dropdown-menu {
   display: block;
 }
+
+.page-footer {
+  margin-top: 40px;
+  background-color: #ffffff;
+  padding: 30px 40px;
+}
+
+.page-footer p {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: var(--light-color);
+  font-weight: 600;
+}
+
+.policy a {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: var(--light-color);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.menu-divider {
+  border-color: #04406C;
+  margin: 18px 0px;
+}
+
+.sidebar::-webkit-scrollbar {
+  /* width: 5px;
+  height: 5px; */
+  display: none;
+}
+
+/* .sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
