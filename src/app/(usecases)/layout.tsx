@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SidebarLogo from "../../assets/images/sidebar-logo.png";
@@ -21,7 +21,7 @@ import { IoFileTrayStacked } from "react-icons/io5";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const [dropdownOpen, setDropdownOpen] = useState(false);
 
 
     return (
