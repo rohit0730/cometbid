@@ -1,0 +1,60 @@
+.role-card-body {
+    padding: 20px 24px;
+}
+
+.card {
+    border: none;
+}
+
+.role-details span {
+    font-size: 14px;
+    color: var(--light-color);
+}
+
+.role-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-right-role p {
+    font-size: 14px;
+}
+
+.role-description {
+    font-size: 12px;
+    margin: 12px 0px;
+    color: var(--foreground);
+}
+
+.tag-item {
+    background: var(--primary);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.tag {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.green {
+    background: #7ED321 ! important;
+}
+
+.red {
+    background: #D92D20 ! important;
+}
+
+.multi-links {
+    margin-top: 16px;
+}
+
+.multi-links a {
+    font-size: 14px;
+    color: var(--primary);
+    text-decoration: none;
+}

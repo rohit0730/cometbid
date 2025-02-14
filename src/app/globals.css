@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 :root {
   --background: #ECF0FA;
   --foreground: #2C2C2E;
   --primary: #076BB6;
-  --light-color: #8C8C8C
+  --light-color: #8C8C8C;
+  --red-color: #D92D20;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,7 +24,9 @@ body {
   color: var(--foreground);
   background: var(--background) !important;
   /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: "Roboto", serif;
+  /* font-family: 'Grandstander', cursive; */
+  font-family: 'Roboto', sans-serif !important;
+  /* font-family: 'Work Sans', sans-serif; */
 }
 
 .mt-30 {
@@ -87,7 +92,7 @@ body {
   padding: 20px;
   background-color: #ffffff;
   /* box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1); */
-  z-index: 1;
+  z-index: 99;
   height: 75px;
 }
 
@@ -106,6 +111,7 @@ body {
   margin: 0;
   font-weight: bold;
   font-size: 20px;
+  /* font-family: "Work Sans", serif; */
 }
 
 .user-info span {
@@ -207,20 +213,27 @@ body {
   width: 100%;
   text-align: left;
   padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .nav-list .dropdown-menu {
   list-style: none;
   padding-left: 15px;
-  background: #34495e;
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .nav-list .dropdown-menu li {
-  padding: 8px 15px;
+  padding: 0px;
 }
 
 ul.dropdown-menu {
   display: block;
+  position: relative ! important;
 }
 
 .page-footer {
@@ -250,6 +263,10 @@ ul.dropdown-menu {
   margin: 18px 0px;
 }
 
+.menu-gap {
+  gap: 6px;
+}
+
 .sidebar::-webkit-scrollbar {
   /* width: 5px;
   height: 5px; */
@@ -269,3 +286,51 @@ ul.dropdown-menu {
 .sidebar::-webkit-scrollbar-thumb:hover {
   background: #555;
 } */
+
+.form-label {
+  font-size: 12px;
+  margin-bottom: 8px ! important;
+}
+
+.form-control {
+  font-size: 14px ! important;
+  height: 45px;
+}
+
+.text-length {
+  font-size: 10px;
+  color: var(--light-color);
+}
+
+label {
+  font-size: 14px;
+  color: var(--foreground);
+}
+
+.btn-save {
+  background-color: var(--primary);
+  padding: 10px 30px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.btn-cancel {
+  background-color: var(--red-color);
+  padding: 10px 30px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.page-title h3 {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: #2B2C3E;
+}
+
+.role-lavel {
+  font-size: 14px;
+}

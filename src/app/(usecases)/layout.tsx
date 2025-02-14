@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SidebarLogo from "../../assets/images/sidebar-logo.png";
@@ -18,10 +18,20 @@ import { ImFileOpenoffice } from "react-icons/im";
 import { LuUserCog } from "react-icons/lu";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoFileTrayStacked } from "react-icons/io5";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineSettingsSuggest } from "react-icons/md";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
-    // const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
+
+    const toggleDropdown = (menu: string) => {
+        setOpenDropdowns((prev: Record<string, boolean>) => ({
+            ...prev,
+            [menu]: !prev[menu],
+        }));
+    };
 
 
     return (
@@ -42,13 +52,24 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                         </div>
                         <div className="sidebar-menu">
                             <ul className="nav-list">
-                                <li className="active">
+                                <li className="">
                                     <Link href="/dashboard">
                                         <RiDashboardLine /> Dashboard
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link href="/personal-information"> <FaRegUser /> Personal Information</Link>
+                                <li className="dropdown">
+                                    <button className="dropdown-btn" onClick={() => toggleDropdown("events")}>
+                                        <div className="menu-gap d-flex align-items-center">
+                                            <FaRegUser /> Personal Information
+                                        </div>
+                                        {openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                    </button>
+                                    {openDropdowns["events"] && (
+                                        <ul className="dropdown-menu">
+                                            <li><Link href="/personal-information/myprofile"><CgProfile /> My Profile</Link></li>
+                                            <li><Link href="/personal-information/myrole"><MdOutlineSettingsSuggest /> My Roles</Link></li>
+                                        </ul>
+                                    )}
                                 </li>
                                 <li>
                                     <Link href="/personal-information"> <HiOutlineBell /> Notifications</Link>
@@ -62,17 +83,30 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
 
                                 <hr className="menu-divider" />
                                 {/* <li className="dropdown">
-                                    <button className="dropdown-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                                        Events
+                                    <button className="dropdown-btn" onClick={() => toggleDropdown("events")}>
+                                        <div className="menu-gap d-flex align-items-center">
+                                            <FiCalendar /> Events
+                                        </div>
+                                        {openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
                                     </button>
-                                    {dropdownOpen && (
+                                    {openDropdowns["events"] && (
                                         <ul className="dropdown-menu">
-                                            <li>
-                                                <Link href="/events/upcoming">Upcoming Events</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/events/past">Past Events</Link>
-                                            </li>
+                                            <li><Link href="/events/upcoming">Upcoming Events</Link></li>
+                                            <li><Link href="/events/past">Past Events</Link></li>
+                                        </ul>
+                                    )}
+                                </li>
+                                <li className="dropdown">
+                                    <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
+                                        <div className="menu-gap d-flex align-items-center">
+                                            <ImFileOpenoffice /> Your Projects
+                                        </div>
+                                        {openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                    </button>
+                                    {openDropdowns["projects"] && (
+                                        <ul className="dropdown-menu">
+                                            <li><Link href="/projects/active">Active Projects</Link></li>
+                                            <li><Link href="/projects/completed">Completed Projects</Link></li>
                                         </ul>
                                     )}
                                 </li> */}

@@ -385,6 +385,7 @@ function DashboardData() {
                                     <ul className="project-list">
                                         <li>No projects yet</li>
                                     </ul>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -411,6 +412,7 @@ function DashboardData() {
                                         <li>3CB Connectivity</li>
                                         <li>Web Accessibility Automation</li>
                                     </ul>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -448,6 +450,7 @@ function DashboardData() {
                                     <div className="btn-read">
                                         <Link href="#">Learn more about Projects</Link>
                                     </div>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -485,6 +488,7 @@ function DashboardData() {
                                     <div className="btn-read">
                                         <Link href="#">Learn more about Projects</Link>
                                     </div>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -509,7 +513,7 @@ function DashboardData() {
                                                 className="add-icon"
                                             />
                                         </div>
-                                        {/* <div className="border-line"></div> */}
+                                        
                                     </div>
 
                                     <div className="project-light-tltle">
@@ -520,6 +524,7 @@ function DashboardData() {
                                         <li>2023 IoT & Edge Commercial Adoption survey Report</li>
                                         <li>2023 IoT & Edge Developer Survey Report</li>
                                     </ul>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -546,6 +551,7 @@ function DashboardData() {
                                         <li>Spa Automotive Industry. rkplug: The Open Specification Critical to Achieving ROI in the Industrial Internet of Things.</li>
                                         {/* <li>Web Accessibility Automation</li> */}
                                     </ul>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -575,6 +581,7 @@ function DashboardData() {
                                     <div className="btn-read">
                                         <Link href="#">Learn more about Projects</Link>
                                     </div>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
@@ -604,6 +611,7 @@ function DashboardData() {
                                     <div className="btn-read">
                                         <Link href="#">Learn more about Projects</Link>
                                     </div>
+                                    <div className="border-line"></div>
                                 </div>
                             </div>
                         </div>
