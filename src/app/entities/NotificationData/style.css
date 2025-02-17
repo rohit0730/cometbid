@@ -1,0 +1,96 @@
+.btn-page {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn-all {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.btn-unread {
+    background-color: #ffffff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.notification-list .card {
+    border: none;
+    padding: 20px 24px;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.notification-content h6 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.notification-content p {
+    font-size: 14px;
+    color: var(--light-color);
+    margin-bottom: 0;
+}
+
+.notification-icon img {
+    width: 100%;
+    min-width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.notification-item {
+    padding-bottom: 24px;
+    cursor: pointer;
+}
+
+.notification-time {
+    font-size: 14px;
+    color: var(--light-color);
+}
+
+.dot-design {
+    min-width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    z-index: 1;
+}
+
+.border-line {
+    position: relative;
+}
+
+.border-line::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #cccccc;
+    top: 30px;
+    left: 4px;
+}
+
+.border-line:last-child::before {
+    display: none;
+    height: 0;
+}
+
+.model-item-border {
+    border-top: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+    padding: 12px 0px;
+    width: 100%;
+}
+
+.notification-title {
+    font-weight: bold;
+    margin-bottom: 24px;
+}

@@ -334,3 +334,46 @@ label {
 .role-lavel {
   font-size: 14px;
 }
+
+.custom-modal .modal-content {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-modal .modal-dialog {
+  max-width: 700px;
+}
+
+.custom-modal .modal-header {
+  border-bottom: none;
+  padding: 30px 30px 0;
+}
+
+.custom-modal .modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.custom-modal .btn-close {
+  color: var(--gimmel-orange);
+  opacity: 1;
+  background-image: url("../assets/images/close-\ btn.svg");
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: none;
+  border: none;
+}
+
+.modal-body {
+  padding: 30px ! important; 
+}

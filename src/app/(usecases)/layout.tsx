@@ -72,10 +72,10 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     )}
                                 </li>
                                 <li>
-                                    <Link href="/personal-information"> <HiOutlineBell /> Notifications</Link>
+                                    <Link href="/notifications"> <HiOutlineBell /> Notifications</Link>
                                 </li>
                                 <li>
-                                    <Link href="/personal-information"> <LuUsers /> Members</Link>
+                                    <Link href="/members"> <LuUsers /> Members</Link>
                                 </li>
                                 <li>
                                     <Link href="/personal-information"> <FiCalendar /> Schedules</Link>
