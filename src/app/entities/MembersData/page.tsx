@@ -1,16 +1,34 @@
 // "use client"
 
 // import React from "react";
-// import { useState, useMemo } from "react";
-// import { useTable, usePagination, useSortBy } from "react-table";
+// import { useState } from "react";
+// import { useTable, usePagination, useSortBy, Column } from "react-table";
 // import "./style.css";
 // import { MdRefresh, MdAdd, MdKeyboardArrowDown, MdOutlineDeleteOutline, MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md";
 // import { BiSolidFilePdf, BiEditAlt } from "react-icons/bi";
 // import { FaFileCsv } from "react-icons/fa";
 // import { TbEye } from "react-icons/tb";
 
-// const columns = [
-//     { Header: "", accessor: "checkbox" },
+// type DataType = {
+//     id: number;
+//     name: string;
+//     age: number;
+//     status: string;
+//     jobTitle: string;
+//     lastLogin: string;
+//     joinDate: string;
+//     role: string;
+// };
+
+
+// const columns: Column<DataType>[] = [
+//     {
+//         Header: "",
+//         id: "checkbox",
+//         Cell: ({ row }: { row: any }) => (
+//             <input type="checkbox" checked={row.isSelected} onChange={() => row.toggleRowSelected()} />
+//         ),
+//     },
 //     { Header: "ID", accessor: "id" },
 //     { Header: "Name", accessor: "name" },
 //     { Header: "Status", accessor: "status" },
@@ -18,10 +36,9 @@
 //     { Header: "Last login", accessor: "lastLogin" },
 //     { Header: "Join Date", accessor: "joinDate" },
 //     { Header: "Role", accessor: "role" },
-//     { Header: "Actions", accessor: "actions" },
 // ];
 
-// const data = [
+// const data: DataType[] = [
 //     { id: 1, name: "Alice", age: 25, status: "Active", jobTitle: "Software Engineer", lastLogin: "2022-01-01", joinDate: "2021-01-01", role: "Admin" },
 //     { id: 2, name: "Bob", age: 30, status: "Inactive", jobTitle: "Product Manager", lastLogin: "2022-02-01", joinDate: "2021-02-01", role: "User" },
 //     { id: 3, name: "Charlie", age: 35, status: "Active", jobTitle: "Designer", lastLogin: "2022-03-01", joinDate: "2021-03-01", role: "Admin" },
@@ -61,7 +78,6 @@
 //         getTableProps,
 //         getTableBodyProps,
 //         headerGroups,
-//         page,
 //         prepareRow,
 //         canPreviousPage,
 //         canNextPage,
@@ -69,7 +85,8 @@
 //         nextPage,
 //         previousPage,
 //         state: { pageIndex },
-//     } = useTable(
+//         page
+//     } = useTable<DataType>(
 //         {
 //             columns,
 //             data,
@@ -78,6 +95,8 @@
 //         useSortBy,
 //         usePagination
 //     );
+    
+
 
 //     const [exportOpen, setExportOpen] = useState(false);
 
@@ -87,10 +106,10 @@
 
 //     const handleToggleAction = () => setActionOpen(!actionOpen);
 
-//     const [selectedRows, setSelectedRows] = useState({});
+//     const [selectedRows, setSelectedRows] = useState({} as Record<number, boolean>);
 
-//     const toggleCheckbox = (id : number) => {
-//         setSelectedRows((prev : any) => ({ ...prev, [id]: !prev[id] }));
+//     const toggleCheckbox = (id: number) => {
+//         setSelectedRows((prev: any) => ({ ...prev, [id]: !prev[id] }));
 //     };
 
 //     return (
@@ -144,15 +163,15 @@
 //                         ))}
 //                     </thead>
 //                     <tbody {...getTableBodyProps()}>
-//                         {page.map((row : any) => {
+//                         {page.map((row: any) => {
 //                             prepareRow(row);
 //                             return (
 //                                 <tr {...row.getRowProps()} className="padding-sec hover:bg-gray-100">
-//                                     {row.cells.map((cell : any) => (
+//                                     {row.cells.map((cell: any) => (
 //                                         <td {...cell.getCellProps()} className="px-4 py-3 table-body-text">
 //                                             {cell.column.id === "checkbox" ? (
 //                                                 <input type="checkbox" checked={!!selectedRows[row.original.id]} onChange={() => toggleCheckbox(row.original.id)} />
-//                                             )  : (
+//                                             ) : (
 //                                                 cell.render("Cell")
 //                                             )}
 //                                         </td>
@@ -181,7 +200,6 @@
 //                             <MdOutlineArrowBackIos />
 //                         </button>
 //                         <span className="flex gap-2">
-//                             {/* {pageIndex + 1}  {pageOptions.length} */}
 //                             <div className="page-number active">{pageIndex + 1}</div>
 //                             <div className="page-number">/</div>
 //                             <div className="page-number">{pageOptions.length}</div>
@@ -203,3 +221,18 @@
 //         </div>
 //     );
 // };
+
+
+function MembersData() {
+    return (
+        <>
+            <div className="wrapper">
+                <div className="page-title">
+                    <h3>Members</h3>
+                </div>
+            </div>
+        </>
+    );
+}
+
+export default MembersData;

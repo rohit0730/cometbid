@@ -78,7 +78,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     <Link href="/members"> <LuUsers /> Members</Link>
                                 </li>
                                 <li>
-                                    <Link href="/personal-information"> <FiCalendar /> Schedules</Link>
+                                    <Link href="/schedules"> <FiCalendar /> Schedules</Link>
                                 </li>
 
                                 <hr className="menu-divider" />

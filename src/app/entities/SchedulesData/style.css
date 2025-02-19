@@ -1,0 +1,74 @@
+.nav-link {
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: #F5F6FA;
+    color: var(--foreground);
+}
+
+.nav-link.active {
+    background-color: var(--primary) ;
+}
+
+.card-calendar {
+    background: #ffffff;
+    padding: 30px;
+}
+
+.react-calendar {
+    width: 100% ! important;
+    border: none ! important;
+}
+
+.react-calendar__tile {
+    padding: 20px 20px ! important;
+    border-bottom: 1px solid #DFDFDF ! important;
+    border-left: 1px solid #DFDFDF ! important;
+}
+
+.react-calendar__month-view__days {
+    border-top: 1px solid #DFDFDF ! important;
+    border-right: 1px solid #DFDFDF ! important;
+}
+
+.react-calendar__navigation__label span {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.icon-guest {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.icon-guest svg {
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.event-card {
+    background: #fff;
+    padding: 20px;
+    border-bottom: 4px solid var(--primary);
+    border-radius: 5px;
+}
+
+.event-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+.event-desc {
+    font-size: 14px;
+    color: #535F6B;
+    margin-bottom: 14px;
+}
+
+.event-date , .event-time {
+    font-size: 14px;
+    color: #535F6B;
+    margin-bottom: 16px;
+}
