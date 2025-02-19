@@ -64,11 +64,11 @@
     z-index: 1;
 }
 
-.border-line {
+.border-line-notification {
     position: relative;
 }
 
-.border-line::before {
+.border-line-notification::before {
     content: "";
     position: absolute;
     width: 1px;
@@ -78,9 +78,8 @@
     left: 4px;
 }
 
-.border-line:last-child::before {
+.border-line-notification:last-child::before {
     display: none;
-    height: 0;
 }
 
 .model-item-border {

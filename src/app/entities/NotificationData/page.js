@@ -109,7 +109,7 @@ function NotificationData() {
                                 <h5 className="card-title">Today</h5>
                             </div>
                             {notifications.map((notification) => (
-                                <div key={notification.id} className="notification-item border-line" onClick={handleShow}>
+                                <div key={notification.id} className="notification-item border-line-notification" onClick={handleShow}>
                                     <div className="d-flex justify-content-between">
                                         <div className="d-flex align-items-center gap-3">
                                             <div className="dot-design"></div>
