@@ -96,12 +96,12 @@
     font-size: 14px;
 }
 
-.card-section {
+.card-section-collaboration {
     background-color: #ffffff;
     padding: 20px;
 }
 
-.card {
+.card-project {
     border: 1px solid #DFDFDF;
     margin-bottom: 16px;
 }
