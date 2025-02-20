@@ -21,6 +21,7 @@ import { IoFileTrayStacked } from "react-icons/io5";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineSettingsSuggest } from "react-icons/md";
+import { TbUsersGroup } from "react-icons/tb";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
@@ -82,21 +83,24 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 </li>
 
                                 <hr className="menu-divider" />
-                                {/* <li className="dropdown">
-                                    <button className="dropdown-btn" onClick={() => toggleDropdown("events")}>
+                                <li className="dropdown">
+                                    <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <FiCalendar /> Events
+                                        <TbUsersGroup /> Your Collaborations
                                         </div>
-                                        {openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                        {openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
                                     </button>
-                                    {openDropdowns["events"] && (
+                                    {openDropdowns["Collaborations"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/events/upcoming">Upcoming Events</Link></li>
-                                            <li><Link href="/events/past">Past Events</Link></li>
+                                            <li><Link href="/collaborations/your-collaboration"><FaRegUser /> Collaborations</Link></li>
+                                            <li><Link href="/events/past">Start Working Group</Link></li>
+                                            <li><Link href="/events/past">Start Interest Group</Link></li>
+                                            <li><Link href="/events/past">Join Working Group</Link></li>
+                                            <li><Link href="/events/past">Join Interest Group</Link></li>
                                         </ul>
                                     )}
                                 </li>
-                                <li className="dropdown">
+                                {/* <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
                                         <div className="menu-gap d-flex align-items-center">
                                             <ImFileOpenoffice /> Your Projects
@@ -110,9 +114,6 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </ul>
                                     )}
                                 </li> */}
-                                <li>
-                                    <Link href="/personal-information"> <FaRegUser /> Your Collaborations</Link>
-                                </li>
                                 <li>
                                     <Link href="/personal-information"> <ImFileOpenoffice /> Your Projects</Link>
                                 </li>

@@ -62,13 +62,22 @@
 }
 
 .event-desc {
-    font-size: 14px;
+    font-size: 12px;
     color: #535F6B;
     margin-bottom: 14px;
 }
 
 .event-date , .event-time {
-    font-size: 14px;
-    color: #535F6B;
+    font-size: 12px;
+    color: var(--foreground);
     margin-bottom: 16px;
+}
+
+.event-location {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.event-card button {
+    font-size: 12px;
 }

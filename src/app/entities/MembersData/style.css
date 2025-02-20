@@ -150,3 +150,177 @@ button.btn-refresh svg {
 .table-footer div {
     width: 33.33%;
 }
+
+.note-box {
+    background: #F7F6F9;
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    border-left: 4px solid var(--primary);
+}
+
+.note-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+}
+
+.note-text p {
+    font-size: 12px;
+    color: var(--primary);
+    margin-bottom: 0;
+}
+
+.form-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.form-title::after {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background-color: var(--primary);
+    display: block;
+    position: relative;
+    top: 0px;
+    border-radius: 2px
+}
+
+.info-item p {
+    font-weight: bold;
+    color: var(--foreground);
+}
+
+.info-item p span {
+    color: #5C6981;
+    font-weight: normal;
+}
+
+.policy-title {
+    font-size: 12px;
+    color: #5C6981;
+    margin-bottom: 0;
+}
+
+.modal-description {
+    margin-bottom: 0px;
+    font-size: 14px;
+    color: #535862;
+}
+
+/* flow chart css  */
+
+.flow-chart-btn {
+    padding: 10px 20px;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 120px;
+    font-size: 14px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.flow-chart-btn.btn-blue {
+    background-color: var(--primary);
+}
+
+.flow-chart-btn.btn-black {
+    background-color: #3F5765;
+    display: block !important;
+}
+
+.btn-light-blue {
+    background-color: #91AFBC;
+    width: 100%;
+    color: var(--foreground);
+
+}
+
+.role-members {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.border-height {
+    width: 1px;
+    height: 40px;
+    background: #91AFBC;
+}
+
+.border-width {
+    width: 591px;
+    height: 1px;
+    background: #91AFBC;
+    position: relative;
+    left: -36px;
+}
+
+.flow-row {
+    width: 100%;
+    display: flex;
+}
+
+.flow-column {
+    width: 25%;
+}
+
+.flow-column .flow-chart-item {
+    position: relative;
+}
+
+.flow-column .flow-chart-item::before {
+    content: "";
+    position: absolute;
+    top: -82%;
+    left: 32%;
+    right: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 82%;
+    background: #91AFBC;
+}
+
+.flow-chart-item-under {
+    position: relative;
+    margin-left: 10px;
+    padding: 24px 0 0px 30px;
+}
+
+.height-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: #91AFBC;
+}
+
+.height-line:last-child {
+    height: 50%;
+}
+
+.flow-chart-item-under::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 16%;
+    height: 1px;
+    background: #91AFBC;
+}
+
+.role-option-dropdown {
+    position: absolute;
+    background: #ffffff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+    width: auto;
+    /* min-width: 100%;
+    max-width: 100%; */
+}

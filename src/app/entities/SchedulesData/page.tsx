@@ -145,7 +145,6 @@ function SchedulesData() {
                                                                         <div className="text-length">1000 characters limit</div>
                                                                     </Form.Group>
                                                                 </Col>
-                                                                
                                                             </Row>
                                                             <div className="d-flex justify-content-end mt-20"><button className="btn-save">Schedule</button><button className="btn-cancel ms-4">Clear</button></div>
                                                         </Form>
@@ -222,77 +221,75 @@ function SchedulesData() {
                     <h3>Your Upcoming Events</h3>
                 </div>
 
-                <div className="event-list">
-                    <div className="container">
-                        <Row>
-                            <Col md={4}>
-                                <div className="event-card">
-                                    <div className="event-title">
-                                        Reminder of App Project And Design
-                                    </div>
-                                    <div className="event-desc">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    </div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="event-date">
-                                            Monday, August 06
-                                        </div>
-                                        <div className="event-time">
-                                            10:00 AM
-                                        </div>
-                                    </div>
-                                    <div className="event-location">
-                                        LAGOS,NIGERIA
-                                    </div>
-                                    <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
+                <div className="event-list mt-20">
+                    <Row>
+                        <Col md={4}>
+                            <div className="event-card">
+                                <div className="event-title">
+                                    Reminder of App Project And Design
                                 </div>
-                            </Col>
-                            <Col md={4}>
-                                <div className="event-card">
-                                    <div className="event-title">
-                                        Reminder of App Project And Design
-                                    </div>
-                                    <div className="event-desc">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    </div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="event-date">
-                                            Monday, August 06
-                                        </div>
-                                        <div className="event-time">
-                                            10:00 AM
-                                        </div>
-                                    </div>
-                                    <div className="event-location">
-                                        LAGOS,NIGERIA
-                                    </div>
-                                    <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
+                                <div className="event-desc">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                 </div>
-                            </Col>
-                            <Col md={4}>
-                                <div className="event-card">
-                                    <div className="event-title">
-                                        Reminder of App Project And Design
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div className="event-date">
+                                        Monday, August 06
                                     </div>
-                                    <div className="event-desc">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    <div className="event-time">
+                                        10:00 AM
                                     </div>
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div className="event-date">
-                                            Monday, August 06
-                                        </div>
-                                        <div className="event-time">
-                                            10:00 AM
-                                        </div>
-                                    </div>
-                                    <div className="event-location">
-                                        LAGOS,NIGERIA
-                                    </div>
-                                    <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
                                 </div>
-                            </Col>
-                        </Row>
-                    </div>
+                                <div className="event-location">
+                                    LAGOS,NIGERIA
+                                </div>
+                                <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
+                            </div>
+                        </Col>
+                        <Col md={4}>
+                            <div className="event-card">
+                                <div className="event-title">
+                                    Reminder of App Project And Design
+                                </div>
+                                <div className="event-desc">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div className="event-date">
+                                        Monday, August 06
+                                    </div>
+                                    <div className="event-time">
+                                        10:00 AM
+                                    </div>
+                                </div>
+                                <div className="event-location">
+                                    LAGOS,NIGERIA
+                                </div>
+                                <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
+                            </div>
+                        </Col>
+                        <Col md={4}>
+                            <div className="event-card">
+                                <div className="event-title">
+                                    Reminder of App Project And Design
+                                </div>
+                                <div className="event-desc">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div className="event-date">
+                                        Monday, August 06
+                                    </div>
+                                    <div className="event-time">
+                                        10:00 AM
+                                    </div>
+                                </div>
+                                <div className="event-location">
+                                    LAGOS,NIGERIA
+                                </div>
+                                <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
             </div>
         </>
