@@ -47,7 +47,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 />
                             </div>
                             <div className="plan">
-                                <p>Organization membership plan    <a href="#">Montley</a></p>
+                                <p>Organization membership plan    <a href="#">Monthley</a></p>
                             </div>
                         </div>
                         <div className="sidebar-menu">
