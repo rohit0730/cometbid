@@ -71,11 +71,11 @@ function CollaborationData() {
                     <h3>Your Collaborations</h3>
                 </div>
 
-                <div className="card-section-collaboration mt-20">
+                <div className="card-section mt-20">
                     <div className="row">
                         {projects.map((project) => (
                             <div className="col-md-3" key={project.id}>
-                                <div className="card-project">
+                                <div className="card">
                                     <div className="card-body">
                                         <div className="card-header-icon">
                                             <div className="icon-box">
