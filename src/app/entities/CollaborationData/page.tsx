@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import ProjectName from "../../../assets/images/Case-Round.svg";
+import Member from "../../../assets/images/member-profile.jpeg";
 import "./style.css";
 import { FiCalendar } from "react-icons/fi";
 
@@ -63,6 +64,21 @@ const projects = [
     },
 ];
 
+const teamMembers = [
+    { name: "Mathew Roy", role: "Project Manager", image: Member },
+    { name: "Sophia Patel", role: "Software Engineer", image: Member },
+    { name: "David Chen", role: "UI/UX Designer", image: Member },
+    { name: "Olivia Kim", role: "Frontend Developer", image: Member },
+    { name: "Ethan Nguyen", role: "Backend Developer", image: Member },
+    { name: "Isabella Lee", role: "Data Analyst", image: Member },
+    { name: "Liam Kim", role: "Project Manager", image: Member },
+    { name: "Mia Kim", role: "Software Engineer", image: Member },
+    { name: "Noah Kim", role: "UI/UX Designer", image: Member },
+    { name: "Ava Kim", role: "Frontend Developer", image: Member },
+    { name: "Lucas Kim", role: "Backend Developer", image: Member },
+    { name: "Sofia Kim", role: "Data Analyst", image: Member },
+];
+
 function CollaborationData() {
     return (
         <>
@@ -71,11 +87,11 @@ function CollaborationData() {
                     <h3>Your Collaborations</h3>
                 </div>
 
-                <div className="card-section mt-20">
+                <div className="card-section-collaboration mt-20">
                     <div className="row">
                         {projects.map((project) => (
                             <div className="col-md-3" key={project.id}>
-                                <div className="card">
+                                <div className="card card-collaboration">
                                     <div className="card-body">
                                         <div className="card-header-icon">
                                             <div className="icon-box">
@@ -108,6 +124,24 @@ function CollaborationData() {
                             </div>
                         ))}
                     </div>
+                </div>
+
+                <div className="page-title mt-30">
+                    <h3>Members</h3>
+                </div>
+
+                <div className="members-list mt-20">
+                    {teamMembers.map((member, index) => (
+                        <div className="member-item" key={index}>
+                            <div className="member-image">
+                                <Image src={member.image} alt={member.name} className="member-profile" />
+                            </div>
+                            <div className="member-details">
+                                <div className="member-name">{member.name}</div>
+                                <div className="member-role">{member.role}</div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </>

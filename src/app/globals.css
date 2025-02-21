@@ -291,11 +291,16 @@ ul.dropdown-menu {
 .form-label {
   font-size: 12px;
   margin-bottom: 8px ! important;
+  font-weight: 600;
 }
 
 .form-control {
   font-size: 14px ! important;
   height: 45px;
+}
+
+textarea.form-control {
+  height: auto ! important;
 }
 
 .text-length {
@@ -382,7 +387,7 @@ label {
 }
 
 .delete-modal .modal-dialog {
-  max-width: 400px;
+  max-width: 400px ! important;
 }
 
 .delete-modal .modal-body {
@@ -404,5 +409,5 @@ label {
 }
 
 .flow-chart-modal .modal-dialog {
-  max-width: 850px;
+  max-width: 850px !important;
 }

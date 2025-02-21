@@ -222,6 +222,10 @@ button.btn-refresh svg {
     overflow: hidden;
 }
 
+.flow-chart-btn .role-name {
+    font-size: 14px;
+}
+
 .flow-chart-btn.btn-blue {
     background-color: var(--primary);
 }

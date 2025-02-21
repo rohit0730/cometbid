@@ -39,7 +39,8 @@
 }
 
 
-.card-text, .card-value {
+.card-text,
+.card-value {
     font-size: 14px;
 }
 
@@ -47,10 +48,6 @@
     width: 16px;
     height: 16px;
     color: var(--foreground);
-}
-
-.card {
-    border: none;
 }
 
 .icon-box {
@@ -96,7 +93,7 @@
     font-size: 14px;
 }
 
-.card-section {
+.card-section-collaboration {
     background-color: #ffffff;
     padding: 20px;
 }
@@ -104,4 +101,163 @@
 .card {
     border: 1px solid #DFDFDF;
     margin-bottom: 16px;
+}
+
+.card.card-collaboration {
+    height: auto ! important;
+}
+
+.members-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.member-item {
+    width: calc(100% / 5 - 10px);
+    position: relative;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.member-details {
+    position: absolute;
+    bottom: 20px;
+    background-color: #ffffff;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    text-align: center;
+}
+
+.member-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.member-role {
+    font-size: 14px;
+    color: var(--color--2);
+}
+
+
+
+/* Step Form design  */
+
+.step-item {
+    width: calc(100% / 3);
+}
+
+.step-header-card {
+    padding: 22px 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+.step-card-details {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--foreground);
+    color: #ffffff;
+}
+
+.step-icon svg {
+    font-size: 26px;
+}
+
+.step-name {
+    font-size: 12px;
+    color: var(--color--2);
+}
+
+.step-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.step-completion svg {
+    font-size: 24px;
+    color: var(--color--2);
+}
+
+.step-item.active .step-header-card {
+    background-color: #ECF7FF;
+    border-color: var(--primary);
+}
+
+.step-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.file-uploader input[type=file] {
+    padding: 10px;
+    background: #F8FCFF;
+    border-radius: 4px
+}
+
+.file-uploader input[type=file]::file-selector-button {
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 4px;
+    color: #10B981;
+    border: 1px solid #10B981;
+    cursor: pointer;
+}
+
+.upload-file {
+    border: 1px solid #D9D9D9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.step-footer {
+    margin-top: 50px;
+}
+
+.btn-back {
+    border: 1px solid ;
+    padding: 10px 30px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 600;
+    background: var(--foreground);
+}
+
+.btn-back:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-next {
+    border: 1px solid var(--primary);
+    padding: 10px 30px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 600;
+    background: var(--primary);
+}
+
+.step-subtitle {
+    color: var(--color--2);
+    margin-top: 8px;
+}
+
+.step-subtitle-2 {
+    margin-top: 12px;
 }

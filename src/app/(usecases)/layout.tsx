@@ -22,6 +22,8 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineSettingsSuggest } from "react-icons/md";
 import { TbUsersGroup } from "react-icons/tb";
+import { FiBox } from "react-icons/fi";
+import { MdOutlineJoinFull } from "react-icons/md";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
@@ -93,10 +95,10 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     {openDropdowns["Collaborations"] && (
                                         <ul className="dropdown-menu">
                                             <li><Link href="/collaborations/your-collaboration"><FaRegUser /> Collaborations</Link></li>
-                                            <li><Link href="/events/past">Start Working Group</Link></li>
-                                            <li><Link href="/events/past">Start Interest Group</Link></li>
-                                            <li><Link href="/events/past">Join Working Group</Link></li>
-                                            <li><Link href="/events/past">Join Interest Group</Link></li>
+                                            <li><Link href="/collaborations/start-working-group"><FiBox />Start Working Group</Link></li>
+                                            <li><Link href="/collaborations/start-interest-group"><FiBox />Start Interest Group</Link></li>
+                                            <li><Link href="/collaborations/join-working-group"><MdOutlineJoinFull />Join Working Group</Link></li>
+                                            <li><Link href="/collaborations/join-interest-group"><MdOutlineJoinFull />Join Interest Group</Link></li>
                                         </ul>
                                     )}
                                 </li>
