@@ -99,12 +99,12 @@
 }
 
 .card {
-    border: 1px solid #DFDFDF;
     margin-bottom: 16px;
 }
 
 .card.card-collaboration {
     height: auto ! important;
+    border: 1px solid #DFDFDF !important;
 }
 
 .members-list {
