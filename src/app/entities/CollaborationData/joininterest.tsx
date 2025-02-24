@@ -12,15 +12,23 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import "./style.css";
+import Featured from "../../../assets/images/Featured-Icon.svg";
+import Modal from 'react-bootstrap/Modal';
+import { MdInfo } from "react-icons/md";
 
 const steps = [
-    { id: 1, name: "Step 1", title: "Working Group", icon: <FiBox /> },
+    { id: 1, name: "Step 1", title: "Interest Group", icon: <FiBox /> },
     { id: 2, name: "Step 2", title: "Signing Authority", icon: <FaRegUser /> },
     { id: 3, name: "Step 3", title: "Review", icon: <VscPreview /> },
 ];
 
 
 const JoinInterest = () => {
+
+    const [show3, setShow3] = useState(false);
+
+    const handleClose3 = () => setShow3(false);
+    const handleShow3 = () => setShow3(true);
 
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -58,6 +66,44 @@ const JoinInterest = () => {
 
     return (
         <>
+
+            {/* Submit Member Modal start */}
+            <Modal show={show3} onHide={handleClose3} centered className='custom-modal delete-modal'>
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="d-flex flex-column gap-3 align-items-center">
+                        <div className="modal-icon">
+                            <Image
+                                src={Featured}
+                                alt="arrow"
+                            />
+                        </div>
+                        <div>
+                            <h4 className="modal-title">Thanks for contacting us to join a Project!</h4>
+                            <p className="modal-description">We have received your proposal to join a project. Relevant Project associates will reach out to you shortly for further steps.</p>
+                        </div>
+                        <div className="form-details">
+                            <div className="note-box">
+                                <div className="note-icon">
+                                    <MdInfo />
+                                </div>
+                                <div className="note-text">
+                                    <p>Please download the Proposal in Pdf format, and keep it for reference purpose.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-end w-100">
+                            <button className="btn-outline" onClick={handleClose3}>Download PDF</button>
+                            <button className="btn-save ms-4" onClick={handleClose3}>Done</button>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Submit Member Modal end */}
+
+
             <div className="wrapper">
                 <div className="d-flex align-items-center gap-2">
                     <div className="page-title">
@@ -68,7 +114,7 @@ const JoinInterest = () => {
                         alt="arrow"
                     />
                     <div className="page-title">
-                        <h3> Join A Interest Group</h3> 
+                        <h3> Join A Interest Group</h3>
                     </div>
                 </div>
 
@@ -116,7 +162,7 @@ const JoinInterest = () => {
                                                 <Form.Group className="mb-3" controlId="formGroupGroupName">
                                                     <Form.Label>Witch Interest Group would you like to join? </Form.Label>
                                                     <Form.Select aria-label="Default select example" className="form-control">
-                                                        <option>Jakarta EE Working Group</option>
+                                                        <option>Jakarta EE Interest Group</option>
                                                         <option value="1">Automotive & Mobility</option>
                                                         <option value="2">Banking</option>
                                                         <option value="3">Blockchain</option>
@@ -134,9 +180,9 @@ const JoinInterest = () => {
                                                     </Form.Select>
                                                 </Form.Group>
                                             </Col>
-                                            <div className="step-subtitle">Each Working Group has different participation levels and restrictions on who can join at those levels (e.g., Guest Member level is typically restricted to non-profit organizations).See the charter for full details on which choice is best for you, and to see the working group fees associated with joining this working group</div>
+                                            <div className="step-subtitle">Each Interest Group has different participation levels and restrictions on who can join at those levels (e.g., Guest Member level is typically restricted to non-profit organizations).See the charter for full details on which choice is best for you, and to see the Interest group fees associated with joining this Interest group</div>
                                             <div className="step-subtitle">
-                                            Please contact our membership team with any questions.</div>
+                                                Please contact our membership team with any questions.</div>
                                         </Row>
                                     </Form>
                                 </div>
@@ -145,7 +191,7 @@ const JoinInterest = () => {
                             {currentStep === 2 && (
                                 <div className="step-details step-1">
                                     <div className="step-title">Signing Authority</div>
-                                    <div className="step-subtitle">Please complete the following details for Starting a new Working Group</div>
+                                    <div className="step-subtitle">Please complete the following details for Starting a new Interest Group</div>
 
                                     <Form className="mt-3">
                                         <Row>
@@ -189,22 +235,22 @@ const JoinInterest = () => {
                             {currentStep === 3 && (
                                 <div className="step-details step-1">
                                     <div className="step-title">Review and Submit Your Completed Application</div>
-                                    <div className="step-subtitle">Please review your completed Working Group Application Form. If you would like to update any information, please click the Back Button.</div>
+                                    <div className="step-subtitle">Please review your completed Interest Group Application Form. If you would like to update any information, please click the Back Button.</div>
                                     <div className="step-subtitle-2">Please click SUBMIT when ready.</div>
 
                                     <Form className="mt-3">
                                         <Row>
                                             <Col md={6}>
-                                            <Form.Label>Witch Working Group would you like to join? </Form.Label>
-                                                    <Form.Select aria-label="Default select example" className="form-control">
-                                                        <option> Jakarta EE Working Group </option>
-                                                        <option value="1">Automotive & Mobility</option>
-                                                        <option value="2">Banking</option>
-                                                        <option value="3">Blockchain</option>
-                                                    </Form.Select>
+                                                <Form.Label>Witch Interest Group would you like to join? </Form.Label>
+                                                <Form.Select aria-label="Default select example" className="form-control">
+                                                    <option> Jakarta EE Interest Group </option>
+                                                    <option value="1">Automotive & Mobility</option>
+                                                    <option value="2">Banking</option>
+                                                    <option value="3">Blockchain</option>
+                                                </Form.Select>
                                             </Col>
                                             <Col md={6}>
-                                            <Form.Group className="mb-3" controlId="formGroupTechnology">
+                                                <Form.Group className="mb-3" controlId="formGroupTechnology">
                                                     <Form.Label> What Role Would ypu like to play on this Interest Group? </Form.Label>
                                                     <Form.Select aria-label="Default select example" className="form-control">
                                                         <option>Guest Member</option>
@@ -214,9 +260,9 @@ const JoinInterest = () => {
                                                     </Form.Select>
                                                 </Form.Group>
                                             </Col>
-                                           
-                                            
-                                           
+
+
+
                                             <Col md={6}>
                                                 <Form.Group className="mb-3" controlId="formGroupFirstName">
                                                     <Form.Label>First Name*</Form.Label>
@@ -243,12 +289,12 @@ const JoinInterest = () => {
                                                     <option value="2">Team Lead</option>
                                                     <option value="3">Developer</option>
                                                 </Form.Select>
-                                            </Col>   
+                                            </Col>
 
-                                            
+
                                             <Col md={6}>
                                                 <Form.Group className="mb-3" controlId="formGroupDate">
-                                                    <Form.Check aria-label="option 1" label="I agree to abled by the code of conduct, rules and regulations by law binding on members of this working group" />
+                                                    <Form.Check aria-label="option 1" label="I agree to abled by the code of conduct, rules and regulations by law binding on members of this Interest group" />
                                                 </Form.Group>
                                             </Col>
                                         </Row>
@@ -263,9 +309,18 @@ const JoinInterest = () => {
                                 <button className="btn-back" onClick={prevStep} disabled={currentStep === 1}>
                                     Back
                                 </button>
-                                <button className="btn-next" onClick={nextStep} disabled={currentStep === steps.length}>
-                                    {currentStep === steps.length ? "Finish" : "Next"}
-                                </button>
+                                {currentStep < steps.length && (
+                                    <button className="btn-next" onClick={nextStep} disabled={currentStep === steps.length}>
+                                        Next
+                                    </button>
+                                )}
+
+                                {/* Submit Button (Hidden at the last step) */}
+                                {currentStep === steps.length && (
+                                    <button className="btn-next" onClick={handleShow3}>
+                                        Submit
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import "./style.css";
+import Featured from "../../../assets/images/Featured-Icon.svg";
+import Modal from 'react-bootstrap/Modal';
+import { MdInfo } from "react-icons/md";
 
 const steps = [
     { id: 1, name: "Step 1", title: "Interest Group", icon: <FiBox /> },
@@ -21,6 +24,12 @@ const steps = [
 
 
 const StartInsterest = () => {
+
+    const [show3, setShow3] = useState(false);
+
+    const handleClose3 = () => setShow3(false);
+    const handleShow3 = () => setShow3(true);
+
 
     const [currentStep, setCurrentStep] = useState(1);
 
@@ -58,6 +67,44 @@ const StartInsterest = () => {
 
     return (
         <>
+
+            {/* Submit Member Modal start */}
+            <Modal show={show3} onHide={handleClose3} centered className='custom-modal delete-modal'>
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="d-flex flex-column gap-3 align-items-center">
+                        <div className="modal-icon">
+                            <Image
+                                src={Featured}
+                                alt="arrow"
+                            />
+                        </div>
+                        <div>
+                            <h4 className="modal-title">Thanks for contacting us to join a Project!</h4>
+                            <p className="modal-description">We have received your proposal to join a project. Relevant Project associates will reach out to you shortly for further steps.</p>
+                        </div>
+                        <div className="form-details">
+                            <div className="note-box">
+                                <div className="note-icon">
+                                    <MdInfo />
+                                </div>
+                                <div className="note-text">
+                                    <p>Please download the Proposal in Pdf format, and keep it for reference purpose.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-end w-100">
+                            <button className="btn-outline" onClick={handleClose3}>Download PDF</button>
+                            <button className="btn-save ms-4" onClick={handleClose3}>Done</button>
+                        </div>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Submit Member Modal end */}
+
+
             <div className="wrapper">
                 <div className="d-flex align-items-center gap-2">
                     <div className="page-title">
@@ -364,9 +411,18 @@ const StartInsterest = () => {
                                 <button className="btn-back" onClick={prevStep} disabled={currentStep === 1}>
                                     Back
                                 </button>
-                                <button className="btn-next" onClick={nextStep} disabled={currentStep === steps.length}>
-                                    {currentStep === steps.length ? "Finish" : "Next"}
-                                </button>
+                                {currentStep < steps.length && (
+                                    <button className="btn-next" onClick={nextStep} disabled={currentStep === steps.length}>
+                                        Next
+                                    </button>
+                                )}
+
+                                {/* Submit Button (Hidden at the last step) */}
+                                {currentStep === steps.length && (
+                                    <button className="btn-next" onClick={handleShow3}>
+                                        Submit
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

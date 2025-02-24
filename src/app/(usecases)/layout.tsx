@@ -102,7 +102,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </ul>
                                     )}
                                 </li>
-                                {/* <li className="dropdown">
+                                <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
                                         <div className="menu-gap d-flex align-items-center">
                                             <ImFileOpenoffice /> Your Projects
@@ -111,13 +111,11 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["projects"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/projects/active">Active Projects</Link></li>
-                                            <li><Link href="/projects/completed">Completed Projects</Link></li>
+                                            <li><Link href="/projects">Projects</Link></li>
+                                            <li><Link href="/projects/active">Start Projects</Link></li>
+                                            <li><Link href="/projects/completed">Join Projects</Link></li>
                                         </ul>
                                     )}
-                                </li> */}
-                                <li>
-                                    <Link href="/personal-information"> <ImFileOpenoffice /> Your Projects</Link>
                                 </li>
                                 <li>
                                     <Link href="/personal-information"> <LuUsers /> Your Organization Profile</Link>

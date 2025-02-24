@@ -261,3 +261,34 @@
 .step-subtitle-2 {
     margin-top: 12px;
 }
+
+.step-subtitle a {
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.step-link {
+    font-size: 14px;
+    color: var(--primary);
+}
+
+.note-box {
+    background: #F7F6F9;
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    border-left: 4px solid var(--primary);
+}
+
+.note-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+}
+
+.note-text p {
+    font-size: 12px;
+    color: var(--primary);
+    margin-bottom: 0;
+}

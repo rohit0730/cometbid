@@ -363,6 +363,11 @@ label {
   font-weight: bold;
   margin: 0;
   padding: 0;
+  text-align: center;
+}
+
+.modal-description {
+  text-align: center;
 }
 
 .custom-modal .btn-close {
@@ -387,7 +392,7 @@ label {
 }
 
 .delete-modal .modal-dialog {
-  max-width: 400px ! important;
+  max-width: 440px ! important;
 }
 
 .delete-modal .modal-body {
