@@ -14,6 +14,23 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Image from "next/image";
 import DeleteIcon from "../../../assets/images/model-delete.svg";
+import { MultiSelect } from "react-multi-select-component";
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
+const options = [
+    { label: "Soccer", value: "soccer" },
+    { label: "Coding", value: "coding" },
+    { label: "Hockey", value: "hockey" },
+    { label: "Football", value: "football" },
+    { label: "Basketball", value: "basketball" },
+    { label: "Baseball", value: "baseball" },
+    { label: "Tennis", value: "tennis" },
+    { label: "Volleyball", value: "volleyball" },
+    { label: "Golf", value: "golf" },
+    { label: "Cricket", value: "cricket" },
+    { label: "Rugby", value: "rugby" },
+];
 
 type DataType = {
     name: string;
@@ -43,12 +60,12 @@ const columns: Column<DataType>[] = [
 ];
 
 const data: DataType[] = [
-    {  name: "Serverless Image Processor", age: 25, status: "Active", category: "Serverless Technology", lastLogin: "2022-01-01", joinDate: "2021-01-01", role: "Admin" },
-    {  name: "Video Streaming engine", age: 30, status: "Inactive", category: "Data Streaming/Analytics", lastLogin: "2022-02-01", joinDate: "2021-02-01", role: "User" },
-    {  name: "Billing Management", age: 35, status: "Active", category: "Designer", lastLogin: "2022-03-01", joinDate: "2021-03-01", role: "Admin" },
-    {  name: "Serverless Image Processor", age: 40, status: "Inactive", category: "Developer", lastLogin: "2022-04-01", joinDate: "2021-04-01", role: "User" },
-    {  name: "Serverless Image Processor", age: 45, status: "Active", category: "Tester", lastLogin: "2022-05-01", joinDate: "2021-05-01", role: "Admin" },
-    {  name: "Serverless Image Processor", age: 50, status: "Inactive", category: "Manager", lastLogin: "2022-06-01", joinDate: "2021-06-01", role: "User" }
+    { name: "Serverless Image Processor", age: 25, status: "Active", category: "Serverless Technology", lastLogin: "2022-01-01", joinDate: "2021-01-01", role: "Admin" },
+    { name: "Video Streaming engine", age: 30, status: "Inactive", category: "Data Streaming/Analytics", lastLogin: "2022-02-01", joinDate: "2021-02-01", role: "User" },
+    { name: "Billing Management", age: 35, status: "Active", category: "Designer", lastLogin: "2022-03-01", joinDate: "2021-03-01", role: "Admin" },
+    { name: "Serverless Image Processor", age: 40, status: "Inactive", category: "Developer", lastLogin: "2022-04-01", joinDate: "2021-04-01", role: "User" },
+    { name: "Serverless Image Processor", age: 45, status: "Active", category: "Tester", lastLogin: "2022-05-01", joinDate: "2021-05-01", role: "Admin" },
+    { name: "Serverless Image Processor", age: 50, status: "Inactive", category: "Manager", lastLogin: "2022-06-01", joinDate: "2021-06-01", role: "User" }
 ];
 
 type TableInstanceWithPagination<T extends object> = TableInstance<T> & {
@@ -147,6 +164,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
         setSelectedRows((prev: any) => ({ ...prev, [id]: !prev[id] }));
     };
 
+
     const [openRole, setOpenRole] = useState(null);
     const [roleMembers, setRoleMembers] = useState({
         CEO: "Armando Ruiz",
@@ -171,6 +189,23 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
         setRoleMembers((prev) => ({ ...prev, [role]: member }));
         setOpenRole(null); // Close list after selection
     };
+
+    type SelectedItem = {
+        value: string | number;
+        label: string;
+    };
+
+    const [selected, setSelected] = useState<SelectedItem[]>([]);
+
+    const handleRemove = (value: string | number) => {
+        setSelected((prevSelected) =>
+            prevSelected.filter((item) => item.value !== value)
+        );
+    };
+
+
+    const colors = ["#ff4a4a", "#ff9516", "#ff2192", "#20bd00", "#00bccf", "#1b72ff", "#4222ff",];
+
 
     return (
         <>
@@ -240,84 +275,185 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
             </Modal>
             {/* Add New Member Modal end */}
 
-            {/* View Member Modal start */}
+            {/* View project Modal start */}
             <Modal show={show2} onHide={handleClose2} centered className='custom-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Member Details </Modal.Title>
+                    <Modal.Title>Project Details </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="member-info d-flex justify-content-between">
-                        <div className="info-item">
-                            <p className="info-title">Status : <span>Active</span></p>
-                        </div>
-                        <div className="info-item">
-                            <p className="info-title">Date Joined : <span>24 Fed 2024</span></p>
-                        </div>
-                        <div className="info-item">
-                            <p className="info-title">Last Login : <span>2 mins ago</span></p>
-                        </div>
-                    </div>
-                    <div className="d-flex flex-column gap-4">
-                        <div className="form-details">
-                            <Form className="mt-3">
+                    <Tabs
+                        defaultActiveKey="project"
+                        id="uncontrolled-tab-example"
+                        className="mb-3 project-tabs"
+                    >
+                        <Tab eventKey="project" title="Project Details">
+                            <div className="member-info d-flex justify-content-between mt-4">
+                                <div className="info-item">
+                                    <p className="info-title">Project Id : <span>2 mins ago</span></p>
+                                </div>
+                                <div className="info-item">
+                                    <p className="info-title">Status : <span>Active</span></p>
+                                </div>
+                                <div className="info-item">
+                                    <p className="info-title">Date Created : <span>24 Fed 2024</span></p>
+                                </div>
+                                <div className="info-item">
+                                    <p className="info-title">Source : <span>Open</span></p>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column gap-4">
+                                <div className="form-details">
+                                    <Form className="mt-3">
+                                        <Row>
+                                            <Col md={6}>
+                                                <Form.Group className="mb-3" controlId="formGroupFirstName">
+                                                    <Form.Label>Project Name</Form.Label>
+                                                    <Form.Control type="name" placeholder="Mathew" />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={6}>
+                                                <Form.Group className="mb-3" controlId="formGroupLastName">
+                                                    <Form.Label>Category</Form.Label>
+                                                    <Form.Select aria-label="Default select example" className="form-control">
+                                                        <option>Blockchain Integration</option>
+                                                        <option value="1">Digital Marketing</option>
+                                                        <option value="2">Web Development</option>
+                                                        <option value="3">Mobile App Development</option>
+                                                        <option value="4">UI/UX Design</option>
+                                                    </Form.Select>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={12}>
+                                                <Form.Group className="mb-3" controlId="formGroupPitch">
+                                                    <Form.Label>Pitch Statement*</Form.Label>
+                                                    <Form.Control type="text" placeholder="" />
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={12}>
+                                                <Form.Group className="mb-3" controlId="formGroupProblem">
+                                                    <Form.Label>Problem Statement*</Form.Label>
+                                                    <Form.Control as="textarea" rows={5} />
+                                                    <div className="text-length">1000 characters limit</div>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={12}>
+                                                <Form.Group className="mb-3" controlId="formGroupGoals">
+                                                    <Form.Label>Goals or Objectives*</Form.Label>
+                                                    <Form.Control as="textarea" rows={5} />
+                                                    <div className="text-length">1000 characters limit</div>
+                                                </Form.Group>
+                                            </Col>
+                                            <Col md={12}>
+                                                <div className="select-container">
+                                                    <Form.Group controlId="exampleForm.ControlInput1">
+                                                        <Form.Label>Select Interest</Form.Label>
+                                                        <div>
+                                                            {selected.length > 0 ? (
+                                                                <ul className='selected-list'>
+                                                                    {selected.map((item, index) => (
+                                                                        <li
+                                                                            key={item.value}
+                                                                            style={{
+                                                                                backgroundColor: colors[index % colors.length], // Cycle through colors
+                                                                            }}
+                                                                        >
+                                                                            {item.label}{" "}
+                                                                            <button
+                                                                                onClick={() => handleRemove(item.value)}
+                                                                                style={{
+                                                                                    marginLeft: "4px",
+                                                                                    color: "#ffffff",
+                                                                                    cursor: "pointer",
+                                                                                    background: "none",
+                                                                                    border: "none",
+                                                                                }}
+                                                                            >
+                                                                                X
+                                                                            </button>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                        </div>
+                                                        <MultiSelect
+                                                            options={options}
+                                                            value={selected}
+                                                            onChange={setSelected}
+                                                            labelledBy="Select"
+                                                            overrideStrings={{
+                                                                selectSomeItems: "Type text and press enter to select interest",
+                                                            }}
+                                                            className="multi-select"
+                                                        />
+                                                    </Form.Group>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                </div>
+                            </div>
+                        </Tab>
+                        <Tab eventKey="allocation" title="Allocations">
+                            <Form className="mt-4">
                                 <Row>
                                     <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupFirstName">
-                                            <Form.Label>First Name</Form.Label>
-                                            <Form.Control type="name" placeholder="Mathew" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
                                         <Form.Group className="mb-3" controlId="formGroupLastName">
-                                            <Form.Label>Last Name</Form.Label>
-                                            <Form.Control type="name" placeholder="Parker" />
+                                            <Form.Label>Software License</Form.Label>
+                                            <Form.Select aria-label="Default select example" className="form-control">
+                                                <option>Blockchain Integration</option>
+                                                <option value="1">Digital Marketing</option>
+                                                <option value="2">Web Development</option>
+                                                <option value="3">Mobile App Development</option>
+                                                <option value="4">UI/UX Design</option>
+                                            </Form.Select>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="formGroupFirstName">
+                                            <Form.Label>Owned by</Form.Label>
+                                            <Form.Control type="name" placeholder="https://veritas.cometbid.org." />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="formGroupPitch">
+                                            <Form.Label>Website Url</Form.Label>
+                                            <Form.Control type="text" placeholder="" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="formGroupPitch">
+                                            <Form.Label>GitLab repo</Form.Label>
+                                            <Form.Control type="text" placeholder="" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="formGroupPitch">
+                                            <Form.Label>GitHub repo</Form.Label>
+                                            <Form.Control type="text" placeholder="" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group className="mb-3" controlId="formGroupPitch">
+                                            <Form.Label>Bitbucket repo</Form.Label>
+                                            <Form.Control type="text" placeholder="" />
                                         </Form.Group>
                                     </Col>
                                     <Col md={12}>
-                                        <Form.Group className="mb-3" controlId="formGroupEmail">
-                                            <Form.Label>Email *</Form.Label>
-                                            <Form.Control type="email" placeholder="email@address" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupEmployer">
-                                            <Form.Label>Current Employer</Form.Label>
-                                            <Form.Control type="text" placeholder="Morgan Stanley, Us" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupJob">
-                                            <Form.Label>Job Title</Form.Label>
-                                            <Form.Control type="text" placeholder="Java Developer" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupDate">
-                                            <Form.Label>LinkedIn Profile URL</Form.Label>
-                                            <Form.Control type="text" placeholder="https://www.linkedin.com/in/" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupDate">
-                                            <Form.Label>GitHub Url</Form.Label>
-                                            <Form.Control type="text" placeholder="https://github.com/" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={12}>
-                                        <Form.Group controlId="formGroupDate">
-                                            <Form.Label>Twitter(x)</Form.Label>
-                                            <Form.Control type="text" placeholder="https://twitter.com/" />
+                                        <Form.Group className="mb-3" controlId="formGroupGoals">
+                                            <Form.Label>Project Policies</Form.Label>
+                                            <Form.Control as="textarea" rows={5} />
+                                            <div className="text-length">1000 characters limit</div>
                                         </Form.Group>
                                     </Col>
                                 </Row>
                             </Form>
-                        </div>
-                        <div className="policy-info">
-                            <p className="policy-title">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
-                        <div className="d-flex justify-content-end">
-                            <button className="btn-save" onClick={handleClose2}>Done</button>
-                        </div>
+                        </Tab>
+                    </Tabs>
+                    <div className="d-flex justify-content-end mt-5">
+                        <button className="btn-save" onClick={handleClose2}>Done</button>
+                        <button className="btn-cancel ms-4" onClick={handleClose2}>Cancel</button>
                     </div>
                 </Modal.Body>
             </Modal>
@@ -799,8 +935,8 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                                     <button className="btn-dropdown" onClick={handleToggleAction}>Action <MdKeyboardArrowDown /></button>
                                     {actionOpen && (
                                         <div className="dropdown-content">
-                                            <button className="dropdown-item" onClick={handleShow2}><TbEye />Edit</button>
-                                            <button className="dropdown-item" onClick={handleShow4}><BiEditAlt />Transfer</button>
+                                            <button className="dropdown-item" onClick={handleShow2}><BiEditAlt />Edit</button>
+                                            <button className="dropdown-item" onClick={handleShow4}>Transfer</button>
                                             <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Pause</button>
                                             <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Restart</button>
                                             <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Retire</button>
@@ -983,10 +1119,10 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
 
     return (
         <>
-            {/* Add New Member start */}
+            {/* Add New Member Project */}
             <Modal show={show} onHide={handleClose} centered className='custom-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add New Member</Modal.Title>
+                    <Modal.Title>Start Project</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="d-flex flex-column gap-4">
@@ -1047,23 +1183,26 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* Add New Member Modal end */}
+            {/* Add New Project Modal end */}
 
-            {/* View Member Modal start */}
+            {/* Member Details Modal start */}
             <Modal show={show2} onHide={handleClose2} centered className='custom-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Member Details </Modal.Title>
+                    <Modal.Title>Project Details </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="member-info d-flex justify-content-between">
                         <div className="info-item">
+                            <p className="info-title">Project Id : <span>2 mins ago</span></p>
+                        </div>
+                        <div className="info-item">
                             <p className="info-title">Status : <span>Active</span></p>
                         </div>
                         <div className="info-item">
-                            <p className="info-title">Date Joined : <span>24 Fed 2024</span></p>
+                            <p className="info-title">Date Created : <span>24 Fed 2024</span></p>
                         </div>
                         <div className="info-item">
-                            <p className="info-title">Last Login : <span>2 mins ago</span></p>
+                            <p className="info-title">Source : <span>Open</span></p>
                         </div>
                     </div>
                     <div className="d-flex flex-column gap-4">

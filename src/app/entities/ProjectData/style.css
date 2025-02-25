@@ -328,3 +328,31 @@ button.btn-refresh svg {
     /* min-width: 100%;
     max-width: 100%; */
 }
+
+
+/* tabs design  */
+
+.project-tabs .nav-item button {
+    padding: 14px 40px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.project-tabs .nav-item button.active {
+    background-color: transparent;
+    color: var(--primary);
+    border-top: none ! important;
+    border-radius: 0;
+    border-left: none ! important;
+    border-right: none  ! important;
+    border-bottom: 2px solid var(--primary);
+}
+
+.project-tabs .nav-item button:hover {
+    background-color: transparent;
+    color: var(--primary);
+    border-top: none ! important;
+    border-radius: 0;
+    border-left: none ! important;
+    border-right: none  ! important;
+}

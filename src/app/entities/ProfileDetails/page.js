@@ -16,6 +16,21 @@ import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import { MultiSelect } from "react-multi-select-component";
+
+const options = [
+    { label: "Soccer", value: "soccer" },
+    { label: "Coding", value: "coding" },
+    { label: "Hockey", value: "hockey" },
+    { label: "Football", value: "football" },
+    { label: "Basketball", value: "basketball" },
+    { label: "Baseball", value: "baseball" },
+    { label: "Tennis", value: "tennis" },
+    { label: "Volleyball", value: "volleyball" },
+    { label: "Golf", value: "golf" },
+    { label: "Cricket", value: "cricket" },
+    { label: "Rugby", value: "rugby" },
+];
 
 function ProfileDetails() {
 
@@ -23,6 +38,31 @@ function ProfileDetails() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [show1, setShow1] = useState(false);
+
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);
+
+    const [show2, setShow2] = useState(false);
+
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => setShow2(true);
+
+    const [show3, setShow3] = useState(false);
+
+    const handleClose3 = () => setShow3(false);
+    const handleShow3 = () => setShow3(true);
+
+    const [selected, setSelected] = useState([]);
+
+    const colors = ["#ff4a4a", "#ff9516", "#ff2192", "#20bd00", "#00bccf", "#1b72ff", "#4222ff",];
+
+    const handleRemove = (value) => {
+        setSelected((prevSelected) =>
+            prevSelected.filter((item) => item.value !== value)
+        );
+    };
 
     const [image, setImage] = useState("http://i.pravatar.cc/500?img=7");
 
@@ -94,7 +134,21 @@ function ProfileDetails() {
                         <input type="file" name="picture__input" id="picture__input" onChange={handleBannerChange} />
                     </div>
 
-                    <Form className="mt-3">
+                    <div className="d-flex justify-content-end mt-4">
+                        <button className="btn-save" onClick={handleClose}>Save</button>
+                        <button className="btn-cancel ms-4" onClick={handleClose}>Cancel</button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Edit Details Modal end */}
+
+            {/* Edit Details Modal start */}
+            <Modal show={show1} onHide={handleClose1} centered className='custom-modal'>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit About</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
                         <Row>
                             <Col md={6}>
                                 <Form.Group className="mb-3" controlId="formGroupFirstName">
@@ -135,6 +189,72 @@ function ProfileDetails() {
                                     <Form.Control type="text" placeholder="" />
                                 </Form.Group>
                             </Col>
+                            <Col md={12}>
+                                <div className="select-container">
+                                    <Form.Group controlId="exampleForm.ControlInput1">
+                                        <Form.Label>Select Interest</Form.Label>
+                                        <div>
+                                            {selected.length > 0 ? (
+                                                <ul className='selected-list'>
+                                                {selected.map((item, index) => (
+                                                    <li
+                                                        key={item.value}
+                                                        style={{
+                                                            backgroundColor: colors[index % colors.length], // Cycle through colors
+                                                        }}
+                                                    >
+                                                        {item.label}{" "}
+                                                        <button
+                                                            onClick={() => handleRemove(item.value)}
+                                                            style={{
+                                                                marginLeft: "4px",
+                                                                color: "#ffffff",
+                                                                cursor: "pointer",
+                                                                background: "none",
+                                                                border: "none",
+                                                            }}
+                                                        >
+                                                            X
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>                                            
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                        <MultiSelect
+                                            options={options}
+                                            value={selected}
+                                            onChange={setSelected}
+                                            labelledBy="Select"
+                                            overrideStrings={{
+                                                selectSomeItems: "Type text and press enter to select interest",
+                                            }}
+                                            className="multi-select"
+                                        />
+                                    </Form.Group>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Form>
+
+                    <div className="d-flex justify-content-end mt-4">
+                        <button className="btn-save" onClick={handleClose1}>Save</button>
+                        <button className="btn-cancel ms-4" onClick={handleClose1}>Cancel</button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Edit Details Modal end */}
+
+            {/* Edit Social Links Modal start */}
+            <Modal show={show2} onHide={handleClose2} centered className='custom-modal'>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Social Links</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form className="mt-3">
+                        <Row>
                             <Col md={6}>
                                 <Form.Group className="mb-3" controlId="formGroupDate">
                                     <Form.Label>GitHub Url</Form.Label>
@@ -165,6 +285,25 @@ function ProfileDetails() {
                                     <Form.Control type="text" placeholder="" />
                                 </Form.Group>
                             </Col>
+                        </Row>
+                    </Form>
+
+                    <div className="d-flex justify-content-end mt-4">
+                        <button className="btn-save" onClick={handleClose2}>Save</button>
+                        <button className="btn-cancel ms-4" onClick={handleClose2}>Cancel</button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            {/* Edit Social Links Modal end */}
+
+            {/* Edit Details Modal start */}
+            <Modal show={show3} onHide={handleClose3} centered className='custom-modal'>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Profile</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form className="mt-3">
+                        <Row>
                             <Col md={12}>
                                 <Form.Group className="mb-3" controlId="formGroupDate">
                                     <Form.Label>Bio</Form.Label>
@@ -174,15 +313,15 @@ function ProfileDetails() {
                             </Col>
                             <Col md={12}>
                                 <Form.Group className="mb-3" controlId="formGroupDate">
-                                    <Form.Check aria-label="option 1"  label="I would like to re-execute the CSF membership agreement with new information. By doing so, I agree I have read the terms of agreement and understand that information supplied replaces any previous details on CSF file."/>
+                                    <Form.Check aria-label="option 1" label="I would like to re-execute the CSF membership agreement with new information. By doing so, I agree I have read the terms of agreement and understand that information supplied replaces any previous details on CSF file." />
                                 </Form.Group>
                             </Col>
                         </Row>
                     </Form>
 
                     <div className="d-flex justify-content-end mt-4">
-                        <button className="btn-save" onClick={handleClose}>Save</button>
-                        <button className="btn-cancel ms-4" onClick={handleClose}>Cancel</button>
+                        <button className="btn-save" onClick={handleClose3}>Save</button>
+                        <button className="btn-cancel ms-4" onClick={handleClose3}>Cancel</button>
                     </div>
                 </Modal.Body>
             </Modal>
@@ -281,8 +420,19 @@ function ProfileDetails() {
 
                 <div className="user-about mt-20">
                     <div className="card">
-                        <div className="card-header-title">
-                            <h3>About Me</h3>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="card-header-title">
+                                <h3>About Me</h3>
+                            </div>
+                            <div className="btn-design me-4">
+                                <button className="btn-icon-blue" onClick={handleShow1}>
+                                    <Image
+                                        src={EditIcon}
+                                        alt="edit-icon"
+                                    />
+                                    Edit
+                                </button>
+                            </div>
                         </div>
                         <hr className="line mt-0" />
                         <div className="card-about-body">
@@ -323,8 +473,19 @@ function ProfileDetails() {
                 </div>
                 <div className="user-about mt-20">
                     <div className="card">
-                        <div className="card-header-title">
-                            <h3>Social Media links</h3>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="card-header-title">
+                                <h3>Social Media links</h3>
+                            </div>
+                            <div className="btn-design me-4">
+                                <button className="btn-icon-blue" onClick={handleShow2}>
+                                    <Image
+                                        src={EditIcon}
+                                        alt="edit-icon"
+                                    />
+                                    Edit
+                                </button>
+                            </div>
                         </div>
                         <hr className="line mt-0" />
                         <div className="card-about-body">
@@ -363,8 +524,19 @@ function ProfileDetails() {
 
                 <div className="user-about mt-20">
                     <div className="card">
-                        <div className="card-header-title">
-                            <h3>My Profile</h3>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="card-header-title">
+                                <h3>My Profile</h3>
+                            </div>
+                            <div className="btn-design me-4">
+                                <button className="btn-icon-blue" onClick={handleShow3}>
+                                    <Image
+                                        src={EditIcon}
+                                        alt="edit-icon"
+                                    />
+                                    Edit
+                                </button>
+                            </div>
                         </div>
                         <hr className="line mt-0" />
                         <div className="card-about-body">

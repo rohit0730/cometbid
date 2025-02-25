@@ -14,7 +14,7 @@
 }
 
 .user-profile-details {
-    padding: 20px 60px;
+    padding: 20px 24px 20px 60px;
 }
 
 .user-details-inner {
@@ -76,7 +76,7 @@
 }
 
 .card-header-title {
-    padding: 20px 24px;
+    padding: 30px 24px;
 }
 
 .card-header-title h3 {
@@ -274,4 +274,29 @@ ul.about-list li span {
     font-size: 12px;
     margin-bottom: 10px;
     font-weight: 500;
+}
+
+.selected-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-list li {
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: revert;
+    padding: 5px 10px;
+    border-radius: 16px;
+    width: fit-content;
+}
+
+.multi-select {
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 9;
+    border-radius: 8px;
+    position: relative;
 }
