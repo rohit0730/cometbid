@@ -4,19 +4,25 @@ import React from "react";
 import { useState } from "react";
 import { useTable, usePagination, useSortBy, Column, TableInstance, TableState } from "react-table";
 import "./style.css";
-import { MdRefresh, MdAdd, MdKeyboardArrowDown, MdOutlineDeleteOutline, MdOutlineArrowBackIos, MdOutlineArrowForwardIos, MdInfo } from "react-icons/md";
+import { MdRefresh, MdAdd, MdKeyboardArrowDown, MdOutlineDeleteOutline, MdOutlineArrowBackIos, MdOutlineArrowForwardIos, MdInfo, MdMotionPhotosPaused, MdOutlineRestartAlt } from "react-icons/md";
 import { BiSolidFilePdf, BiEditAlt } from "react-icons/bi";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaFileCsv } from "react-icons/fa";
-import { TbEye } from "react-icons/tb";
+import { TbEye, TbLogout } from "react-icons/tb";
 import Modal from 'react-bootstrap/Modal';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Nav from 'react-bootstrap/Nav';
 import Image from "next/image";
 import DeleteIcon from "../../../assets/images/model-delete.svg";
+import PauseIcon from "../../../assets/images/pause-icon.svg";
+import RestartIcon from "../../../assets/images/restart-icon.svg";
+import RetireIcon from "../../../assets/images/retire-icon.svg";
 import { MultiSelect } from "react-multi-select-component";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import { TbTransferIn } from "react-icons/tb";
 
 const options = [
     { label: "Soccer", value: "soccer" },
@@ -33,13 +39,18 @@ const options = [
 ];
 
 type DataType = {
-    name: string;
-    age: number;
-    status: string;
-    category: string;
-    lastLogin: string;
-    joinDate: string;
-    role: string;
+    name?: string;
+    age?: number;
+    status?: string;
+    category?: string;
+    code?: string;
+    createDate?: string;
+    id?: string;
+    secondaryRole?: string;
+    jobTitle?: string;
+    role?: string;
+    joindate?: string;
+    projectid?: string;
 };
 
 
@@ -54,18 +65,43 @@ const columns: Column<DataType>[] = [
     { Header: "Name", accessor: "name" },
     { Header: "Status", accessor: "status" },
     { Header: "Category", accessor: "category" },
-    { Header: "Last login", accessor: "lastLogin" },
-    { Header: "Join Date", accessor: "joinDate" },
+    { Header: "Code", accessor: "code" },
+    { Header: "Creation Date", accessor: "createDate" },
+    { Header: "ID", accessor: "id" },
+];
+
+const columns2: Column<DataType>[] = [
+    {
+        Header: "",
+        id: "checkbox",
+        Cell: ({ row }: { row: any }) => (
+            <input type="checkbox" checked={row.isSelected} onChange={() => row.toggleRowSelected()} />
+        ),
+    },
+    { Header: "Name", accessor: "name" },
+    { Header: "Secondary Role", accessor: "secondaryRole" },
+    { Header: "Job title", accessor: "jobTitle" },
     { Header: "Role", accessor: "role" },
+    { Header: "Join Date", accessor: "joindate" },
+    { Header: "Project ID", accessor: "projectid" },
 ];
 
 const data: DataType[] = [
-    { name: "Serverless Image Processor", age: 25, status: "Active", category: "Serverless Technology", lastLogin: "2022-01-01", joinDate: "2021-01-01", role: "Admin" },
-    { name: "Video Streaming engine", age: 30, status: "Inactive", category: "Data Streaming/Analytics", lastLogin: "2022-02-01", joinDate: "2021-02-01", role: "User" },
-    { name: "Billing Management", age: 35, status: "Active", category: "Designer", lastLogin: "2022-03-01", joinDate: "2021-03-01", role: "Admin" },
-    { name: "Serverless Image Processor", age: 40, status: "Inactive", category: "Developer", lastLogin: "2022-04-01", joinDate: "2021-04-01", role: "User" },
-    { name: "Serverless Image Processor", age: 45, status: "Active", category: "Tester", lastLogin: "2022-05-01", joinDate: "2021-05-01", role: "Admin" },
-    { name: "Serverless Image Processor", age: 50, status: "Inactive", category: "Manager", lastLogin: "2022-06-01", joinDate: "2021-06-01", role: "User" }
+    { name: "Serverless Image Processor", age: 25, status: "Active", category: "Serverless", code: "420984", createDate: "2021-01-01", id: "56" },
+    { name: "Video Streaming engine", age: 30, status: "Inactive", category: "Data Analytics", code: "420985", createDate: "2021-02-01", id: "87" },
+    { name: "Billing Management", age: 35, status: "Active", category: "Designer", code: "420993", createDate: "2021-03-01", id: "98" },
+    { name: "Serverless Image Processor", age: 40, status: "Inactive", category: "Developer", code: "202265", createDate: "2021-04-01", id: "36" },
+    { name: "Serverless Image Processor", age: 45, status: "Active", category: "Tester", code: "723894", createDate: "2021-05-01", id: "32" },
+    { name: "Serverless Image Processor", age: 50, status: "Inactive", category: "Manager", code: "047294", createDate: "2021-06-01", id: "63" }
+];
+
+const data2: DataType[] = [
+    { name: "Serverless Image Processor", secondaryRole: "Tester", jobTitle: "UI/UX Designer", role: "Project Lead", joindate: "2021-01-01", projectid: "56" },
+    { name: "Video Streaming engine", secondaryRole: "Tester", jobTitle: "UI/UX Designer", role: "Project Lead", joindate: "2021-02-01", projectid: "87" },
+    { name: "Billing Management", secondaryRole: "Tester", jobTitle: "UI/UX Designer", role: "Project Lead", joindate: "2021-03-01", projectid: "98" },
+    { name: "Serverless Image Processor", secondaryRole: "Tester", jobTitle: "UI/UX Designer", role: "Project Lead", joindate: "2021-04-01", projectid: "36" },
+    { name: "Serverless Image Processor", secondaryRole: "Tester", jobTitle: "UI/UX Designer", role: "Project Lead", joindate: "2021-05-01", projectid: "32" },
+    { name: "Serverless Image Processor", secondaryRole: "Tester", jobTitle: "UI/UX Designer", role: "Project Lead", joindate: "2021-06-01", projectid: "63" }
 ];
 
 type TableInstanceWithPagination<T extends object> = TableInstance<T> & {
@@ -87,11 +123,43 @@ function ProjectData() {
                 </div>
 
                 <div className="table-container mt-30">
-                    <NextDataTable columns={columns} data={data} />;
+                    <NextDataTable columns={columns} data={data} />
                 </div>
 
-                <div className="table-container mt-20">
-                    <NextDataTable2 columns={columns} data={data} />;
+                <div className="mt-30">
+                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                        <Row>
+                            <Col sm={12}>
+                                <Nav variant="pills" className="flex-row gap-3 project-table-tabs">
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="first">Members</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="second">Committees</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="third">Resources</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="fourth">Policies</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="fifth">License terms</Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+                            </Col>
+                            <Col sm={12}>
+                                <Tab.Content>
+                                    <Tab.Pane eventKey="first">
+                                        <div className="table-container mt-20">
+                                            <NextDataTable2 columns={columns2} data={data2} />;
+                                        </div>
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="second">Second tab content</Tab.Pane>
+                                </Tab.Content>
+                            </Col>
+                        </Row>
+                    </Tab.Container>
                 </div>
             </div>
         </>
@@ -275,7 +343,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
             </Modal>
             {/* Add New Member Modal end */}
 
-            {/* View project Modal start */}
+            {/* edit project Modal start */}
             <Modal show={show2} onHide={handleClose2} centered className='custom-modal'>
                 <Modal.Header closeButton>
                     <Modal.Title>Project Details </Modal.Title>
@@ -457,462 +525,140 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* View Member Modal end */}
+            {/* edit Member Modal end */}
 
-            {/* Delete Member Modal start */}
+            {/* Pause Project Modal start */}
             <Modal show={show3} onHide={handleClose3} centered className='custom-modal delete-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title></Modal.Title>
+                    <Modal.Title>Pause Project Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="d-flex flex-column gap-3 align-items-center">
+                    <div className="d-flex flex-column gap-3 align-items-center mt-4">
                         <div className="modal-icon">
                             <Image
-                                src={DeleteIcon}
+                                src={PauseIcon}
                                 alt="arrow"
                             />
                         </div>
                         <div>
-                            <h4 className="modal-title">Member Delete Confirmation</h4>
-                            <p className="modal-description">Are you sure you want to delete this member?</p>
+                            {/* <h4 className="modal-title">Member Delete Confirmation</h4> */}
+                            <p className="modal-description">Are you sure to Pause this Project ?</p>
                         </div>
                         <div className="form-details">
                             <Form>
                                 <Row>
                                     <Col md={12}>
-                                        <Form.Group className="mb-3" controlId="formGroupFirstName">
-                                            <Form.Label>Name</Form.Label>
-                                            <Form.Control type="name" placeholder="Matthew Parker" />
+                                        <Form.Group className="mb-3" controlId="formGroupFirstId">
+                                            <Form.Label>Project ID</Form.Label>
+                                            <Form.Control type="name" placeholder="39842-485" />
                                         </Form.Group>
                                     </Col>
                                     <Col md={12}>
-                                        <Form.Group controlId="formGroupRole">
-                                            <Form.Label>Role</Form.Label>
-                                            <Form.Control type="text" placeholder="Manager" />
+                                        <Form.Group controlId="formGroupName">
+                                            <Form.Label>Project Name</Form.Label>
+                                            <Form.Control type="text" placeholder="Cloud Native Architecture" />
                                         </Form.Group>
                                     </Col>
                                 </Row>
                             </Form>
                         </div>
-                        <div className="d-flex justify-content-end w-100">
-                            <button className="btn-cancel" onClick={handleClose3}>Delete</button>
+                        <div className="d-flex justify-content-end w-100 mt-3">
+                            <button className="btn-cancel" onClick={handleClose3}>Yes, Pause</button>
                             <button className="btn-outline ms-4" onClick={handleClose3}>Cancel</button>
                         </div>
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* Delete Member Modal end */}
+            {/* Pause Project Modal end */}
 
-            {/* Role Assign Modal start */}
-            <Modal show={show4} onHide={handleClose4} centered className='custom-modal'>
+            {/* Restart Project Modal start */}
+            <Modal show={show4} onHide={handleClose4} centered className='custom-modal delete-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Member-Role Mapping</Modal.Title>
+                    <Modal.Title>Restart Project Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="member-info d-flex justify-content-between">
-                        <div className="info-item">
-                            <p className="info-title">Date Joined : <span>24 Fed 2024</span></p>
+                    <div className="d-flex flex-column gap-3 align-items-center mt-4">
+                        <div className="modal-icon">
+                            <Image
+                                src={RestartIcon}
+                                alt="arrow"
+                            />
                         </div>
-                        <div className="info-item">
-                            <p className="info-title">Last Login : <span>2 mins ago</span></p>
+                        <div>
+                            {/* <h4 className="modal-title">Member Delete Confirmation</h4> */}
+                            <p className="modal-description">Are you sure to Restart this Project ?</p>
                         </div>
-                    </div>
-                    <div className="d-flex flex-column gap-4">
                         <div className="form-details">
-                            <Form className="mt-3">
+                            <Form>
                                 <Row>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupFirstName">
-                                            <Form.Label>First Name</Form.Label>
-                                            <Form.Control type="name" placeholder="Mathew" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3" controlId="formGroupLastName">
-                                            <Form.Label>Last Name</Form.Label>
-                                            <Form.Control type="name" placeholder="Parker" />
+                                    <Col md={12}>
+                                        <Form.Group className="mb-3" controlId="formGroupFirstId">
+                                            <Form.Label>Project ID</Form.Label>
+                                            <Form.Control type="name" placeholder="39842-485" />
                                         </Form.Group>
                                     </Col>
                                     <Col md={12}>
-                                        <Form.Group className="mb-3" controlId="formGroupEmail">
-                                            <Form.Label>Email *</Form.Label>
-                                            <Form.Control type="email" placeholder="email@address" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group controlId="formGroupEmployer">
-                                            <Form.Label>Current Employer</Form.Label>
-                                            <Form.Control type="text" placeholder="Morgan Stanley, Us" />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group controlId="formGroupJob">
-                                            <Form.Label>Job Title</Form.Label>
-                                            <Form.Control type="text" placeholder="Java Developer" />
+                                        <Form.Group controlId="formGroupName">
+                                            <Form.Label>Project Name</Form.Label>
+                                            <Form.Control type="text" placeholder="Cloud Native Architecture" />
                                         </Form.Group>
                                     </Col>
                                 </Row>
                             </Form>
                         </div>
-                        <div className="policy-info">
-                            <p className="policy-title">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
-                        <hr className="m-0" />
-                        <div className="form-title">Organization Role</div>
-                        <Col md={12}>
-                            <Form.Label>Role</Form.Label>
-                            <Form.Select aria-label="Default select example" className="form-control">
-                                <option>Select</option>
-                                <option value="1">Manager</option>
-                                <option value="2">Project Manager</option>
-                                <option value="3">Team Leader</option>
-                            </Form.Select>
-                        </Col>
-                        <div className="d-flex justify-content-end">
-                            <button className="btn-save" onClick={handleClose4}>Save</button>
-                            <button className="btn-cancel ms-4" onClick={handleClose4}>Cancel</button>
+                        <div className="d-flex justify-content-end w-100 mt-3">
+                            <button className="btn-cancel" onClick={handleClose4}>Yes, Restart</button>
+                            <button className="btn-outline ms-4" onClick={handleClose4}>Cancel</button>
                         </div>
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* Role Assign Modal end */}
+            {/* Restart Project Modal end */}
 
-            {/* Organization Structure Modal start */}
-            <Modal show={show5} onHide={handleClose5} centered className='custom-modal flow-chart-modal'>
+            {/* Retire Project Modal start */}
+            <Modal show={show5} onHide={handleClose5} centered className='custom-modal delete-modal'>
                 <Modal.Header closeButton>
-                    <Modal.Title>Organization Structure</Modal.Title>
+                    <Modal.Title>Retire Project Confirmation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="flow-chart">
-                        <div className="flow-chart-inner d-flex justify-content-center flex-column align-items-center">
-                            <div className="flow-chart-item">
-                                <button className="flow-chart-btn btn-blue" onDoubleClick={() => toggleRole("CEO")}>
-                                    <div className="role-name">CEO</div>
-                                    <div className="role-members">{roleMembers.CEO}</div>
-                                </button>
-                                {openRole === "CEO" && (
-                                    <div className="role-option-dropdown">
-                                        {members.map((member) => (
-                                            <div
-                                                key={member}
-                                                className="cursor-pointer p-2 hover:bg-gray-200"
-                                                onClick={() => assignMember("CEO", member)}
-                                            >
-                                                {member}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                            <div className="border-height"></div>
-                            <div className="border-width"></div>
-                            <div className="flow-row mt-5">
-                                <div className="flow-column">
-                                    <div className="flow-chart-item">
-                                        <button className="flow-chart-btn btn-black" onDoubleClick={() => toggleRole("CPO")}>
-                                            <div className="role-name">CPO</div>
-                                            <div className="role-members">{roleMembers.CPO}</div>
-                                        </button>
-                                        {openRole === "CPO" && (
-                                            <div className="role-option-dropdown">
-                                                {members.map((member) => (
-                                                    <div
-                                                        key={member}
-                                                        className="cursor-pointer p-2 hover:bg-gray-200"
-                                                        onClick={() => assignMember("CPO", member)}
-                                                    >
-                                                        {member}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="flow-chart-under-role">
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("Manager")}>
-                                                <div className="role-name">Product Manager</div>
-                                                <div className="role-members">{roleMembers.Manager}</div>
-                                            </button>
-                                            {openRole === "Manager" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("Manager", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flow-column">
-                                    <div className="flow-chart-item">
-                                        <button className="flow-chart-btn btn-black" onDoubleClick={() => toggleRole("CMO")}>
-                                            <div className="role-name">CMO</div>
-                                            <div className="role-members">{roleMembers.CMO}</div>
-                                        </button>
-                                        {openRole === "CMO" && (
-                                            <div className="role-option-dropdown">
-                                                {members.map((member) => (
-                                                    <div
-                                                        key={member}
-                                                        className="cursor-pointer p-2 hover:bg-gray-200"
-                                                        onClick={() => assignMember("CMO", member)}
-                                                    >
-                                                        {member}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="flow-chart-under-role">
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("SEM")}>
-                                                <div className="role-name">SEM Specialist</div>
-                                                <div className="role-members">{roleMembers.SEM}</div>
-                                            </button>
-                                            {openRole === "SEM" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("SEM", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("Designer")}>
-                                                <div className="role-name">Designer</div>
-                                                <div className="role-members">{roleMembers.Designer}</div>
-                                            </button>
-                                            {openRole === "Designer" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("Designer", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("Socked")}>
-                                                <div className="role-name">Socked Specialist</div>
-                                                <div className="role-members">{roleMembers.Socked}</div>
-                                            </button>
-                                            {openRole === "Socked" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("Socked", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("SEO")}>
-                                                <div className="role-name">SEO Specialist</div>
-                                                <div className="role-members">{roleMembers.SEO}</div>
-                                            </button>
-                                            {openRole === "SEO" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("SEO", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flow-column">
-                                    <div className="flow-chart-item">
-                                        <button className="flow-chart-btn btn-black" onDoubleClick={() => toggleRole("Engineering")}>
-                                            <div className="role-name">VP of Engineering</div>
-                                            <div className="role-members">{roleMembers.Engineering}</div>
-                                        </button>
-                                        {openRole === "Engineering" && (
-                                            <div className="role-option-dropdown">
-                                                {members.map((member) => (
-                                                    <div
-                                                        key={member}
-                                                        className="cursor-pointer p-2 hover:bg-gray-200"
-                                                        onClick={() => assignMember("Engineering", member)}
-                                                    >
-                                                        {member}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="flow-chart-under-role">
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("SEM")}>
-                                                <div className="role-name">SEM Specialist</div>
-                                                <div className="role-members">{roleMembers.SEM}</div>
-                                            </button>
-                                            {openRole === "SEM" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("SEM", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("Designer")}>
-                                                <div className="role-name">Designer</div>
-                                                <div className="role-members">{roleMembers.Designer}</div>
-                                            </button>
-                                            {openRole === "Designer" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("Designer", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("Socked")}>
-                                                <div className="role-name">Socked Specialist</div>
-                                                <div className="role-members">{roleMembers.Socked}</div>
-                                            </button>
-                                            {openRole === "Socked" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("Socked", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("SEO")}>
-                                                <div className="role-name">SEO Specialist</div>
-                                                <div className="role-members">{roleMembers.SEO}</div>
-                                            </button>
-                                            {openRole === "SEO" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("SEO", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flow-column">
-                                    <div className="flow-chart-item">
-                                        <button className="flow-chart-btn btn-black" onDoubleClick={() => toggleRole("CFO")}>
-                                            <div className="role-name">CFO</div>
-                                            <div className="role-members">{roleMembers.CFO}</div>
-                                        </button>
-                                        {openRole === "CFO" && (
-                                            <div className="role-option-dropdown">
-                                                {members.map((member) => (
-                                                    <div
-                                                        key={member}
-                                                        className="cursor-pointer p-2 hover:bg-gray-200"
-                                                        onClick={() => assignMember("CFO", member)}
-                                                    >
-                                                        {member}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="flow-chart-under-role">
-                                        <div className="flow-chart-item-under">
-                                            <div className="height-line"></div>
-                                            <button className="flow-chart-btn btn-light-blue" onDoubleClick={() => toggleRole("Manager")}>
-                                                <div className="role-name">Product Manager</div>
-                                                <div className="role-members">{roleMembers.Manager}</div>
-                                            </button>
-                                            {openRole === "Manager" && (
-                                                <div className="role-option-dropdown">
-                                                    {members.map((member) => (
-                                                        <div
-                                                            key={member}
-                                                            className="cursor-pointer p-2 hover:bg-gray-200"
-                                                            onClick={() => assignMember("Manager", member)}
-                                                        >
-                                                            {member}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="d-flex flex-column gap-3 align-items-center mt-4">
+                        <div className="modal-icon">
+                            <Image
+                                src={RetireIcon}
+                                alt="arrow"
+                            />
                         </div>
-                    </div>
-                    <div className="d-flex justify-content-end mt-5">
-                        <button className="btn-save" onClick={handleClose5}>Save</button>
-                        <button className="btn-cancel ms-4" onClick={handleClose5}>Cancel</button>
+                        <div>
+                            {/* <h4 className="modal-title">Member Delete Confirmation</h4> */}
+                            <p className="modal-description">Are you sure to Retire this Project ?</p>
+                        </div>
+                        <div className="form-details">
+                            <Form>
+                                <Row>
+                                    <Col md={12}>
+                                        <Form.Group className="mb-3" controlId="formGroupFirstId">
+                                            <Form.Label>Project ID</Form.Label>
+                                            <Form.Control type="name" placeholder="39842-485" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={12}>
+                                        <Form.Group controlId="formGroupName">
+                                            <Form.Label>Project Name</Form.Label>
+                                            <Form.Control type="text" placeholder="Cloud Native Architecture" />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                            </Form>
+                        </div>
+                        <div className="d-flex justify-content-end w-100 mt-3">
+                            <button className="btn-cancel" onClick={handleClose5}>Yes, Retire</button>
+                            <button className="btn-outline ms-4" onClick={handleClose5}>Cancel</button>
+                        </div>
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* Organization Structure Modal end */}
+            {/* Restart Project Modal end */}
+
 
             <div className="card">
                 <div className="card-body">
@@ -921,7 +667,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                             <div className="table-title">Your Projects</div>
                             <div className="table-btn-list">
                                 <button className="btn-refresh"><MdRefresh /></button>
-                                <button className="btn-add" onClick={handleShow}><MdAdd />Start Project</button>
+                                {/* <button className="btn-add" onClick={handleShow}><MdAdd />Start Project</button> */}
                                 <div className="dropdown">
                                     <button className="btn-dropdown" onClick={handleToggleExport}>Export data <MdKeyboardArrowDown /></button>
                                     {exportOpen && (
@@ -936,10 +682,10 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                                     {actionOpen && (
                                         <div className="dropdown-content">
                                             <button className="dropdown-item" onClick={handleShow2}><BiEditAlt />Edit</button>
-                                            <button className="dropdown-item" onClick={handleShow4}>Transfer</button>
-                                            <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Pause</button>
-                                            <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Restart</button>
-                                            <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Retire</button>
+                                            <button className="dropdown-item" onClick={handleShow4}><TbTransferIn />Transfer</button>
+                                            <button className="dropdown-item" onClick={handleShow3}><MdMotionPhotosPaused />Pause</button>
+                                            <button className="dropdown-item" onClick={handleShow4}><MdOutlineRestartAlt />Restart</button>
+                                            <button className="dropdown-item" onClick={handleShow5}><AiOutlineCloseCircle />Retire</button>
                                         </div>
                                     )}
                                 </div>
@@ -994,7 +740,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                                 <option>30</option>
                             </select>
                         </div>
-                        <div className="flex justify-center items-center gap-4">
+                        <div className="flex justify-end items-center gap-4">
                             <button
                                 onClick={previousPage}
                                 disabled={!canPreviousPage}
@@ -1014,10 +760,6 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                             >
                                 <MdOutlineArrowForwardIos />
                             </button>
-                        </div>
-                        <div className="table-btn-list">
-                            <button className="btn-black">Manage Roles</button>
-                            <button className="btn-add" onClick={handleShow5}>View Organization Structure</button>
                         </div>
                     </div>
                 </div>
@@ -1185,7 +927,7 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
             </Modal>
             {/* Add New Project Modal end */}
 
-            {/* Member Details Modal start */}
+            {/* Project Details Modal start */}
             <Modal show={show2} onHide={handleClose2} centered className='custom-modal'>
                 <Modal.Header closeButton>
                     <Modal.Title>Project Details </Modal.Title>
@@ -1269,9 +1011,9 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* View Member Modal end */}
+            {/* Project Details Modal end */}
 
-            {/* Delete Member Modal start */}
+            {/* Delete Project Modal start */}
             <Modal show={show3} onHide={handleClose3} centered className='custom-modal delete-modal'>
                 <Modal.Header closeButton>
                     <Modal.Title></Modal.Title>
@@ -1285,22 +1027,22 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                             />
                         </div>
                         <div>
-                            <h4 className="modal-title">Member Delete Confirmation</h4>
-                            <p className="modal-description">Are you sure you want to delete this member?</p>
+                            <h4 className="modal-title">Project Delete Confirmation</h4>
+                            <p className="modal-description">Are you sure you want to delete this project?</p>
                         </div>
                         <div className="form-details">
                             <Form>
                                 <Row>
                                     <Col md={12}>
                                         <Form.Group className="mb-3" controlId="formGroupFirstName">
-                                            <Form.Label>Name</Form.Label>
-                                            <Form.Control type="name" placeholder="Matthew Parker" />
+                                            <Form.Label>Project Name</Form.Label>
+                                            <Form.Control type="name" placeholder="Project 1" />
                                         </Form.Group>
                                     </Col>
                                     <Col md={12}>
                                         <Form.Group controlId="formGroupRole">
-                                            <Form.Label>Role</Form.Label>
-                                            <Form.Control type="text" placeholder="Manager" />
+                                            <Form.Label>Project ID</Form.Label>
+                                            <Form.Control type="text" placeholder="PRJ-0001" />
                                         </Form.Group>
                                     </Col>
                                 </Row>
@@ -1313,7 +1055,7 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                     </div>
                 </Modal.Body>
             </Modal>
-            {/* Delete Member Modal end */}
+            {/* Delete Project Modal end */}
 
             {/* Role Assign Modal start */}
             <Modal show={show4} onHide={handleClose4} centered className='custom-modal'>
@@ -1393,10 +1135,10 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                 <div className="card-body">
                     <div className="table-heading">
                         <div className="d-flex justify-content-between align-items-center">
-                            <div className="table-title">Recent Invitations</div>
+                            <div className="table-title">Serverless Image Processor</div>
                             <div className="table-btn-list">
                                 <button className="btn-refresh"><MdRefresh /></button>
-                                <button className="btn-add">Cancel Invitation</button>
+                                <button className="btn-add">Add Member</button>
                                 <div className="dropdown">
                                     <button className="btn-dropdown" onClick={handleToggleExport}>Export data <MdKeyboardArrowDown /></button>
                                     {exportOpen && (
@@ -1411,7 +1153,7 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                                     {actionOpen && (
                                         <div className="dropdown-content">
                                             <button className="dropdown-item" onClick={handleShow2}><TbEye />View</button>
-                                            <button className="dropdown-item" onClick={handleShow4}><BiEditAlt />Assign Role</button>
+                                            <button className="dropdown-item" onClick={handleShow4}><TbLogout />Deactivate</button>
                                             <button className="dropdown-item" onClick={handleShow3}><MdOutlineDeleteOutline />Delete</button>
                                         </div>
                                     )}

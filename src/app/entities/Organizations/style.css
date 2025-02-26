@@ -1,0 +1,11 @@
+.image-dimension {
+    font-size: 14px; 
+    color: var(--light-color);
+    margin: 10px 0;
+}
+
+.form-divider-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 24px 0;
+}

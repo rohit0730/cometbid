@@ -124,7 +124,7 @@ function ProfileDetails() {
                             </div>
                         </div>
                     </div>
-                    <div className="banner-edit">
+                    <div className="banner-edit mb-3">
                         <div className="lable">Upload Banner Image</div>
                         <label className="picture" htmlFor="picture__input" tabIndex="0">
                             <span className="picture__image">
@@ -133,6 +133,12 @@ function ProfileDetails() {
                         </label>
                         <input type="file" name="picture__input" id="picture__input" onChange={handleBannerChange} />
                     </div>
+
+                    <Col md={12}>
+                        <Form.Group controlId="formGroupDate">
+                            <Form.Check aria-label="option 1" label="I would like to re-execute the CSF membership agreement with new information. By doing so, I agree I have read the terms of agreement and understand that information supplied replaces any previous details on CSF file." />
+                        </Form.Group>
+                    </Col>
 
                     <div className="d-flex justify-content-end mt-4">
                         <button className="btn-save" onClick={handleClose}>Save</button>
@@ -190,35 +196,35 @@ function ProfileDetails() {
                                 </Form.Group>
                             </Col>
                             <Col md={12}>
-                                <div className="select-container">
+                                <div className="select-container mb-3">
                                     <Form.Group controlId="exampleForm.ControlInput1">
                                         <Form.Label>Select Interest</Form.Label>
                                         <div>
                                             {selected.length > 0 ? (
                                                 <ul className='selected-list'>
-                                                {selected.map((item, index) => (
-                                                    <li
-                                                        key={item.value}
-                                                        style={{
-                                                            backgroundColor: colors[index % colors.length], // Cycle through colors
-                                                        }}
-                                                    >
-                                                        {item.label}{" "}
-                                                        <button
-                                                            onClick={() => handleRemove(item.value)}
+                                                    {selected.map((item, index) => (
+                                                        <li
+                                                            key={item.value}
                                                             style={{
-                                                                marginLeft: "4px",
-                                                                color: "#ffffff",
-                                                                cursor: "pointer",
-                                                                background: "none",
-                                                                border: "none",
+                                                                backgroundColor: colors[index % colors.length], // Cycle through colors
                                                             }}
                                                         >
-                                                            X
-                                                        </button>
-                                                    </li>
-                                                ))}
-                                            </ul>                                            
+                                                            {item.label}{" "}
+                                                            <button
+                                                                onClick={() => handleRemove(item.value)}
+                                                                style={{
+                                                                    marginLeft: "4px",
+                                                                    color: "#ffffff",
+                                                                    cursor: "pointer",
+                                                                    background: "none",
+                                                                    border: "none",
+                                                                }}
+                                                            >
+                                                                X
+                                                            </button>
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             ) : (
                                                 ""
                                             )}
@@ -235,6 +241,11 @@ function ProfileDetails() {
                                         />
                                     </Form.Group>
                                 </div>
+                            </Col>
+                            <Col md={12}>
+                                <Form.Group controlId="formGroupDate">
+                                    <Form.Check aria-label="option 1" label="I would like to re-execute the CSF membership agreement with new information. By doing so, I agree I have read the terms of agreement and understand that information supplied replaces any previous details on CSF file." />
+                                </Form.Group>
                             </Col>
                         </Row>
                     </Form>
@@ -283,6 +294,11 @@ function ProfileDetails() {
                                 <Form.Group className="mb-3" controlId="formGroupDate">
                                     <Form.Label>LinkedIn Url</Form.Label>
                                     <Form.Control type="text" placeholder="" />
+                                </Form.Group>
+                            </Col>
+                            <Col md={12}>
+                                <Form.Group controlId="formGroupDate">
+                                    <Form.Check aria-label="option 1" label="I would like to re-execute the CSF membership agreement with new information. By doing so, I agree I have read the terms of agreement and understand that information supplied replaces any previous details on CSF file." />
                                 </Form.Group>
                             </Col>
                         </Row>

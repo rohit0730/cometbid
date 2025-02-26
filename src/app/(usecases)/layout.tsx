@@ -24,6 +24,7 @@ import { MdOutlineSettingsSuggest } from "react-icons/md";
 import { TbUsersGroup } from "react-icons/tb";
 import { FiBox } from "react-icons/fi";
 import { MdOutlineJoinFull } from "react-icons/md";
+import { FaRegFilePowerpoint } from "react-icons/fa6";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
@@ -105,20 +106,32 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <ImFileOpenoffice /> Your Projects
+                                        <FaRegFilePowerpoint /> Your Projects
                                         </div>
                                         {openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
                                     </button>
                                     {openDropdowns["projects"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/projects">Projects</Link></li>
-                                            <li><Link href="/projects/active">Start Projects</Link></li>
-                                            <li><Link href="/projects/completed">Join Projects</Link></li>
+                                            <li><Link href="/projects"><FaRegFilePowerpoint />Projects</Link></li>
+                                            <li><Link href="/projects/start-project"><FiBox />Start Projects</Link></li>
+                                            <li><Link href="/projects/join-project"><MdOutlineJoinFull />Join Projects</Link></li>
                                         </ul>
                                     )}
                                 </li>
-                                <li>
-                                    <Link href="/personal-information"> <LuUsers /> Your Organization Profile</Link>
+                                <li className="dropdown">
+                                    <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
+                                        <div className="menu-gap d-flex align-items-center">
+                                            <LuUsers />Your Organization Profile
+                                        </div>
+                                        {openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                    </button>
+                                    {openDropdowns["Organization"] && (
+                                        <ul className="dropdown-menu">
+                                            <li><Link href="/organization/organization-profile"><CgProfile />Organization Profile</Link></li>
+                                            <li><Link href="/projects/start-project"><FiBox />Manage Roles</Link></li>
+                                            <li><Link href="/projects/join-project"><MdOutlineJoinFull />Organization Structure</Link></li>
+                                        </ul>
+                                    )}
                                 </li>
                                 <hr className="menu-divider" />
                                 <li>

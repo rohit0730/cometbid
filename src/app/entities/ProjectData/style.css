@@ -356,3 +356,21 @@ button.btn-refresh svg {
     border-left: none ! important;
     border-right: none  ! important;
 }
+
+.project-table-tabs .nav-item a {
+    padding: 10px 20px;
+    font-weight: 600;
+    color: var(--foreground);
+    background-color: #F5F6FA ! important;
+    border-radius: 8px;
+}
+
+.project-table-tabs .nav-item a.active {
+    background-color: var(--primary) ! important;
+    color: #ffffff;
+}
+
+.small-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}

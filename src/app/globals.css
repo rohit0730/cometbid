@@ -441,3 +441,169 @@ label {
   border-radius: 8px;
   position: relative;
 }
+
+
+
+
+/* Step Form design  */
+
+.step-item {
+  width: calc(100% / 3);
+}
+
+.step-header-card {
+  padding: 22px 20px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+}
+
+.step-card-details {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--foreground);
+  color: #ffffff;
+}
+
+.step-icon svg {
+  font-size: 26px;
+}
+
+.step-name {
+  font-size: 12px;
+  color: var(--color--2);
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step-completion svg {
+  font-size: 24px;
+  color: var(--color--2);
+}
+
+.step-item.active .step-header-card {
+  background-color: #ECF7FF;
+  border-color: var(--primary);
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.file-uploader input[type=file] {
+  padding: 10px;
+  background: #F8FCFF;
+  border-radius: 4px
+}
+
+.file-uploader input[type=file]::file-selector-button {
+  padding: 10px 20px;
+  background: transparent;
+  border-radius: 4px;
+  color: #10B981;
+  border: 1px solid #10B981;
+  cursor: pointer;
+}
+
+.upload-file {
+  border: 1px solid #D9D9D9;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.step-footer {
+  margin-top: 50px;
+}
+
+.btn-back {
+  border: 1px solid ;
+  padding: 10px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 600;
+  background: var(--foreground);
+}
+
+.btn-back:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-next {
+  border: 1px solid var(--primary);
+  padding: 10px 30px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 600;
+  background: var(--primary);
+}
+
+.step-subtitle {
+  color: var(--color--2);
+  margin-top: 8px;
+}
+
+.step-subtitle-2 {
+  margin-top: 12px;
+}
+
+.step-subtitle a {
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.step-link {
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.note-box {
+  background: #F7F6F9;
+  padding: 14px 16px;
+  display: flex;
+  gap: 10px;
+  border-left: 4px solid var(--primary);
+}
+
+.note-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.note-text p {
+  font-size: 12px;
+  color: var(--primary);
+  margin-bottom: 0;
+}
+
+.card-section-collaboration {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.card-box {
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
