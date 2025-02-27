@@ -155,7 +155,7 @@ function ProjectData() {
                                             <NextDataTable2 columns={columns2} data={data2} />;
                                         </div>
                                     </Tab.Pane>
-                                    <Tab.Pane eventKey="second">Second tab content</Tab.Pane>
+                                    <Tab.Pane eventKey="second"></Tab.Pane>
                                 </Tab.Content>
                             </Col>
                         </Row>

@@ -128,17 +128,17 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     {openDropdowns["Organization"] && (
                                         <ul className="dropdown-menu">
                                             <li><Link href="/organization/organization-profile"><CgProfile />Organization Profile</Link></li>
-                                            <li><Link href="/projects/start-project"><FiBox />Manage Roles</Link></li>
-                                            <li><Link href="/projects/join-project"><MdOutlineJoinFull />Organization Structure</Link></li>
+                                            <li><Link href="/organization/manage-roles"><FiBox />Manage Roles</Link></li>
+                                            <li><Link href="/organization/organization-structure"><MdOutlineJoinFull />Organization Structure</Link></li>
                                         </ul>
                                     )}
                                 </li>
                                 <hr className="menu-divider" />
                                 <li>
-                                    <Link href="/personal-information"> <LuUserCog /> Account Settings</Link>
+                                    <Link href="/account-settings"> <LuUserCog /> Account Settings</Link>
                                 </li>
                                 <li>
-                                    <Link href="/personal-information"> <MdOutlinePrivacyTip /> Privacy Settings</Link>
+                                    <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> Privacy Settings</Link>
                                 </li>
                                 <li>
                                     <Link href="/personal-information"> <IoFileTrayStacked /> Activity Logs</Link>

@@ -159,7 +159,7 @@ const JoinProjectData = () => {
                                         <Row>
                                             <Col md={6}>
                                                 <Form.Group className="mb-3" controlId="formGroupGroupName">
-                                                    <Form.Label>IOT Networking </Form.Label>
+                                                    <Form.Label>Project Category</Form.Label>
                                                     <Form.Select aria-label="Default select example" className="form-control">
                                                         <option>Jakarta EE Working Group</option>
                                                         <option value="1">Automotive & Mobility</option>
@@ -259,7 +259,7 @@ const JoinProjectData = () => {
                                     <Form className="mt-3">
                                         <Row>
                                             <Col md={6}>
-                                                <Form.Label>IoT Networking </Form.Label>
+                                                <Form.Label>Project Category</Form.Label>
                                                 <Form.Select aria-label="Default select example" className="form-control">
                                                     <option>Jakarta EE Working Group</option>
                                                     <option value="1">Automotive & Mobility</option>

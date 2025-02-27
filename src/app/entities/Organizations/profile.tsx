@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import Image from "next/image";
 import Upload from "../../../assets/images/Placeholder-Image.svg";
 import "./style.css";
+import { MdInfo } from "react-icons/md";
+import Link from "next/link";
 
 function OrganizationProfileData() {
 
@@ -106,10 +108,16 @@ function OrganizationProfileData() {
                                     <div className="text-length">700 characters limit</div>
                                 </Form.Group>
                             </Col>
-                            <Col md={12}>
+                            <Col md={6}>
                                 <Form.Group controlId="formGroupPitch">
                                     <Form.Label>Organization website URL</Form.Label>
                                     <Form.Control type="text" placeholder="Enter URL" />
+                                </Form.Group>
+                            </Col>
+                            <Col md={6}>
+                                <Form.Group className="mb-3" controlId="formGroupUrl">
+                                    <Form.Label>Organization LinkedIn profile URL</Form.Label>
+                                    <Form.Control type="text" placeholder="" />
                                 </Form.Group>
                             </Col>
 
@@ -149,22 +157,25 @@ function OrganizationProfileData() {
                                     </Form.Select>
                                 </Form.Group>
                             </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-3" controlId="formGroupUrl">
-                                    <Form.Label>LinkedIn profile URL</Form.Label>
-                                    <Form.Control type="text" placeholder="" />
-                                </Form.Group>
-                            </Col>
                             <Col md={12}>
-                                <Form.Group controlId="formGroupDate">
+                                <Form.Group className="mb-3" controlId="formGroupDate">
                                     <Form.Check aria-label="option 1" label="I would like to re-execute the CSF membership agreement with new information. By doing so, I agree I have read the terms of agreement and understand that information supplied replaces any previous details on CSF file." />
                                 </Form.Group>
                             </Col>
                         </Row>
                     </Form>
-                    <div className="d-flex justify-content-end gap-3 mt-4">
+                    <div className="note-box">
+                        <div className="note-icon">
+                            <MdInfo />
+                        </div>
+                        <div className="note-text">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div>
+                    <div className="step-subtitle">Please visit our <Link href="#">privacy settings page</Link> to adjust the visibility of some required fields.</div>
+                    <div className="d-flex justify-content-end gap-3 mt-5">
                         <button className="btn-save">
-                            Done
+                            Save
                         </button>
                     </div>
                 </div>

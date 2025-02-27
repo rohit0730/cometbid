@@ -1,0 +1,23 @@
+.account-settings-tabs .nav-item a {
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--foreground);
+    background-color: transparent ! important;
+    border-radius: 8px;
+}
+
+.account-settings-tabs .nav-item a.active {
+    background-color: var(--primary) ! important;
+    color: #ffffff;
+}
+
+.input-info {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--light-color);
+}
+
+.tab-details {
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+}
