@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SidebarLogo from "../../assets/images/sidebar-logo.png";
@@ -37,6 +37,58 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
         }));
     };
 
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+    const toggleProfileDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleClickOutside = (event: any) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        if (isOpen) {
+            document.addEventListener("click", handleClickOutside);
+        } else {
+            document.removeEventListener("click", handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [isOpen]);
+
+    const [isNotificationOpen, setNotificationOpen] = useState(false); // 🔹 Unique State
+    const notificationRef = useRef<HTMLDivElement | null>(null);
+
+    const toggleNotification = () => {
+        setNotificationOpen((prev) => !prev);
+    };
+
+    const handleOutsideClick = (event: MouseEvent) => {
+        if (notificationRef.current && !notificationRef.current.contains(event.target as Node)) {
+            setNotificationOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        if (isNotificationOpen) {
+            document.addEventListener("click", handleOutsideClick);
+        } else {
+            document.removeEventListener("click", handleOutsideClick);
+        }
+        return () => document.removeEventListener("click", handleOutsideClick);
+    }, [isNotificationOpen]);
+
+    const toggleSidebar = () => {
+        const sidebar = document.querySelector(".page-inner");
+        if (sidebar) {
+            sidebar.classList.toggle("active");
+        }
+    };
 
     return (
         <>
@@ -89,7 +141,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                        <TbUsersGroup /> Your Collaborations
+                                            <TbUsersGroup /> Your Collaborations
                                         </div>
                                         {openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
                                     </button>
@@ -106,7 +158,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                        <FaRegFilePowerpoint /> Your Projects
+                                            <FaRegFilePowerpoint /> Your Projects
                                         </div>
                                         {openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
                                     </button>
@@ -141,7 +193,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> Privacy Settings</Link>
                                 </li>
                                 <li>
-                                    <Link href="/personal-information"> <IoFileTrayStacked /> Activity Logs</Link>
+                                    <Link href="/activity-logs"> <IoFileTrayStacked /> Activity Logs</Link>
                                 </li>
                             </ul>
                         </div>
@@ -151,7 +203,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                             <div className="page-header-content">
                                 <div className="content-left d-flex align-items-center">
                                     <div className="toggle-sidebar">
-                                        <button type="button" className="btn-toggle">
+                                        <button type="button" className="btn-toggle" onClick={toggleSidebar}>
                                             <Image
                                                 src={ToggleIcon}
                                                 alt="icon"
@@ -167,14 +219,78 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 </div>
                                 <div className="content-right d-flex align-items-center">
                                     <button className="btn-downgrade">Downgrade</button>
-                                    <div className="notification">
-                                        <button type="button" className="btn-notification">
+                                    <div className="notification" ref={notificationRef}>
+                                        <button type="button" className="btn-notification" onClick={toggleNotification}>
                                             <Image
                                                 src={NotificationIcon}
                                                 alt="icon"
                                             />
                                         </button>
                                         <span className="notification-count">3</span>
+                                        {isNotificationOpen && (
+                                            <div className="notification-dropdown">
+                                                <p className="notification-title ms-4">Notifications</p>
+                                                <ul>
+                                                    <li>
+                                                        <div className="notification-dropdown-item active">
+                                                            <div className="notification-info">
+                                                                <div className="notification-image">
+                                                                    <Image
+                                                                        src={Profile}
+                                                                        alt="icon"
+                                                                    />
+                                                                </div>
+                                                                <div className="notification-content">
+                                                                    <p className="notification-message">This is an unread message waiting to be read.
+                                                                        Part of demonstrating the notification messages.</p>
+                                                                    <p className="notification-time">2 hours ago</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="notification-unread"></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div className="notification-dropdown-item active">
+                                                            <div className="notification-info">
+                                                                <div className="notification-image">
+                                                                    <Image
+                                                                        src={Profile}
+                                                                        alt="icon"
+                                                                    />
+                                                                </div>
+                                                                <div className="notification-content">
+                                                                    <p className="notification-message">This is an unread message waiting to be read.
+                                                                        Part of demonstrating the notification messages.</p>
+                                                                    <p className="notification-time">2 hours ago</p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="notification-unread"></div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div className="notification-dropdown-item">
+                                                            <div className="notification-info">
+                                                                <div className="notification-image">
+                                                                    <Image
+                                                                        src={Profile}
+                                                                        alt="icon"
+                                                                    />
+                                                                </div>
+                                                                <div className="notification-content">
+                                                                    <p className="notification-message">This is an unread message waiting to be read.
+                                                                        Part of demonstrating the notification messages.</p>
+                                                                    <p className="notification-time">2 hours ago</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div className="notification-footer">
+                                                    <p>2 of 4 unread notifications</p>
+                                                    <Link href="/notifications">See all notifications</Link>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                     <button className="country-flag">
                                         <Image
@@ -184,8 +300,8 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             height={40}
                                         />
                                     </button>
-                                    <div className="user-info-2">
-                                        <button className="user-profile">
+                                    <div className="user-info-2" ref={dropdownRef}>
+                                        <button className="user-profile" onClick={toggleProfileDropdown}>
                                             <Image
                                                 src={Profile}
                                                 alt="icon"
@@ -193,6 +309,18 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                                 height={40}
                                             />
                                         </button>
+                                        {isOpen && (
+                                            <div className="profile-dropdown">
+                                                <ul>
+                                                    <li><Link href="/personal-information/myprofile"><Image src={require("../../assets/images/User-Rounded.svg")} alt="icon" />  My Profile</Link></li>
+                                                    <li><Link href="/personal-information/myrole"><Image src={require("../../assets/images/role.svg")} alt="icon" /> My Roles</Link></li>
+                                                    <li><Link href="/schedules"><Image src={require("../../assets/images/Calendar-Mark.svg")} alt="icon" /> My Schedules</Link></li>
+                                                    <li><Link href="/members"><Image src={require("../../assets/images/Users-Group.svg")} alt="icon" /> Manage Members</Link></li>
+                                                    <li><Link href="/privacy-settings"><Image src={require("../../assets/images/Settings.svg")} alt="icon" /> Manage Cookies</Link></li>
+                                                    <li><Link href="/activity-logs"><Image src={require("../../assets/images/logout.svg")} alt="icon" /> Log Out</Link></li>
+                                                </ul>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

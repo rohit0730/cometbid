@@ -21,3 +21,44 @@
     border-left: 1px solid #ccc;
     padding-left: 20px;
 }
+
+.btn-search {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--primary);
+    color: #ffffff;
+    width: 100%;
+}
+
+.icon {
+    color: #FF9500;
+}
+
+.icon-green {
+    color: #10B981;
+}
+
+.color-text {
+    color: var(--primary);
+    font-size: 12px;
+}
+
+.row-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-table-arrow {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #D9D9D9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: var(--primary);
+}
