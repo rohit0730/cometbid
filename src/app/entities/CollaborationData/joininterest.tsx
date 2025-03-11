@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Arrow from "../../../assets/images/Arrow-Right.svg";
-import Upload from "../../../assets/images/Placeholder-Image.svg";
 import { FiBox } from "react-icons/fi";
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaRegUser } from "react-icons/fa";

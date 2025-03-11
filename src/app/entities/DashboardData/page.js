@@ -1,18 +1,30 @@
 'use client'
 
-import React, { useState } from "react";
-import "./style.css";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import Profile from "../../../assets/images/profile.png";
-import GroupProfile from "../../../assets/images/group-logo.png";
-import Project from "../../../assets/images/project-icon.png";
-import ProjectName from "../../../assets/images/Case-Round.svg";
-import ChatIcon from "../../../assets/images/chat.svg";
 import { FaUser } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { FaRegFilePowerpoint } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa";
+import { FiCalendar } from "react-icons/fi";
+import { LuNewspaper } from "react-icons/lu";
+import { MdEmail } from "react-icons/md";
+import { TbReport } from "react-icons/tb";
+import { FaBlogger } from "react-icons/fa6";
+import "./style.css";
+
+// svg images 
+import Linkedin from "../../../assets/images/linkedin.svg";
+import X from "../../../assets/images/x.svg";
+import GitHub from "../../../assets/images/github.svg";
+import Website from "../../../assets/images/website.svg";
+import Profile from "../../../assets/images/profile.png";
+import ProjectName from "../../../assets/images/Case-Round.svg";
+import ChatIcon from "../../../assets/images/chat.svg";
+import Upload from "../../../assets/images/Placeholder-Image.svg";
 
 
 const faqs = [
@@ -46,6 +58,23 @@ function DashboardData() {
         setOpenIndex(openIndex === index ? null : index);
     };
 
+    const [selectedImage, setSelectedImage] = useState(null);
+    const fileInputRef = useRef(null);
+
+    // Function to handle image selection
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const imageUrl = URL.createObjectURL(file);
+            setSelectedImage(imageUrl);
+        }
+    };
+
+    // Function to trigger file input on image click
+    const handleImageClick = () => {
+        fileInputRef.current.click();
+    };
+
 
     return (
         <>
@@ -68,7 +97,43 @@ function DashboardData() {
                                 <p>Frontend Developer at <span>CASERO INCORPORATED INC.</span></p>
                                 <hr />
                             </div>
-                            <div className="user-list">
+                            <div className="user-list d-flex justify-content-between align-items-center">
+                                <div className="social-media">
+                                    <ul className="d-flex">
+                                        <li>
+                                            <Link href="#">
+                                                <Image
+                                                    src={Linkedin}
+                                                    alt="linkedin-icon"
+                                                />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#">
+                                                <Image
+                                                    src={X}
+                                                    alt="x-icon"
+                                                />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#">
+                                                <Image
+                                                    src={GitHub}
+                                                    alt="github-icon"
+                                                />
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#">
+                                                <Image
+                                                    src={Website}
+                                                    alt="website-icon"
+                                                />
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div className="last-login">
                                     <b>Last login:</b>  2 months ago
                                 </div>
@@ -101,9 +166,11 @@ function DashboardData() {
                                         <h3>Personal Information</h3>
                                     </div>
                                 </div>
-                                <div className="add-icon card-icon">
-                                    <IoIosArrowForward />
-                                </div>
+                                <Link href="/personal-information/myprofile">
+                                    <div className="add-icon card-icon">
+                                        <IoIosArrowForward />
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -115,12 +182,14 @@ function DashboardData() {
                                         <FaUser />
                                     </div>
                                     <div className="card-text">
-                                        <h3>Personal Information</h3>
+                                        <h3>Organization Profile</h3>
                                     </div>
                                 </div>
-                                <div className="add-icon card-icon">
-                                    <IoIosArrowForward />
-                                </div>
+                                <Link href="/organization/organization-profile">
+                                    <div className="add-icon card-icon">
+                                        <IoIosArrowForward />
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -132,12 +201,15 @@ function DashboardData() {
                                         <FaUser />
                                     </div>
                                     <div className="card-text">
-                                        <h3>Personal Information</h3>
+                                        <h3>Members</h3>
+                                        <h2>154</h2>
                                     </div>
                                 </div>
-                                <div className="add-icon card-icon">
-                                    <IoIosArrowForward />
-                                </div>
+                                <Link href="/members">
+                                    <div className="add-icon card-icon">
+                                        <IoIosArrowForward />
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -149,12 +221,15 @@ function DashboardData() {
                                         <FaUser />
                                     </div>
                                     <div className="card-text">
-                                        <h3>Personal Information</h3>
+                                        <h3>Notifications</h3>
+                                        <h2>10</h2>
                                     </div>
                                 </div>
-                                <div className="add-icon card-icon">
-                                    <IoIosArrowForward />
-                                </div>
+                                <Link href="/notifications">
+                                    <div className="add-icon card-icon">
+                                        <IoIosArrowForward />
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -167,10 +242,20 @@ function DashboardData() {
                         <div className="card">
                             <div className="card-body">
                                 <div className="group-logo d-flex justify-content-center">
-                                    <Image
-                                        src={GroupProfile}
-                                        alt="profile"
-                                        className=""
+                                    <div className="preview" onClick={handleImageClick} style={{ cursor: "pointer" }}>
+                                        <Image
+                                            src={selectedImage || Upload}
+                                            alt="Upload Preview"
+                                            width={150}
+                                            height={150}
+                                        />
+                                    </div>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        ref={fileInputRef}
+                                        style={{ display: "none" }}
+                                        onChange={handleImageChange}
                                     />
                                 </div>
                             </div>
@@ -184,57 +269,51 @@ function DashboardData() {
                                 </div>
                                 <div className="card-content">
                                     <div className="list-content d-flex flex-column">
-                                        <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
+                                        <Link href="/projects">
+                                            <div className="card-list-item d-flex justify-content-between align-items-center">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <FaRegFilePowerpoint />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Projects
+                                                    </div>
                                                 </div>
-                                                <div className="card-text">
-                                                    Projects
-                                                </div>
-                                            </div>
-                                            <div className="card-value">
-                                                10
-                                            </div>
-                                        </div>
-                                        <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
-                                                </div>
-                                                <div className="card-text">
-                                                    Collaborations
+                                                <div className="card-value">
+                                                    10
                                                 </div>
                                             </div>
-                                            <div className="card-value">
-                                                10
-                                            </div>
-                                        </div>
-                                        <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
+                                        </Link>
+                                        <Link href="/collaborations/your-collaboration">
+                                            <div className="card-list-item d-flex justify-content-between align-items-center">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <FaRegUser />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Collaborations
+                                                    </div>
                                                 </div>
-                                                <div className="card-text">
-                                                    Schedules
+                                                <div className="card-value">
+                                                    10
                                                 </div>
                                             </div>
-                                            <div className="card-value">
-                                                10
+                                        </Link>
+                                        <Link href="/schedules">
+                                            <div className="card-list-item d-flex justify-content-between align-items-center">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <FiCalendar />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Schedules
+                                                    </div>
+                                                </div>
+                                                <div className="card-value">
+                                                    10
+                                                </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +331,7 @@ function DashboardData() {
                                             <div className="card-text">
                                                 CSF Membership Agreement
                                             </div>
-                                            <div className="card-value">
+                                            <div className="inactive">
                                                 <IoIosInformationCircle />
                                             </div>
                                         </div>
@@ -260,7 +339,7 @@ function DashboardData() {
                                             <div className="card-text">
                                                 Project Signoff Agreement
                                             </div>
-                                            <div className="card-value">
+                                            <div className="active">
                                                 <IoIosInformationCircle />
                                             </div>
                                         </div>
@@ -268,7 +347,7 @@ function DashboardData() {
                                             <div className="card-text">
                                                 Collaboration Agreement
                                             </div>
-                                            <div className="card-value">
+                                            <div className="inactive">
                                                 <IoIosInformationCircle />
                                             </div>
                                         </div>
@@ -285,69 +364,41 @@ function DashboardData() {
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
                                             <div className="d-flex align-items-center gap-2">
                                                 <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
+                                                    <LuNewspaper />
                                                 </div>
                                                 <div className="card-text">
-                                                    Projects
+                                                    Member Newsletter
                                                 </div>
-                                            </div>
-                                            <div className="card-value">
-                                                10
                                             </div>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
                                             <div className="d-flex align-items-center gap-2">
                                                 <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
+                                                    <MdEmail />
                                                 </div>
                                                 <div className="card-text">
-                                                    Projects
+                                                    Contact Us
                                                 </div>
-                                            </div>
-                                            <div className="card-value">
-                                                10
                                             </div>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
                                             <div className="d-flex align-items-center gap-2">
                                                 <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
+                                                    <LuNewspaper />
                                                 </div>
                                                 <div className="card-text">
-                                                    Collaborations
+                                                    Explore our Sponsors
                                                 </div>
-                                            </div>
-                                            <div className="card-value">
-                                                10
                                             </div>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
                                             <div className="d-flex align-items-center gap-2">
                                                 <div className="card-icon">
-                                                    <Image
-                                                        src={Project}
-                                                        alt="profile"
-                                                        className="add-icon"
-                                                    />
+                                                    <LuNewspaper />
                                                 </div>
                                                 <div className="card-text">
-                                                    Schedules
+                                                    Governance Documents
                                                 </div>
-                                            </div>
-                                            <div className="card-value">
-                                                10
                                             </div>
                                         </div>
                                     </div>
@@ -360,20 +411,16 @@ function DashboardData() {
 
             <div className="wrapper-content">
                 <div className="page-title mt-30">
-                    <h3>Projects and Working Groups</h3>
+                    <h3>PROJECTS AND COLLABORATIONS</h3>
                 </div>
-                <div className="card-section mt-20">
+                <div className="card-section mt-20 list-section">
                     <div className="row">
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <FaRegFilePowerpoint />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>
@@ -394,11 +441,7 @@ function DashboardData() {
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <FaRegFilePowerpoint />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>
@@ -421,11 +464,7 @@ function DashboardData() {
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <FaRegUser />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>
@@ -459,11 +498,7 @@ function DashboardData() {
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <FaRegUser />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>
@@ -500,20 +535,16 @@ function DashboardData() {
                 <div className="page-title mt-30">
                     <h3>Resources</h3>
                 </div>
-                <div className="card-section mt-20">
+                <div className="card-section mt-20 list-section">
                     <div className="row">
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <TbReport />
                                         </div>
-                                        
+
                                     </div>
 
                                     <div className="project-light-tltle">
@@ -533,11 +564,7 @@ function DashboardData() {
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <LuNewspaper />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>
@@ -560,11 +587,7 @@ function DashboardData() {
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <LuNewspaper />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>
@@ -590,11 +613,7 @@ function DashboardData() {
                                 <div className="card-body">
                                     <div className="card-header-icon">
                                         <div className="icon-box">
-                                            <Image
-                                                src={ProjectName}
-                                                alt="profile"
-                                                className="add-icon"
-                                            />
+                                            <FaBlogger />
                                         </div>
                                         {/* <div className="border-line"></div> */}
                                     </div>

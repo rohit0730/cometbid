@@ -97,6 +97,14 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 0;
+    color: #ffffff;
+}
+
+.card-text h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #ffffff;
 }
 
 .add-icon {
@@ -125,12 +133,25 @@
 
 .card-text, .card-value {
     font-size: 14px;
+    color: var(--foreground);
 }
 
 .card-value svg {
     width: 16px;
     height: 16px;
     color: var(--foreground);
+}
+
+.active svg {
+    width: 16px;
+    height: 16px;
+    color: var(--foreground);
+}
+
+.inactive svg {
+    width: 16px;
+    height: 16px;
+    color: var(--light-color);
 }
 
 .card {
@@ -147,9 +168,20 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 
-.project-light-tltle {
+.icon-box svg {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+ .icon-box svg:hover {
+    transform: scale(1.2);
+}
+
+.list-section .project-light-tltle {
     font-size: 12px;
     font-weight: 700;
     color: #5C6981;
@@ -221,4 +253,23 @@ p.description {
 
 .card-body {
     position: relative;
+}
+
+.social-media ul {
+    padding-left: 0;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.social-media ul li {
+    border: 1px solid #8C8C8C;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+.preview img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
 }

@@ -3,18 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SidebarLogo from "../../assets/images/sidebar-logo.png";
-import ToggleIcon from "../../assets/images/toggle-icon.png";
-import NotificationIcon from "../../assets/images/Bell.png";
-import CountryFlag from "../../assets/images/flag.png";
-import Profile from "../../assets/images/user-profile.png";
 import Link from "next/link";
 import { RiDashboardLine } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
-import { FiCalendar } from "react-icons/fi";
-import { ImFileOpenoffice } from "react-icons/im";
+import { FiCalendar, FiLogOut } from "react-icons/fi";
 import { LuUserCog } from "react-icons/lu";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoFileTrayStacked } from "react-icons/io5";
@@ -25,10 +19,24 @@ import { TbUsersGroup } from "react-icons/tb";
 import { FiBox } from "react-icons/fi";
 import { MdOutlineJoinFull } from "react-icons/md";
 import { FaRegFilePowerpoint } from "react-icons/fa6";
+import { Tooltip } from 'react-tooltip';
+
+// svg images 
+import SidebarLogo from "../../assets/images/sidebar-logo.png";
+import SidebarIcon from "../../assets/images/sidebar-icon.png";
+import ToggleIcon from "../../assets/images/toggle-icon.png";
+import NotificationIcon from "../../assets/images/Bell.png";
+import CountryFlag from "../../assets/images/flag.png";
+import Profile from "../../assets/images/user-profile.png";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
     const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+    const notificationRef = useRef(null);
 
     const toggleDropdown = (menu: string) => {
         setOpenDropdowns((prev: Record<string, boolean>) => ({
@@ -36,58 +44,14 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
             [menu]: !prev[menu],
         }));
     };
-
-    const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-    const toggleProfileDropdown = () => {
-        setIsOpen(!isOpen);
-    };
-
-    const handleClickOutside = (event: any) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-            setIsOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        if (isOpen) {
-            document.addEventListener("click", handleClickOutside);
-        } else {
-            document.removeEventListener("click", handleClickOutside);
-        }
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, [isOpen]);
-
-    const [isNotificationOpen, setNotificationOpen] = useState(false); // 🔹 Unique State
-    const notificationRef = useRef<HTMLDivElement | null>(null);
-
-    const toggleNotification = () => {
-        setNotificationOpen((prev) => !prev);
-    };
-
-    const handleOutsideClick = (event: MouseEvent) => {
-        if (notificationRef.current && !notificationRef.current.contains(event.target as Node)) {
-            setNotificationOpen(false);
-        }
-    };
-
-    useEffect(() => {
-        if (isNotificationOpen) {
-            document.addEventListener("click", handleOutsideClick);
-        } else {
-            document.removeEventListener("click", handleOutsideClick);
-        }
-        return () => document.removeEventListener("click", handleOutsideClick);
-    }, [isNotificationOpen]);
+    
 
     const toggleSidebar = () => {
         const sidebar = document.querySelector(".page-inner");
         if (sidebar) {
             sidebar.classList.toggle("active");
         }
+        setIsSidebarOpen(!isSidebarOpen);
     };
 
     return (
@@ -97,28 +61,30 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                     <div className="sidebar">
                         <div className="sidebar-header">
                             <div className="sidebar-brand">
-                                <Image
-                                    src={SidebarLogo}
-                                    alt="logo"
-                                />
+                                <Link href="/dashboard">
+                                    <Image
+                                        src={isSidebarOpen ? SidebarIcon : SidebarLogo}
+                                        alt="logo"
+                                    />
+                                </Link>
                             </div>
                             <div className="plan">
-                                <p>Organization membership plan    <a href="#">Monthley</a></p>
+                                <p>Organization membership plan    <Link href="/dashboard">Monthley</Link></p>
                             </div>
                         </div>
                         <div className="sidebar-menu">
                             <ul className="nav-list">
                                 <li className="">
                                     <Link href="/dashboard">
-                                        <RiDashboardLine /> Dashboard
+                                        <RiDashboardLine /> <div className="menu-name">Dashboard</div>
                                     </Link>
                                 </li>
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("events")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <FaRegUser /> Personal Information
+                                            <FaRegUser /> <div className="menu-name">Personal Information</div>
                                         </div>
-                                        {openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                        {!isSidebarOpen && (openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["events"] && (
                                         <ul className="dropdown-menu">
@@ -128,22 +94,22 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     )}
                                 </li>
                                 <li>
-                                    <Link href="/notifications"> <HiOutlineBell /> Notifications</Link>
+                                    <Link href="/notifications"> <HiOutlineBell /> <div className="menu-name">Notifications</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/members"> <LuUsers /> Members</Link>
+                                    <Link href="/members"> <LuUsers /> <div className="menu-name">Members</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/schedules"> <FiCalendar /> Schedules</Link>
+                                    <Link href="/schedules"> <FiCalendar /> <div className="menu-name">Schedules</div></Link>
                                 </li>
 
                                 <hr className="menu-divider" />
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <TbUsersGroup /> Your Collaborations
+                                            <TbUsersGroup /> <div className="menu-name">Your Collaborations</div>
                                         </div>
-                                        {openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                        {!isSidebarOpen && (openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["Collaborations"] && (
                                         <ul className="dropdown-menu">
@@ -158,9 +124,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <FaRegFilePowerpoint /> Your Projects
+                                            <FaRegFilePowerpoint /> <div className="menu-name">Your Projects</div>
                                         </div>
-                                        {openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                        {!isSidebarOpen && (openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["projects"] && (
                                         <ul className="dropdown-menu">
@@ -173,9 +139,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <LuUsers />Your Organization Profile
+                                            <LuUsers /><div className="menu-name">Your Organization Profile</div>
                                         </div>
-                                        {openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                                        {!isSidebarOpen && (openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["Organization"] && (
                                         <ul className="dropdown-menu">
@@ -187,13 +153,36 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 </li>
                                 <hr className="menu-divider" />
                                 <li>
-                                    <Link href="/account-settings"> <LuUserCog /> Account Settings</Link>
+                                    <Link href="/account-settings"> <LuUserCog /> <div className="menu-name">Account Settings</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> Privacy Settings</Link>
+                                    <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> <div className="menu-name">Privacy Settings</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/activity-logs"> <IoFileTrayStacked /> Activity Logs</Link>
+                                    <Link href="/activity-logs"> <IoFileTrayStacked /> <div className="menu-name">Activity Logs</div></Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="sidebar-footer sidebar-menu">
+                            <ul className="nav-list">
+                                <li>
+                                    <Link href="/account-settings"><div className="menu-name">FAQs</div></Link>
+                                </li>
+                                <li>
+                                    <Link href="/privacy-settings"><div className="menu-name">Resources</div></Link>
+                                </li>
+                                <li>
+                                    <Link href="/activity-logs"><div className="menu-name">News and blogs</div></Link>
+                                </li>
+                                <li>
+                                    <Link href="/activity-logs"><div className="menu-name">Contact us</div></Link>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn">
+                                        <div className="menu-gap d-flex align-items-center">
+                                            <FiLogOut /> <div className="menu-name">Logout</div>
+                                        </div>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -212,15 +201,19 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </div>
                                     <div className="user-info">
                                         <div className="user-name">
-                                            <p>Welcome back, Matthew</p>
+                                            <p className="d-flex align-items-center">Welcome back, <span className="user-name-color">Matthew Doe</span></p>
                                             <span className="user-role"> (Member Representative)</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="content-right d-flex align-items-center">
                                     <button className="btn-downgrade">Downgrade</button>
-                                    <div className="notification" ref={notificationRef}>
-                                        <button type="button" className="btn-notification" onClick={toggleNotification}>
+                                    <div className="notification"
+                                        ref={notificationRef}
+                                        onMouseEnter={() => setIsNotificationOpen(true)}
+                                        onMouseLeave={() => setIsNotificationOpen(false)}
+                                    >
+                                        <button type="button" className="btn-notification">
                                             <Image
                                                 src={NotificationIcon}
                                                 alt="icon"
@@ -292,7 +285,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             </div>
                                         )}
                                     </div>
-                                    <button className="country-flag">
+                                    <button className="country-flag" title="Marshall Islands" data-tooltip-id="my-tooltip" data-tooltip-content="Marshall Islands" data-tooltip-variant="info">
                                         <Image
                                             src={CountryFlag}
                                             alt="icon"
@@ -300,8 +293,13 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             height={40}
                                         />
                                     </button>
-                                    <div className="user-info-2" ref={dropdownRef}>
-                                        <button className="user-profile" onClick={toggleProfileDropdown}>
+                                    <Tooltip id="my-tooltip" />
+                                    <div className="user-info-2"
+                                        ref={dropdownRef}
+                                        onMouseEnter={() => setIsOpen(true)}
+                                        onMouseLeave={() => setIsOpen(false)}
+                                    >
+                                        <button className="user-profile">
                                             <Image
                                                 src={Profile}
                                                 alt="icon"

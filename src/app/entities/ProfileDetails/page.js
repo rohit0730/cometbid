@@ -1,8 +1,17 @@
 "use client"
 
 import React, { useState } from "react";
-import "./profile.css";
 import Image from "next/image";
+import Link from "next/link";
+import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import { MultiSelect } from "react-multi-select-component";
+
+import "./profile.css";
+
+// svg images 
 import Arrow from "../../../assets/images/Arrow-Right.svg";
 import BannerProfile from "../../../assets/images/bg-profile.png";
 import UserProfile from "../../../assets/images/profile-user.svg";
@@ -11,12 +20,6 @@ import X from "../../../assets/images/x.svg";
 import GitHub from "../../../assets/images/github.svg";
 import Website from "../../../assets/images/website.svg";
 import EditIcon from "../../../assets/images/Pen.svg";
-import Link from "next/link";
-import Modal from 'react-bootstrap/Modal';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import { MultiSelect } from "react-multi-select-component";
 
 const options = [
     { label: "Soccer", value: "soccer" },
