@@ -28,6 +28,12 @@ import ToggleIcon from "../../assets/images/toggle-icon.png";
 import NotificationIcon from "../../assets/images/Bell.png";
 import CountryFlag from "../../assets/images/flag.png";
 import Profile from "../../assets/images/user-profile.png";
+import ProfileIcon from "../../assets/images/User-Rounded.svg";
+import RoleIcon from "../../assets/images/role.svg";
+import SchedulesIcon from "../../assets/images/Calendar-Mark.svg";
+import MembersIcon from "../../assets/images/Users-Group.svg";
+import CookieIcon from "../../assets/images/Settings.svg";
+import LogoutIcon from "../../assets/images/logout.svg";
 
 export default function SetLayout({ children }: { children: React.ReactNode }) {
 
@@ -44,7 +50,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
             [menu]: !prev[menu],
         }));
     };
-    
+
 
     const toggleSidebar = () => {
         const sidebar = document.querySelector(".page-inner");
@@ -94,7 +100,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     )}
                                 </li>
                                 <li>
-                                    <Link href="/notifications"> <HiOutlineBell /> <div className="menu-name">Notifications</div></Link>
+                                    <Link href="/notifications"> <HiOutlineBell /> <div className="menu-name">Notifications</div> <div className="count-notification">3</div></Link>
                                 </li>
                                 <li>
                                     <Link href="/members"> <LuUsers /> <div className="menu-name">Members</div></Link>
@@ -153,7 +159,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 </li>
                                 <hr className="menu-divider" />
                                 <li>
-                                    <Link href="/account-settings"> <LuUserCog /> <div className="menu-name">Account Settings</div></Link>
+                                    <Link href="/account-settings/account-details"> <LuUserCog /> <div className="menu-name">Account Settings</div></Link>
                                 </li>
                                 <li>
                                     <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> <div className="menu-name">Privacy Settings</div></Link>
@@ -225,57 +231,63 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                                 <p className="notification-title ms-4">Notifications</p>
                                                 <ul>
                                                     <li>
-                                                        <div className="notification-dropdown-item active">
-                                                            <div className="notification-info">
-                                                                <div className="notification-image">
-                                                                    <Image
-                                                                        src={Profile}
-                                                                        alt="icon"
-                                                                    />
+                                                        <Link href="/notifications">
+                                                            <div className="notification-dropdown-item active">
+                                                                <div className="notification-info">
+                                                                    <div className="notification-image">
+                                                                        <Image
+                                                                            src={Profile}
+                                                                            alt="icon"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="notification-content">
+                                                                        <p className="notification-message">This is an unread message waiting to be read.
+                                                                            Part of demonstrating the notification messages.</p>
+                                                                        <p className="notification-time">2 hours ago</p>
+                                                                    </div>
                                                                 </div>
-                                                                <div className="notification-content">
-                                                                    <p className="notification-message">This is an unread message waiting to be read.
-                                                                        Part of demonstrating the notification messages.</p>
-                                                                    <p className="notification-time">2 hours ago</p>
-                                                                </div>
+                                                                <div className="notification-unread"></div>
                                                             </div>
-                                                            <div className="notification-unread"></div>
-                                                        </div>
+                                                        </Link>
                                                     </li>
                                                     <li>
-                                                        <div className="notification-dropdown-item active">
-                                                            <div className="notification-info">
-                                                                <div className="notification-image">
-                                                                    <Image
-                                                                        src={Profile}
-                                                                        alt="icon"
-                                                                    />
+                                                        <Link href="/notifications">
+                                                            <div className="notification-dropdown-item active">
+                                                                <div className="notification-info">
+                                                                    <div className="notification-image">
+                                                                        <Image
+                                                                            src={Profile}
+                                                                            alt="icon"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="notification-content">
+                                                                        <p className="notification-message">This is an unread message waiting to be read.
+                                                                            Part of demonstrating the notification messages.</p>
+                                                                        <p className="notification-time">2 hours ago</p>
+                                                                    </div>
                                                                 </div>
-                                                                <div className="notification-content">
-                                                                    <p className="notification-message">This is an unread message waiting to be read.
-                                                                        Part of demonstrating the notification messages.</p>
-                                                                    <p className="notification-time">2 hours ago</p>
-                                                                </div>
+                                                                <div className="notification-unread"></div>
                                                             </div>
-                                                            <div className="notification-unread"></div>
-                                                        </div>
+                                                        </Link>
                                                     </li>
                                                     <li>
-                                                        <div className="notification-dropdown-item">
-                                                            <div className="notification-info">
-                                                                <div className="notification-image">
-                                                                    <Image
-                                                                        src={Profile}
-                                                                        alt="icon"
-                                                                    />
-                                                                </div>
-                                                                <div className="notification-content">
-                                                                    <p className="notification-message">This is an unread message waiting to be read.
-                                                                        Part of demonstrating the notification messages.</p>
-                                                                    <p className="notification-time">2 hours ago</p>
+                                                        <Link href="/notifications">
+                                                            <div className="notification-dropdown-item">
+                                                                <div className="notification-info">
+                                                                    <div className="notification-image">
+                                                                        <Image
+                                                                            src={Profile}
+                                                                            alt="icon"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="notification-content">
+                                                                        <p className="notification-message">This is an unread message waiting to be read.
+                                                                            Part of demonstrating the notification messages.</p>
+                                                                        <p className="notification-time">2 hours ago</p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </Link>
                                                     </li>
                                                 </ul>
                                                 <div className="notification-footer">
@@ -310,12 +322,12 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         {isOpen && (
                                             <div className="profile-dropdown">
                                                 <ul>
-                                                    <li><Link href="/personal-information/myprofile"><Image src={require("../../assets/images/User-Rounded.svg")} alt="icon" />  My Profile</Link></li>
-                                                    <li><Link href="/personal-information/myrole"><Image src={require("../../assets/images/role.svg")} alt="icon" /> My Roles</Link></li>
-                                                    <li><Link href="/schedules"><Image src={require("../../assets/images/Calendar-Mark.svg")} alt="icon" /> My Schedules</Link></li>
-                                                    <li><Link href="/members"><Image src={require("../../assets/images/Users-Group.svg")} alt="icon" /> Manage Members</Link></li>
-                                                    <li><Link href="/privacy-settings"><Image src={require("../../assets/images/Settings.svg")} alt="icon" /> Manage Cookies</Link></li>
-                                                    <li><Link href="/activity-logs"><Image src={require("../../assets/images/logout.svg")} alt="icon" /> Log Out</Link></li>
+                                                    <li><Link href="/personal-information/myprofile"><Image src={ProfileIcon} alt="icon" />  My Profile</Link></li>
+                                                    <li><Link href="/personal-information/myrole"><Image src={RoleIcon} alt="icon" /> My Roles</Link></li>
+                                                    <li><Link href="/schedules"><Image src={SchedulesIcon} alt="icon" /> My Schedules</Link></li>
+                                                    <li><Link href="/members"><Image src={MembersIcon} alt="icon" /> Manage Members</Link></li>
+                                                    <li><Link href="/privacy-settings"><Image src={CookieIcon} alt="icon" /> Manage Cookies</Link></li>
+                                                    <li><Link href="/activity-logs"><Image src={LogoutIcon} alt="icon" /> Log Out</Link></li>
                                                 </ul>
                                             </div>
                                         )}

@@ -5,6 +5,7 @@ import { MultiSelect } from "react-multi-select-component";
 import { Col, Form } from "react-bootstrap";
 import Image from "next/image";
 import "./style.css";
+import ManageIcon from "../../../assets/images/manage-role.svg";
 
 const options = [
     { label: "Sales Manager", value: "sales-manager" },
@@ -98,7 +99,7 @@ function Role() {
 
                     <div className="manage-role">
                         <div className="d-flex m-auto w-100 justify-content-center">
-                            <Image src={require("../../../assets/images/manage-role.svg")} alt="Role" />
+                            <Image src={ManageIcon} alt="Role" />
                         </div>
                     </div>
                 </div>

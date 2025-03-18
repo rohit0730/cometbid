@@ -14,6 +14,10 @@ import { LuNewspaper } from "react-icons/lu";
 import { MdEmail } from "react-icons/md";
 import { TbReport } from "react-icons/tb";
 import { FaBlogger } from "react-icons/fa6";
+import { HiUsers } from "react-icons/hi2";
+import { IoNotifications } from "react-icons/io5";
+import { FaBook } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import "./style.css";
 
 // svg images 
@@ -179,7 +183,7 @@ function DashboardData() {
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
                                     <div className="card-icon">
-                                        <FaUser />
+                                        <FaBook />
                                     </div>
                                     <div className="card-text">
                                         <h3>Organization Profile</h3>
@@ -198,7 +202,7 @@ function DashboardData() {
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
                                     <div className="card-icon">
-                                        <FaUser />
+                                        <HiUsers />
                                     </div>
                                     <div className="card-text">
                                         <h3>Members</h3>
@@ -218,7 +222,7 @@ function DashboardData() {
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
                                     <div className="card-icon">
-                                        <FaUser />
+                                        <IoNotifications />
                                     </div>
                                     <div className="card-text">
                                         <h3>Notifications</h3>
@@ -280,7 +284,7 @@ function DashboardData() {
                                                     </div>
                                                 </div>
                                                 <div className="card-value">
-                                                    10
+                                                    5
                                                 </div>
                                             </div>
                                         </Link>
@@ -295,7 +299,7 @@ function DashboardData() {
                                                     </div>
                                                 </div>
                                                 <div className="card-value">
-                                                    10
+                                                    8
                                                 </div>
                                             </div>
                                         </Link>
@@ -340,7 +344,7 @@ function DashboardData() {
                                                 Project Signoff Agreement
                                             </div>
                                             <div className="active">
-                                                <IoIosInformationCircle />
+                                                <FaCheckCircle />
                                             </div>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
@@ -455,6 +459,9 @@ function DashboardData() {
                                         <li>3CB Connectivity</li>
                                         <li>Web Accessibility Automation</li>
                                     </ul>
+                                    <div className="btn-read">
+                                        <Link href="/projects">Learn more about Projects</Link>
+                                    </div>
                                     <div className="border-line"></div>
                                 </div>
                             </div>
@@ -485,10 +492,6 @@ function DashboardData() {
                                         <li>IoT Working Group </li>
                                         <li>Web Accessibility Working Group</li>
                                     </ul>
-
-                                    <div className="btn-read">
-                                        <Link href="#">Learn more about Projects</Link>
-                                    </div>
                                     <div className="border-line"></div>
                                 </div>
                             </div>
@@ -521,7 +524,7 @@ function DashboardData() {
                                     </ul>
 
                                     <div className="btn-read">
-                                        <Link href="#">Learn more about Projects</Link>
+                                        <Link href="/collaborations/your-collaboration">Learn more about collaboration</Link>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -555,6 +558,9 @@ function DashboardData() {
                                         <li>2023 IoT & Edge Commercial Adoption survey Report</li>
                                         <li>2023 IoT & Edge Developer Survey Report</li>
                                     </ul>
+                                    <div className="btn-read">
+                                        <Link href="#">View More</Link>
+                                    </div>
                                     <div className="border-line"></div>
                                 </div>
                             </div>
@@ -578,6 +584,9 @@ function DashboardData() {
                                         <li>Spa Automotive Industry. rkplug: The Open Specification Critical to Achieving ROI in the Industrial Internet of Things.</li>
                                         {/* <li>Web Accessibility Automation</li> */}
                                     </ul>
+                                    <div className="btn-read">
+                                        <Link href="#">View More</Link>
+                                    </div>
                                     <div className="border-line"></div>
                                 </div>
                             </div>
@@ -602,7 +611,7 @@ function DashboardData() {
                                     </ul>
 
                                     <div className="btn-read">
-                                        <Link href="#">Learn more about Projects</Link>
+                                        <Link href="#">View More</Link>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -628,7 +637,7 @@ function DashboardData() {
                                     </ul>
 
                                     <div className="btn-read">
-                                        <Link href="#">Learn more about Projects</Link>
+                                        <Link href="#">View More</Link>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -639,7 +648,7 @@ function DashboardData() {
             </div>
 
             <div className="wrapper-content">
-                <div className="page-title mt-30">
+                <div className="page-title-faq mt-30">
                     <h3>FAQs</h3>
                 </div>
                 <div className="card-section mt-20">
@@ -686,7 +695,9 @@ function DashboardData() {
                                         <p className="description">End-to-end payments and financial management in a single solution. Meet the right platform to help realize.</p>
                                     </div>
                                     <div className="btn-view-more">
-                                        <button className="btn-view">View more FAQs</button>
+                                        <Link href="/faq">
+                                            <button className="btn-view">View more FAQs</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

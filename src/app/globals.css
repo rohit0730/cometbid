@@ -124,6 +124,7 @@ a {
   font-weight: bold;
   font-size: 20px;
   top: 0;
+  margin-left: 2px;
 }
 
 .user-info span {
@@ -355,6 +356,13 @@ label {
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
+  margin-bottom: 0;
+  color: #2B2C3E;
+}
+
+.page-title-faq h3 {
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 0;
   color: #2B2C3E;
 }
@@ -819,4 +827,17 @@ button.country-flag img {
   width: 20px;
   height: 20px;
   color: #ffffff;
+}
+
+.count-notification {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--red-color);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-left: 10px;
 }
