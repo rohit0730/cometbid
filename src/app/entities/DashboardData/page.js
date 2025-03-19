@@ -343,7 +343,7 @@ function DashboardData() {
                                             <div className="card-text">
                                                 Project Signoff Agreement
                                             </div>
-                                            <div className="active">
+                                            <div className="active-icon">
                                                 <FaCheckCircle />
                                             </div>
                                         </div>
