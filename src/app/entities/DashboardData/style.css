@@ -210,6 +210,10 @@ ul.project-list li {
     margin-bottom: 8px;
 }
 
+ul.project-list li a {
+    color: var(--foreground);
+}
+
 .card-header-icon {
     position: relative;
     z-index: 1;
@@ -284,4 +288,22 @@ p.description {
     height: 150px;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.card-faq {
+    border: none;
+    background-color: #ffffff;
+    padding: 16px;
+}
+
+.red {
+    background-color: #FF0000;
+}
+
+.green {
+    background-color: #4bc02d;
+}
+
+.blue {
+    background-color: #0b6cb9;
 }

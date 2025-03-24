@@ -283,7 +283,7 @@ function DashboardData() {
                                                         Projects
                                                     </div>
                                                 </div>
-                                                <div className="card-value">
+                                                <div className="card-value red">
                                                     5
                                                 </div>
                                             </div>
@@ -298,7 +298,7 @@ function DashboardData() {
                                                         Collaborations
                                                     </div>
                                                 </div>
-                                                <div className="card-value">
+                                                <div className="card-value blue">
                                                     8
                                                 </div>
                                             </div>
@@ -313,7 +313,7 @@ function DashboardData() {
                                                         Schedules
                                                     </div>
                                                 </div>
-                                                <div className="card-value">
+                                                <div className="card-value green">
                                                     10
                                                 </div>
                                             </div>
@@ -366,44 +366,52 @@ function DashboardData() {
                                 <div className="card-content">
                                     <div className="list-content d-flex flex-column">
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <LuNewspaper />
+                                            <Link href="/">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <LuNewspaper />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Member Newsletter
+                                                    </div>
                                                 </div>
-                                                <div className="card-text">
-                                                    Member Newsletter
-                                                </div>
-                                            </div>
+                                            </Link>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <MdEmail />
+                                            <Link href="/">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <MdEmail />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Contact Us
+                                                    </div>
                                                 </div>
-                                                <div className="card-text">
-                                                    Contact Us
-                                                </div>
-                                            </div>
+                                            </Link>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <LuNewspaper />
+                                            <Link href="/">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <LuNewspaper />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Explore our Sponsors
+                                                    </div>
                                                 </div>
-                                                <div className="card-text">
-                                                    Explore our Sponsors
-                                                </div>
-                                            </div>
+                                            </Link>
                                         </div>
                                         <div className="card-list-item d-flex justify-content-between align-items-center">
-                                            <div className="d-flex align-items-center gap-2">
-                                                <div className="card-icon">
-                                                    <LuNewspaper />
+                                            <Link href="/">
+                                                <div className="d-flex align-items-center gap-2">
+                                                    <div className="card-icon">
+                                                        <LuNewspaper />
+                                                    </div>
+                                                    <div className="card-text">
+                                                        Governance Documents
+                                                    </div>
                                                 </div>
-                                                <div className="card-text">
-                                                    Governance Documents
-                                                </div>
-                                            </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -443,24 +451,25 @@ function DashboardData() {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-header-icon">
-                                        <div className="icon-box">
-                                            <FaRegFilePowerpoint />
+                                    <div className="d-flex justify-content-between flex-column h-100">
+                                        <div>
+                                            <div className="card-header-icon">
+                                                <div className="icon-box">
+                                                    <FaRegFilePowerpoint />
+                                                </div>
+                                            </div>
+                                            <div className="project-light-tltle">
+                                                Projects You May be interested in
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="/projects">Tundra Payment Gateway</Link></li>
+                                                <li><Link href="/projects">3CB Connectivity</Link></li>
+                                                <li><Link href="/projects">Web Accessibility Automation</Link></li>
+                                            </ul>
                                         </div>
-                                        {/* <div className="border-line"></div> */}
-                                    </div>
-
-                                    <div className="project-light-tltle">
-                                        Projects You May be interested in
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>Tundra Payment Gateway</li>
-                                        <li>3CB Connectivity</li>
-                                        <li>Web Accessibility Automation</li>
-                                    </ul>
-                                    <div className="btn-read">
-                                        <Link href="/projects">Learn more about Projects</Link>
+                                        <div className="btn-read">
+                                            <Link href="/projects">Learn more about Projects</Link>
+                                        </div>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -473,24 +482,20 @@ function DashboardData() {
                                         <div className="icon-box">
                                             <FaRegUser />
                                         </div>
-                                        {/* <div className="border-line"></div> */}
                                     </div>
-
                                     <div className="project-light-tltle">
                                         Your Working Groups
                                     </div>
-
                                     <ul className="project-list">
-                                        <li>IoT Working Group </li>
-                                        <li>Unified Blockchain Working Group</li>
+                                        <li><Link href="/">IoT Working Group</Link></li>
+                                        <li><Link href="/">Unified Blockchain Working Group</Link></li>
                                     </ul>
                                     <div className="project-light-tltle">
                                         Your Interest Groups
                                     </div>
-
                                     <ul className="project-list">
-                                        <li>IoT Working Group </li>
-                                        <li>Web Accessibility Working Group</li>
+                                        <li><Link href="/">IoT Working Group</Link></li>
+                                        <li><Link href="/">Web Accessibility Working Group</Link></li>
                                     </ul>
                                     <div className="border-line"></div>
                                 </div>
@@ -499,32 +504,31 @@ function DashboardData() {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-header-icon">
-                                        <div className="icon-box">
-                                            <FaRegUser />
+                                    <div className="d-flex justify-content-between flex-column h-100">
+                                        <div>
+                                            <div className="card-header-icon">
+                                                <div className="icon-box">
+                                                    <FaRegUser />
+                                                </div>
+                                            </div>
+                                            <div className="project-light-tltle">
+                                                Working Groups You might be interested in
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="/">Unified Blockchain Working Group</Link></li>
+                                                <li><Link href="/">3Xs Working Group</Link></li>
+                                            </ul>
+                                            <div className="project-light-tltle">
+                                                Interest Groups You might be interested in
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="/">IoT Working Group</Link></li>
+                                                <li><Link href="/">Web Accessibility Working Group</Link></li>
+                                            </ul>
                                         </div>
-                                        {/* <div className="border-line"></div> */}
-                                    </div>
-
-                                    <div className="project-light-tltle">
-                                        Working Groups You might be interested in
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>Unified Blockchain Working Group </li>
-                                        <li>3Xs Working Group</li>
-                                    </ul>
-                                    <div className="project-light-tltle">
-                                        Interest Groups You might be interested in
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>IoT Working Group </li>
-                                        <li>Web Accessibility Working Group</li>
-                                    </ul>
-
-                                    <div className="btn-read">
-                                        <Link href="/collaborations/your-collaboration">Learn more about collaboration</Link>
+                                        <div className="btn-read">
+                                            <Link href="/collaborations/your-collaboration">Learn more about collaboration</Link>
+                                        </div>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -543,23 +547,24 @@ function DashboardData() {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-header-icon">
-                                        <div className="icon-box">
-                                            <TbReport />
+                                    <div className="d-flex justify-content-between flex-column h-100">
+                                        <div>
+                                            <div className="card-header-icon">
+                                                <div className="icon-box">
+                                                    <TbReport />
+                                                </div>
+                                            </div>
+                                            <div className="project-light-tltle">
+                                                Survey Report
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="#">2023 IoT & Edge Commercial Adoption survey Report</Link></li>
+                                                <li><Link href="#">2023 IoT & Edge Developer Survey Report</Link></li>
+                                            </ul>
                                         </div>
-
-                                    </div>
-
-                                    <div className="project-light-tltle">
-                                        Survey Report
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>2023 IoT & Edge Commercial Adoption survey Report</li>
-                                        <li>2023 IoT & Edge Developer Survey Report</li>
-                                    </ul>
-                                    <div className="btn-read">
-                                        <Link href="#">View More</Link>
+                                        <div className="btn-read">
+                                            <Link href="#">View More</Link>
+                                        </div>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -568,24 +573,25 @@ function DashboardData() {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-header-icon">
-                                        <div className="icon-box">
-                                            <LuNewspaper />
+                                    <div className="d-flex justify-content-between flex-column h-100">
+                                        <div>
+                                            <div className="card-header-icon">
+                                                <div className="icon-box">
+                                                    <LuNewspaper />
+                                                </div>
+                                            </div>
+                                            <div className="project-light-tltle">
+                                                White Paper
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="#">Beyond MQTT: How Sparkplug Transforms Raw Data into.....ay</Link></li>
+                                                <li><Link href="#">Spa Automotive Industry. rkplug: The Open Specification Critical to Achieving ROI in the Industrial Internet of Things.</Link></li>
+                                                {/* <li>Web Accessibility Automation</li> */}
+                                            </ul>
                                         </div>
-                                        {/* <div className="border-line"></div> */}
-                                    </div>
-
-                                    <div className="project-light-tltle">
-                                        White Paper
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>Beyond MQTT: How Sparkplug Transforms Raw Data into.....ay</li>
-                                        <li>Spa Automotive Industry. rkplug: The Open Specification Critical to Achieving ROI in the Industrial Internet of Things.</li>
-                                        {/* <li>Web Accessibility Automation</li> */}
-                                    </ul>
-                                    <div className="btn-read">
-                                        <Link href="#">View More</Link>
+                                        <div className="btn-read">
+                                            <Link href="#">View More</Link>
+                                        </div>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -594,24 +600,24 @@ function DashboardData() {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-header-icon">
-                                        <div className="icon-box">
-                                            <LuNewspaper />
+                                    <div className="d-flex justify-content-between flex-column h-100">
+                                        <div>
+                                            <div className="card-header-icon">
+                                                <div className="icon-box">
+                                                    <LuNewspaper />
+                                                </div>
+                                            </div>
+                                            <div className="project-light-tltle">
+                                                News
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="#">Industrial IoT revenue expected to nearly double through 2025, data generation triple</Link></li>
+                                                <li><Link href="#">How Open Source Working Groups Drive Collaboration and Innovation</Link></li>
+                                            </ul>
                                         </div>
-                                        {/* <div className="border-line"></div> */}
-                                    </div>
-
-                                    <div className="project-light-tltle">
-                                        News
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>Industrial IoT revenue expected to nearly double through 2025, data generation triple</li>
-                                        <li>How Open Source Working Groups Drive Collaboration and Innovation</li>
-                                    </ul>
-
-                                    <div className="btn-read">
-                                        <Link href="#">View More</Link>
+                                        <div className="btn-read">
+                                            <Link href="#">View More</Link>
+                                        </div>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -620,24 +626,24 @@ function DashboardData() {
                         <div className="col-md-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-header-icon">
-                                        <div className="icon-box">
-                                            <FaBlogger />
+                                    <div className="d-flex justify-content-between flex-column h-100">
+                                        <div>
+                                            <div className="card-header-icon">
+                                                <div className="icon-box">
+                                                    <FaBlogger />
+                                                </div>
+                                            </div>
+                                            <div className="project-light-tltle">
+                                                Trending Blogs
+                                            </div>
+                                            <ul className="project-list">
+                                                <li><Link href="#">Industrial IoT & building Opensource projects</Link></li>
+                                                <li><Link href="#">Open Source Software in the Spa Automotive Industry</Link></li>
+                                            </ul>
                                         </div>
-                                        {/* <div className="border-line"></div> */}
-                                    </div>
-
-                                    <div className="project-light-tltle">
-                                        Trending Blogs
-                                    </div>
-
-                                    <ul className="project-list">
-                                        <li>Industrial IoT & building Opensource projects </li>
-                                        <li>Open Source Software in the Spa Automotive Industry</li>
-                                    </ul>
-
-                                    <div className="btn-read">
-                                        <Link href="#">View More</Link>
+                                        <div className="btn-read">
+                                            <Link href="#">View More</Link>
+                                        </div>
                                     </div>
                                     <div className="border-line"></div>
                                 </div>
@@ -681,7 +687,7 @@ function DashboardData() {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="card">
+                            <div className="card-faq">
                                 <div className="card-body d-flex flex-column justify-content-between">
                                     <div>
                                         <div className="chat-icon">

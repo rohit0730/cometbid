@@ -148,13 +148,13 @@ a {
 }
 
 .content-right {
-  gap: 28px;
+  gap: 20px;
 }
 
 .notification-count {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: 4px;
+  right: 2px;
   background-color: #FF0000;
   color: #fff;
   border-radius: 50%;
@@ -169,6 +169,17 @@ a {
 
 .notification {
   position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.notification:hover {
+  background-color: #f5f5f5;
 }
 
 .sidebar-menu {
@@ -645,6 +656,8 @@ label {
 
 .user-info-2 {
   position: relative;
+  width: 40px;
+  height: 40px;
 }
 
 .profile-dropdown {
