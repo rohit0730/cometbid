@@ -87,7 +87,7 @@ function DashboardData() {
             </div>
 
             <div className="user-info-details mt-20">
-                <div className="d-flex align-items-center gap-5">
+                <div className="warp-section d-flex align-items-center gap-5">
                     <div className="left flex-column-column w-100">
                         <div className="profile-image">
                             <Image
@@ -101,7 +101,7 @@ function DashboardData() {
                                 <p>Frontend Developer at <span>CASERO INCORPORATED INC.</span></p>
                                 <hr />
                             </div>
-                            <div className="user-list d-flex justify-content-between align-items-center">
+                            <div className="user-list warp-section d-flex justify-content-between align-items-center">
                                 <div className="social-media">
                                     <ul className="d-flex">
                                         <li>
@@ -159,7 +159,7 @@ function DashboardData() {
 
             <div className="card-section mt-20">
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card colur-blue-gradient">
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
@@ -178,7 +178,7 @@ function DashboardData() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card colur-bluelight-gradient">
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
@@ -197,7 +197,7 @@ function DashboardData() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card colur-purple-gradient">
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
@@ -217,7 +217,7 @@ function DashboardData() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card colur-green-gradient">
                             <div className="card-body d-flex align-items-center justify-content-between">
                                 <div className="d-flex align-items-center gap-2">
@@ -242,7 +242,7 @@ function DashboardData() {
 
             <div className="card-section mt-20">
                 <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card">
                             <div className="card-body">
                                 <div className="group-logo d-flex justify-content-center">
@@ -265,7 +265,7 @@ function DashboardData() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card">
                             <div className="card-body">
                                 <div className="card-tltle">
@@ -323,7 +323,7 @@ function DashboardData() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card">
                             <div className="card-body">
                                 <div className="card-tltle">
@@ -360,7 +360,7 @@ function DashboardData() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                         <div className="card">
                             <div className="card-body">
                                 <div className="card-content">
@@ -427,7 +427,7 @@ function DashboardData() {
                 </div>
                 <div className="card-section mt-20 list-section">
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="card-header-icon">
@@ -448,7 +448,7 @@ function DashboardData() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between flex-column h-100">
@@ -475,7 +475,7 @@ function DashboardData() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="card-header-icon">
@@ -501,7 +501,7 @@ function DashboardData() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between flex-column h-100">
@@ -544,7 +544,7 @@ function DashboardData() {
                 </div>
                 <div className="card-section mt-20 list-section">
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between flex-column h-100">
@@ -570,7 +570,7 @@ function DashboardData() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between flex-column h-100">
@@ -597,7 +597,7 @@ function DashboardData() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between flex-column h-100">
@@ -623,7 +623,7 @@ function DashboardData() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div className="card">
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between flex-column h-100">
@@ -676,7 +676,7 @@ function DashboardData() {
                                                     {openIndex === index ? <IoIosArrowUp size={20} /> : <IoIosArrowDown size={20} />}
                                                 </button>
                                                 {openIndex === index && (
-                                                    <div className="px-4 py-3 text-gray-700 bg-white border-t">
+                                                    <div className="px-4 py-3 text-gray-700 bg-white border-t faq-text">
                                                         {faq.answer}
                                                     </div>
                                                 )}

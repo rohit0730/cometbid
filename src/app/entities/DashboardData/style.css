@@ -307,3 +307,45 @@ p.description {
 .blue {
     background-color: #0b6cb9;
 }
+
+.profile-image img {
+    max-width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.faq-section button svg  {
+    min-width: 20px; 
+    height: 20px;
+}
+
+
+
+
+/* Extra small devices (phones) */
+@media (max-width: 575px) {
+    .user-1 p {
+        font-size: 15px;
+    }
+
+    .flex-column-column {
+        flex-wrap: wrap;
+    }
+
+    .user-info-details .left {
+        gap: 16px;
+    }
+
+    .user-info-details .left .inline-block {
+        margin-left: 0 ! important;
+    }
+
+    .faq-section button {
+        font-size: 15px;
+    }
+
+    .faq-text {
+        font-size: 14px;
+    }
+}

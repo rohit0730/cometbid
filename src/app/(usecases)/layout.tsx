@@ -20,6 +20,8 @@ import { FiBox } from "react-icons/fi";
 import { MdOutlineJoinFull } from "react-icons/md";
 import { FaRegFilePowerpoint } from "react-icons/fa6";
 import { Tooltip } from 'react-tooltip';
+import { LuMenu } from "react-icons/lu";
+import './responsive.css'
 
 // svg images 
 import SidebarLogo from "../../assets/images/sidebar-logo.png";
@@ -43,6 +45,8 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const notificationRef = useRef(null);
+    const [isSidebarShow, setIsSidebarShow] = useState(false);
+    const sidebarRef = useRef<HTMLDivElement | null>(null);
 
     const toggleDropdown = (menu: string) => {
         setOpenDropdowns((prev: Record<string, boolean>) => ({
@@ -50,6 +54,26 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
             [menu]: !prev[menu],
         }));
     };
+
+    useEffect(() => {
+        function handleClickOutside(event: any) {
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+                setIsSidebarShow(false);
+            }
+        }
+
+        if (isSidebarShow) {
+            document.body.style.overflow = "hidden";
+            document.addEventListener("mousedown", handleClickOutside);
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isSidebarShow]);
 
 
     const toggleSidebar = () => {
@@ -64,7 +88,8 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
         <>
             <div className="page-content">
                 <div className="page-inner">
-                    <div className="sidebar">
+                    {isSidebarShow && <div className="overlay"></div>}
+                    <div ref={sidebarRef} className={`sidebar ${isSidebarShow ? "show-sidebar" : ""}`}>
                         <div className="sidebar-header">
                             <div className="sidebar-brand">
                                 <Link href="/dashboard">
@@ -80,7 +105,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                         </div>
                         <div className="sidebar-menu">
                             <ul className="nav-list">
-                                <li className="">
+                                <li className="" onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/dashboard">
                                         <RiDashboardLine /> <div className="menu-name">Dashboard</div>
                                     </Link>
@@ -94,18 +119,20 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["events"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/personal-information/myprofile"><CgProfile /> My Profile</Link></li>
-                                            <li><Link href="/personal-information/myrole"><MdOutlineSettingsSuggest /> My Roles</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><CgProfile /> My Profile</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><MdOutlineSettingsSuggest /> My Roles</Link></li>
                                         </ul>
                                     )}
                                 </li>
-                                <li>
-                                    <Link href="/notifications"> <HiOutlineBell /> <div className="menu-name">Notifications</div> <div className="count-notification">3</div></Link>
+                                <li onClick={() => setIsSidebarShow(false)}>
+                                    <Link href="/notifications"> <HiOutlineBell /> <div className="menu-name">Notifications</div> 
+                                    {/* <div className="count-notification">3</div> */}
+                                    </Link>
                                 </li>
-                                <li>
+                                <li onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/members"> <LuUsers /> <div className="menu-name">Members</div></Link>
                                 </li>
-                                <li>
+                                <li onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/schedules"> <FiCalendar /> <div className="menu-name">Schedules</div></Link>
                                 </li>
 
@@ -119,11 +146,11 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["Collaborations"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/collaborations/your-collaboration"><FaRegUser /> Collaborations</Link></li>
-                                            <li><Link href="/collaborations/start-working-group"><FiBox />Start Working Group</Link></li>
-                                            <li><Link href="/collaborations/start-interest-group"><FiBox />Start Interest Group</Link></li>
-                                            <li><Link href="/collaborations/join-working-group"><MdOutlineJoinFull />Join Working Group</Link></li>
-                                            <li><Link href="/collaborations/join-interest-group"><MdOutlineJoinFull />Join Interest Group</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><FaRegUser /> Collaborations</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><FiBox />Start Working Group</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><FiBox />Start Interest Group</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><MdOutlineJoinFull />Join Working Group</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><MdOutlineJoinFull />Join Interest Group</Link></li>
                                         </ul>
                                     )}
                                 </li>
@@ -136,9 +163,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["projects"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/projects"><FaRegFilePowerpoint />Projects</Link></li>
-                                            <li><Link href="/projects/start-project"><FiBox />Start Projects</Link></li>
-                                            <li><Link href="/projects/join-project"><MdOutlineJoinFull />Join Projects</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><FaRegFilePowerpoint />Projects</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><FiBox />Start Projects</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><MdOutlineJoinFull />Join Projects</Link></li>
                                         </ul>
                                     )}
                                 </li>
@@ -151,20 +178,20 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["Organization"] && (
                                         <ul className="dropdown-menu">
-                                            <li><Link href="/organization/organization-profile"><CgProfile />Organization Profile</Link></li>
-                                            <li><Link href="/organization/manage-roles"><FiBox />Manage Roles</Link></li>
-                                            <li><Link href="/organization/organization-structure"><MdOutlineJoinFull />Organization Structure</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><CgProfile />Organization Profile</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><FiBox />Manage Roles</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><MdOutlineJoinFull />Organization Structure</Link></li>
                                         </ul>
                                     )}
                                 </li>
                                 <hr className="menu-divider" />
-                                <li>
+                                <li onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/account-settings/account-details"> <LuUserCog /> <div className="menu-name">Account Settings</div></Link>
                                 </li>
-                                <li>
+                                <li onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> <div className="menu-name">Privacy Settings</div></Link>
                                 </li>
-                                <li>
+                                <li onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/activity-logs"> <IoFileTrayStacked /> <div className="menu-name">Activity Logs</div></Link>
                                 </li>
                             </ul>
@@ -196,6 +223,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                     <div className="main-content">
                         <div className="page-header">
                             <div className="page-header-content">
+                                <div className="sec-hide">
+                                    <button className="btn-trigger" onClick={() => setIsSidebarShow(!isSidebarShow)}><LuMenu /></button>
+                                </div>
                                 <div className="content-left d-flex align-items-center">
                                     <div className="toggle-sidebar">
                                         <button type="button" className="btn-toggle" onClick={toggleSidebar}>
@@ -337,7 +367,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                         </div>
                         {children}
                         <div className="page-footer">
-                            <div className="d-flex align-items-center justify-content-between">
+                            <div className="footer-inner d-flex align-items-center justify-content-between">
                                 <div className="copyright">
                                     <p>Copyright @ The Cometbid Software Foundation. All Rights Reserved.</p>
                                 </div>
