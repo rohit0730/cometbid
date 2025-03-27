@@ -915,4 +915,8 @@ button.btn-trigger {
   .page-footer {
     padding: 15px 10px;
   }
+
+  .user-info-details {
+    margin-bottom: 30px;
+  }
 }
