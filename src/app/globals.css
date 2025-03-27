@@ -892,7 +892,11 @@ button.btn-trigger {
   display: none;
 }
 
-
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 @media (min-width: 280px) and (max-width: 991px) {
   .sec-hide {
@@ -902,6 +906,7 @@ button.btn-trigger {
   .footer-inner  {
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center !important;
   }
 
   .copyright {

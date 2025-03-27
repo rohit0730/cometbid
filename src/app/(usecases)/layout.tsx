@@ -367,7 +367,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                         </div>
                         {children}
                         <div className="page-footer">
-                            <div className="footer-inner d-flex align-items-center justify-content-between">
+                            <div className="footer-inner">
                                 <div className="copyright">
                                     <p>Copyright @ The Cometbid Software Foundation. All Rights Reserved.</p>
                                 </div>
