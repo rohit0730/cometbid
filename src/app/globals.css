@@ -229,7 +229,7 @@ a {
   font-size: 16px;
 }
 
-.sidebar-menu a:hover {
+.sidebar-menu a:hover, .nav-list .dropdown-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
