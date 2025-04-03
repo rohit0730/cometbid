@@ -45,12 +45,12 @@ function SchedulesData() {
                                 <Tab.Content>
                                     <Tab.Pane eventKey="first">
                                         <Row>
-                                            <Col sm={5}>
+                                            <Col sm={6} md={6} lg={6} xl={5}>
                                                 <div className="card-calendar h-100">
                                                     <Calendar onChange={onChange} value={value} />
                                                 </div>
                                             </Col>
-                                            <Col sm={7}>
+                                            <Col sm={6} md={6} lg={6} xl={7}>
                                                 <div className="card-calendar">
                                                     <div className="details">
                                                         <Form className="mt-3">
@@ -223,7 +223,7 @@ function SchedulesData() {
 
                 <div className="event-list mt-20">
                     <Row>
-                        <Col md={4}>
+                        <Col md={6} lg={6} xl={4}>
                             <div className="event-card">
                                 <div className="event-title">
                                     Reminder of App Project And Design
@@ -245,7 +245,7 @@ function SchedulesData() {
                                 <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
                             </div>
                         </Col>
-                        <Col md={4}>
+                        <Col md={6} lg={6} xl={4}>
                             <div className="event-card">
                                 <div className="event-title">
                                     Reminder of App Project And Design
@@ -267,7 +267,7 @@ function SchedulesData() {
                                 <div className="d-flex justify-content-end mt-20"><button className="btn-save">Cancel Schedules</button><button className="btn-cancel ms-4">Delete</button></div>
                             </div>
                         </Col>
-                        <Col md={4}>
+                        <Col md={6} lg={6} xl={4}>
                             <div className="event-card">
                                 <div className="event-title">
                                     Reminder of App Project And Design

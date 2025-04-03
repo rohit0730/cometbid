@@ -347,7 +347,7 @@ function ProfileDetails() {
             {/* Edit Details Modal end */}
 
             <div className="wrapper">
-                <div className="d-flex align-items-center gap-2">
+                <div className="d-flex align-items-center gap-2 page-info">
                     <div className="page-title">
                         <h3>Personal Information</h3>
                     </div>
@@ -371,7 +371,7 @@ function ProfileDetails() {
                         <div className="user-profile-details">
                             <div className="d-flex justify-content-between">
                                 <div className="user-details-inner d-flex ">
-                                    <div className="profile-image">
+                                    <div className="profile-image-inner">
                                         <Image
                                             src={UserProfile}
                                             alt="profile"
@@ -458,7 +458,7 @@ function ProfileDetails() {
                             <div className="row">
                                 <div className="col-md-6 w-100">
                                     <div className="row">
-                                        <div className="col-6">
+                                        <div className="col-12 col-md-6">
                                             <ul className="about-list">
                                                 <li>
                                                     <span>Full Name:</span> Mathew Parker
@@ -471,7 +471,7 @@ function ProfileDetails() {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-12 col-md-6">
                                             <ul className="about-list">
                                                 <li>
                                                     <span>Current Employer:</span> ABC Acme Inc.
@@ -511,7 +511,7 @@ function ProfileDetails() {
                             <div className="row">
                                 <div className="col-md-6 w-100">
                                     <div className="row">
-                                        <div className="col-6">
+                                        <div className="col-12 col-md-6">
                                             <ul className="about-list">
                                                 <li>
                                                     <span>GitHub url:</span> https://github.com/mathewparker
@@ -524,7 +524,7 @@ function ProfileDetails() {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-12 col-md-6">
                                             <ul className="about-list">
                                                 <li>
                                                     <span>Bitbucket url:</span> https://bitbucket.org/mathewparker

@@ -5,22 +5,23 @@ import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";
 import { RiDashboardLine } from "react-icons/ri";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaQuestionCircle } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
 import { FiCalendar, FiLogOut } from "react-icons/fi";
 import { LuUserCog } from "react-icons/lu";
-import { MdOutlinePrivacyTip } from "react-icons/md";
+import { MdOutlinePrivacyTip, MdContacts  } from "react-icons/md";
 import { IoFileTrayStacked } from "react-icons/io5";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineSettingsSuggest } from "react-icons/md";
-import { TbUsersGroup } from "react-icons/tb";
+import { TbUsersGroup, TbNews } from "react-icons/tb";
 import { FiBox } from "react-icons/fi";
 import { MdOutlineJoinFull } from "react-icons/md";
 import { FaRegFilePowerpoint } from "react-icons/fa6";
 import { Tooltip } from 'react-tooltip';
 import { LuMenu } from "react-icons/lu";
+import { GrResources } from "react-icons/gr";
 import './responsive.css'
 
 // svg images 
@@ -119,8 +120,8 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["events"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><CgProfile /> My Profile</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><MdOutlineSettingsSuggest /> My Roles</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><CgProfile /> <div className="menu-name">My Profile</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><MdOutlineSettingsSuggest /> <div className="menu-name">My Roles</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
@@ -146,11 +147,11 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["Collaborations"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><FaRegUser /> Collaborations</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><FiBox />Start Working Group</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><FiBox />Start Interest Group</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><MdOutlineJoinFull />Join Working Group</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><MdOutlineJoinFull />Join Interest Group</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><FaRegUser /> <div className="menu-name">Collaborations</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><FiBox /><div className="menu-name">Start Working Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><FiBox /><div className="menu-name">Start Interest Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><MdOutlineJoinFull /><div className="menu-name">Join Working Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><MdOutlineJoinFull /><div className="menu-name">Join Interest Group</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
@@ -163,9 +164,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["projects"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><FaRegFilePowerpoint />Projects</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><FiBox />Start Projects</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><MdOutlineJoinFull />Join Projects</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><FaRegFilePowerpoint /><div className="menu-name">Projects</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><FiBox /><div className="menu-name">Start Projects</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><MdOutlineJoinFull /><div className="menu-name">Join Projects</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
@@ -178,9 +179,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     </button>
                                     {openDropdowns["Organization"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><CgProfile />Organization Profile</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><FiBox />Manage Roles</Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><MdOutlineJoinFull />Organization Structure</Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><CgProfile /><div className="menu-name">Organization Profile</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><FiBox /><div className="menu-name">Manage Roles</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><MdOutlineJoinFull /><div className="menu-name">Organization Structure</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
@@ -199,16 +200,16 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                         <div className="sidebar-footer sidebar-menu">
                             <ul className="nav-list">
                                 <li>
-                                    <Link href="/account-settings"><div className="menu-name">FAQs</div></Link>
+                                    <Link href="/account-settings"><FaQuestionCircle /><div className="menu-name">FAQs</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/privacy-settings"><div className="menu-name">Resources</div></Link>
+                                    <Link href="/privacy-settings"><GrResources /><div className="menu-name">Resources</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/activity-logs"><div className="menu-name">News and blogs</div></Link>
+                                    <Link href="/activity-logs"><TbNews /><div className="menu-name">News and blogs</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/activity-logs"><div className="menu-name">Contact us</div></Link>
+                                    <Link href="/activity-logs"><MdContacts /><div className="menu-name">Contact us</div></Link>
                                 </li>
                                 <li>
                                     <button className="dropdown-btn">
@@ -360,7 +361,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                                     <li><Link href="/activity-logs"><Image src={LogoutIcon} alt="icon" /> Log Out</Link></li>
                                                 </ul>
                                             </div>
-                                        )}
+                                         )}
                                     </div>
                                 </div>
                             </div>

@@ -93,9 +93,9 @@ const StartWorking = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex justify-content-end w-100">
+                        <div className="d-flex justify-content-end w-100 gap-2">
                             <button className="btn-outline" onClick={handleClose3}>Download PDF</button>
-                            <button className="btn-save ms-4" onClick={handleClose3}>Done</button>
+                            <button className="btn-save" onClick={handleClose3}>Done</button>
                         </div>
                     </div>
                 </Modal.Body>
@@ -103,7 +103,7 @@ const StartWorking = () => {
             {/* Submit Member Modal end */}
 
             <div className="wrapper">
-                <div className="d-flex align-items-center gap-2">
+                <div className="d-flex align-items-center gap-2 page-info">
                     <div className="page-title">
                         <h3>Your Collaborations</h3>
                     </div>
@@ -119,7 +119,7 @@ const StartWorking = () => {
                 <div className="card-section-collaboration mt-20">
                     <div className="step-form">
                         {/* Step Header */}
-                        <div className="step-header">
+                        <div className="step-header hide_mobile">
                             <div className="d-flex align-items-center gap-3">
                                 {steps.map((step) => (
                                     <div
@@ -141,6 +141,26 @@ const StartWorking = () => {
                                                         style={{ color: currentStep > step.id ? "#28a745" : "#ccc" }}
                                                     />
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="step-header show_mobile">
+                            <div className="d-flex align-items-center gap-3">
+                                {steps.map((step) => (
+                                    <div
+                                        key={step.id}
+                                        className={`step-item step-${step.id} ${currentStep >= step.id ? "active" : ""}`}
+                                    >
+                                        <div className="step-header-card">
+                                            <div className="d-flex justify-content-between flex-column align-items-center gap-2">
+                                                <div className="step-card-details">
+                                                    <div className="step-icon">{step.icon}</div>
+                                                </div>
+                                                <div className="step-name">{step.name}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -194,9 +214,9 @@ const StartWorking = () => {
                                                 </Form.Group>
                                             </Col>
                                             {/* Upload Logo for Print */}
-                                            <Col md={6}>
+                                            <Col md={6} className="mb-3">
                                                 <div className="upload-file">
-                                                    <div className="d-flex align-items-center gap-3">
+                                                    <div className="d-flex align-items-center gap-3 flex-wrap">
                                                         <div className="image-preview">
                                                             {images.print ? (
                                                                 <Image src={images.print} alt="Uploaded Print Logo" width={100} height={100} />
@@ -217,7 +237,7 @@ const StartWorking = () => {
                                             {/* Upload Logo for Web */}
                                             <Col md={6}>
                                                 <div className="upload-file">
-                                                    <div className="d-flex align-items-center gap-3">
+                                                    <div className="d-flex align-items-center gap-3 flex-wrap">
                                                         <div className="image-preview">
                                                             {images.web ? (
                                                                 <Image src={images.web} alt="Uploaded Web Logo" width={100} height={100} />
@@ -294,7 +314,7 @@ const StartWorking = () => {
                                             {/* Upload Logo for Print */}
                                             <Col md={6}>
                                                 <div className="upload-file mb-3">
-                                                    <div className="d-flex align-items-center gap-3">
+                                                    <div className="d-flex align-items-center gap-3 flex-wrap">
                                                         <div className="image-preview">
                                                             {images.print ? (
                                                                 <Image src={images.print} alt="Uploaded Print Logo" width={100} height={100} />
@@ -315,7 +335,7 @@ const StartWorking = () => {
                                             {/* Upload Logo for Web */}
                                             <Col md={6}>
                                                 <div className="upload-file mb-3">
-                                                    <div className="d-flex align-items-center gap-3">
+                                                    <div className="d-flex align-items-center gap-3 flex-wrap">
                                                         <div className="image-preview">
                                                             {images.web ? (
                                                                 <Image src={images.web} alt="Uploaded Web Logo" width={100} height={100} />

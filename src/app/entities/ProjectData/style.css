@@ -374,3 +374,76 @@ button.btn-refresh svg {
     font-size: 14px;
     margin-bottom: 10px;
 }
+
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-responsive {
+    width: 100%;
+    white-space: nowrap;
+}
+
+
+/* Extra small devices (phones) */
+@media (max-width: 575px) {
+    .table-btn-list {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .table-btn-list div {
+        width: 45%;
+    }
+
+    .table-btn-list {
+        width: 100% !important;
+        margin-top: 16px;
+    }
+
+    .table-footer div {
+        width: 50%;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .step-header-card {
+        padding: 10px 20px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .table-btn-list {
+        width: 100% !important;
+        margin-top: 16px;
+    }
+
+    .table-footer div {
+        width: 33%;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .table-btn-list {
+        width: 100% !important;
+        margin-top: 16px;
+    }
+
+    .table-footer div {
+        width: 33%;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+}

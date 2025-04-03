@@ -789,7 +789,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
             <div className="card">
                 <div className="card-body">
                     <div className="table-heading">
-                        <div className="d-flex justify-content-between align-items-center">
+                        <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
                             <div className="table-title">Organization Members</div>
                             <div className="table-btn-list">
                                 <button className="btn-refresh"><MdRefresh /></button>
@@ -817,45 +817,47 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                         </div>
                     </div>
 
-                    <table {...getTableProps()} className="min-w-full bg-white">
-                        <thead>
-                            {headerGroups.map((headerGroup: any, index: number) => (
-                                <tr {...headerGroup.getHeaderGroupProps()} key={index} className="table-header">
-                                    {headerGroup.headers.map((column: any) => {
-                                        const { key, ...rest } = column.getHeaderProps(column.getSortByToggleProps());
-                                        return (
-                                            <th key={key} {...rest} className="px-4 py-3 text-left border-b cursor-pointer">
-                                                {column.render("Header")}
-                                                <span>
-                                                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                                                </span>
-                                            </th>
-                                        );
-                                    })}
-                                </tr>
-                            ))}
-                        </thead>
-                        <tbody {...getTableBodyProps()}>
-                            {page.map((row: any, index: number) => {
-                                prepareRow(row);
-                                return (
-                                    <tr {...row.getRowProps()} key={index} className="padding-sec hover:bg-gray-100">
-                                        {row.cells.map((cell: any, index: number) => (
-                                            <td {...cell.getCellProps()} key={index} className="px-4 py-3 table-body-text">
-                                                {cell.column.id === "checkbox" ? (
-                                                    <input type="checkbox" checked={!!selectedRows[row.original.id]} onChange={() => toggleCheckbox(row.original.id)} />
-                                                ) : (
-                                                    cell.render("Cell")
-                                                )}
-                                            </td>
-                                        ))}
+                    <div className="table-container">
+                        <table {...getTableProps()} className="min-w-full bg-white table-responsive">
+                            <thead>
+                                {headerGroups.map((headerGroup: any, index: number) => (
+                                    <tr {...headerGroup.getHeaderGroupProps()} key={index} className="table-header">
+                                        {headerGroup.headers.map((column: any) => {
+                                            const { key, ...rest } = column.getHeaderProps(column.getSortByToggleProps());
+                                            return (
+                                                <th key={key} {...rest} className="px-4 py-3 text-left border-b cursor-pointer">
+                                                    {column.render("Header")}
+                                                    <span>
+                                                        {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                                                    </span>
+                                                </th>
+                                            );
+                                        })}
                                     </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
+                                ))}
+                            </thead>
+                            <tbody {...getTableBodyProps()}>
+                                {page.map((row: any, index: number) => {
+                                    prepareRow(row);
+                                    return (
+                                        <tr {...row.getRowProps()} key={index} className="padding-sec hover:bg-gray-100">
+                                            {row.cells.map((cell: any, index: number) => (
+                                                <td {...cell.getCellProps()} key={index} className="px-4 py-3 table-body-text">
+                                                    {cell.column.id === "checkbox" ? (
+                                                        <input type="checkbox" checked={!!selectedRows[row.original.id]} onChange={() => toggleCheckbox(row.original.id)} />
+                                                    ) : (
+                                                        cell.render("Cell")
+                                                    )}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
 
-                    <div className="table-footer d-flex justify-between items-center mt-4">
+                    <div className="table-footer d-flex justify-between items-center mt-4 flex-wrap">
                         <div className="select-row">
                             Show:
                             <select>
@@ -1259,7 +1261,7 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
             <div className="card">
                 <div className="card-body">
                     <div className="table-heading">
-                        <div className="d-flex justify-content-between align-items-center">
+                        <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
                             <div className="table-title">Recent Invitations</div>
                             <div className="table-btn-list">
                                 <button className="btn-refresh"><MdRefresh /></button>
@@ -1286,8 +1288,8 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                             </div>
                         </div>
                     </div>
-
-                    <table {...getTableProps()} className="min-w-full bg-white">
+                    <div className="table-container">
+                    <table {...getTableProps()} className="min-w-full bg-white table-responsive">
                         <thead>
                             {headerGroups.map((headerGroup: any, index: number) => (
                                 <tr {...headerGroup.getHeaderGroupProps()} key={index} className="table-header">
@@ -1324,6 +1326,7 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                             })}
                         </tbody>
                     </table>
+                    </div>
 
                     <div className="table-footer d-flex justify-between items-center mt-4">
                         <div className="select-row">

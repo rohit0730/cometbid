@@ -10,7 +10,7 @@ function RoleDetails() {
     return (
         <>
             <div className="wrapper">
-                <div className="d-flex align-items-center gap-2">
+                <div className="d-flex align-items-center gap-2 page-info">
                     <div className="page-title">
                         <h3>Personal Information</h3>
                     </div>
