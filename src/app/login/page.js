@@ -1,52 +1,43 @@
 import React from "react";
 import "./style.css";
+import Image from "next/image";
+
+import Logo from "../../assets/images/sidebar-logo.png";
 
 function Login() {
     return (
         <>
             <div className="login-body">
-                <div className="container" id="container">
-                    <div className="form-container sign-up-container">
-                        <form action="#">
-                            <h1>Create Account</h1>
-                            <div className="social-container">
-                                <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-                            </div>
-                            <span>or use your email for registration</span>
-                            <input type="text" placeholder="Name" />
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
-                            <button>Sign Up</button>
-                        </form>
-                    </div>
-                    <div className="form-container sign-in-container">
-                        <form action="#">
-                            <h1>Sign in</h1>
-                            <div className="social-container">
-                                <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
-                                <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
-                                <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
-                            </div>
-                            <span>or use your account</span>
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
-                            <a href="#">Forgot your password?</a>
-                            <button>Sign In</button>
-                        </form>
-                    </div>
-                    <div className="overlay-container">
-                        <div className="overlay">
-                            <div className="overlay-panel overlay-left">
-                                <h1>Welcome Back!</h1>
-                                <p>To keep connected with us please login with your personal info</p>
-                                <button className="ghost" id="signIn">Sign In</button>
-                            </div>
-                            <div className="overlay-panel overlay-right">
-                                <h1>Hello, Friend!</h1>
-                                <p>Enter your personal details and start journey with us</p>
-                                <button className="ghost" id="signUp">Sign Up</button>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-5">
+                            <div className="auth-card card">
+                                <div className="auth-card-body">
+                                    <div className="auth-logo">
+                                        <Image src={Logo} alt="logo" />
+                                    </div>
+                                    <div className="auth-title">Sign In</div>
+                                    <div className="auth-subtitle">Enter your email address and password to access admin panel.</div>
+                                    <div className="form-contant">
+                                        <div className="form-group">
+                                            <label className="form-label">Email address</label>
+                                            <input type="email" className="form-control" placeholder="Enter email" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="form-label">Password</label>
+                                            <input type="password" className="form-control" placeholder="Password" />
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <div className="custom-control custom-checkbox">
+                                            <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                                            <label className="custom-control-label" htmlFor="customCheck1">Remember Me</label>
+                                        </div>
+                                    </div>
+                                    <div className="auth-footer">
+                                        <button type="submit" className="btn btn-primary btn-block">Sign In</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
