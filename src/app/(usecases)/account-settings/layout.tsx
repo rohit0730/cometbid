@@ -22,7 +22,7 @@ export default function CampaignLayout({ children }: { children: React.ReactNode
                     <div className="account-settings-contant">
                         <Tab.Container id="left-tabs-example">
                             <Row>
-                                <Col sm={3}>
+                                <Col lg={4} xl={3}>
                                     <div className="tab-content account-settings-tabs">
                                         <div className="d-flex flex-column nav-item">
                                             <Link href="/account-settings/account-details" className={`link ${pathname === '/account-settings/account-details' ? 'active' : ''}`}>
@@ -43,7 +43,7 @@ export default function CampaignLayout({ children }: { children: React.ReactNode
                                         </div>
                                     </div>
                                 </Col>
-                                <Col sm={9}>
+                                <Col lg={8} xl={9}>
                                     <div className="tab-content">
                                         {children}
                                     </div>

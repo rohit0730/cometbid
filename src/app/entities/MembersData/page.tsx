@@ -78,11 +78,11 @@ function MembersData() {
                 </div>
 
                 <div className="table-container mt-30">
-                    <NextDataTable columns={columns} data={data} />;
+                    <NextDataTable columns={columns} data={data} />
                 </div>
 
                 <div className="table-container mt-20">
-                    <NextDataTable2 columns={columns} data={data} />;
+                    <NextDataTable2 columns={columns} data={data} />
                 </div>
             </div>
         </>
@@ -254,7 +254,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                     <Modal.Title>Member Details </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="member-info d-flex justify-content-between">
+                    <div className="member-info d-flex justify-content-between flex-wrap">
                         <div className="info-item">
                             <p className="info-title">Status : <span>Active</span></p>
                         </div>
@@ -381,7 +381,7 @@ const NextDataTable = ({ columns, data }: { columns: any; data: any }) => {
                     <Modal.Title>Member-Role Mapping</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="member-info d-flex justify-content-between">
+                    <div className="member-info d-flex justify-content-between flex-wrap">
                         <div className="info-item">
                             <p className="info-title">Date Joined : <span>24 Fed 2024</span></p>
                         </div>
@@ -1063,7 +1063,7 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
                     <Modal.Title>Member Details </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="member-info d-flex justify-content-between">
+                    <div className="member-info d-flex justify-content-between flex-wrap">
                         <div className="info-item">
                             <p className="info-title">Status : <span>Active</span></p>
                         </div>

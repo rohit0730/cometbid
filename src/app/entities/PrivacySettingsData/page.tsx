@@ -25,8 +25,8 @@ function PrivacyData() {
                     <div className="account-settings-contant">
                         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                             <Row>
-                                <Col sm={3}>
-                                    <Nav variant="pills" className="flex-column gap-3 account-settings-tabs">
+                                <Col lg={4} xl={3}>
+                                    <Nav variant="pills" className="flex-column gap-3 account-settings-tabs privacy-tab">
                                         <Nav.Item>
                                             <Nav.Link eventKey="first">Privacy Details</Nav.Link>
                                         </Nav.Item>
@@ -35,7 +35,7 @@ function PrivacyData() {
                                         </Nav.Item>
                                     </Nav>
                                 </Col>
-                                <Col sm={9}>
+                                <Col lg={8} xl={9}>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="first">
                                             <div className="tab-details">
@@ -175,7 +175,7 @@ function PrivacyData() {
                                                             </Form.Group>
                                                         </Col>
                                                         <Col md={2}>
-                                                            <button className="btn-search">
+                                                            <button className="btn-search mb-3">
                                                                 Search
                                                             </button>
                                                         </Col>
@@ -194,7 +194,7 @@ function PrivacyData() {
                                                     <button className="btn-yellow">
                                                         UNSUBSCRIBE
                                                     </button>
-                                                    <button className="btn-save ms-3">
+                                                    <button className="btn-save">
                                                         SUBSCRIBE
                                                     </button>
                                                 </div>
@@ -309,43 +309,45 @@ const NextDataTable2 = ({ columns, data }: { columns: any; data: any }) => {
 
             <div className="card">
                 <div className="card-body">
-                    <table {...getTableProps()} className="min-w-full bg-white">
-                        <thead style={{background : "#F7F6F9"}}>
-                            {headerGroups.map((headerGroup: any, index: number) => (
-                                <tr {...headerGroup.getHeaderGroupProps()} key={index} className="table-header">
-                                    {headerGroup.headers.map((column: any) => {
-                                        const { key, ...rest } = column.getHeaderProps(column.getSortByToggleProps());
-                                        return (
-                                            <th key={key} {...rest} className="px-4 py-3 text-left border-b cursor-pointer">
-                                                {column.render("Header")}
-                                                <span>
-                                                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
-                                                </span>
-                                            </th>
-                                        );
-                                    })}
-                                </tr>
-                            ))}
-                        </thead>
-                        <tbody {...getTableBodyProps()}>
-                            {page.map((row: any, index: number) => {
-                                prepareRow(row);
-                                return (
-                                    <tr {...row.getRowProps()} key={index} className="padding-sec hover:bg-gray-100" style={{borderBottom: "1px solid #E0E0E0"}}>
-                                        {row.cells.map((cell: any, index: number) => (
-                                            <td {...cell.getCellProps()} key={index} className="px-4 py-3 table-body-text">
-                                                {cell.column.id === "checkbox" ? (
-                                                    <input type="checkbox" checked={!!selectedRows[row.original.id]} onChange={() => toggleCheckbox(row.original.id)} />
-                                                ) : (
-                                                    cell.render("Cell")
-                                                )}
-                                            </td>
-                                        ))}
+                    <div className="table-container">
+                        <table {...getTableProps()} className="min-w-full bg-white table-responsive">
+                            <thead style={{ background: "#F7F6F9" }}>
+                                {headerGroups.map((headerGroup: any, index: number) => (
+                                    <tr {...headerGroup.getHeaderGroupProps()} key={index} className="table-header">
+                                        {headerGroup.headers.map((column: any) => {
+                                            const { key, ...rest } = column.getHeaderProps(column.getSortByToggleProps());
+                                            return (
+                                                <th key={key} {...rest} className="px-4 py-3 text-left border-b cursor-pointer">
+                                                    {column.render("Header")}
+                                                    <span>
+                                                        {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                                                    </span>
+                                                </th>
+                                            );
+                                        })}
                                     </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
+                                ))}
+                            </thead>
+                            <tbody {...getTableBodyProps()}>
+                                {page.map((row: any, index: number) => {
+                                    prepareRow(row);
+                                    return (
+                                        <tr {...row.getRowProps()} key={index} className="padding-sec hover:bg-gray-100" style={{ borderBottom: "1px solid #E0E0E0" }}>
+                                            {row.cells.map((cell: any, index: number) => (
+                                                <td {...cell.getCellProps()} key={index} className="px-4 py-3 table-body-text">
+                                                    {cell.column.id === "checkbox" ? (
+                                                        <input type="checkbox" checked={!!selectedRows[row.original.id]} onChange={() => toggleCheckbox(row.original.id)} />
+                                                    ) : (
+                                                        cell.render("Cell")
+                                                    )}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div className="table-footer d-flex justify-between items-center mt-4">
                         <div className="select-row">

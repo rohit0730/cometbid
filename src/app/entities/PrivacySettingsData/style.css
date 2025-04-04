@@ -62,3 +62,35 @@
     color: #ffffff;
     background-color: var(--primary);
 }
+
+.privacy-tab::-webkit-scrollbar {
+    display: none;
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 991px) {
+    .privacy-tab {
+        flex-direction: row !important;
+        overflow: auto;
+        gap: 0 !important;
+        flex-wrap: nowrap;
+    }
+
+    .privacy-tab .nav-item {
+        width: fit-content;
+        white-space: nowrap;
+    }
+
+    .privacy-tab .nav-item a {
+        font-size: 14px;
+    }
+
+    .privacy-tab {
+        margin-bottom: 22px;
+    }
+
+    .tab-details {
+        padding-left: 0;
+        border: none;
+    }
+}

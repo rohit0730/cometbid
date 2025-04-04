@@ -30,7 +30,7 @@ function SettingsData() {
                     <div className="account-settings-contant">
                         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                             <Row>
-                                <Col sm={3}>
+                                <Col lg={3}>
                                     <Nav variant="pills" className="flex-column gap-3 account-settings-tabs">
                                         <Nav.Item>
                                             <Nav.Link eventKey="first">Account Details</Nav.Link>
@@ -49,7 +49,7 @@ function SettingsData() {
                                         </Nav.Item>
                                     </Nav>
                                 </Col>
-                                <Col sm={9}>
+                                <Col lg={9}>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="first">
                                             <div className="tab-details">

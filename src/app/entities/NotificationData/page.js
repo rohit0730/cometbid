@@ -118,10 +118,13 @@ function NotificationData() {
                                             </div>
                                             <div className="notification-content">
                                                 <h6>{notification.name}</h6>
+                                                <div className="notification-time show_mobile">
+                                                    {notification.time}
+                                                </div>
                                                 <p>{notification.message}</p>
                                             </div>
                                         </div>
-                                        <div className="notification-time w-25 text-end">
+                                        <div className="notification-time w-25 text-end hide_mobile">
                                             {notification.time}
                                         </div>
                                     </div>
@@ -140,10 +143,13 @@ function NotificationData() {
                                             </div>
                                             <div className="notification-content">
                                                 <h6>{notification.name}</h6>
+                                                <div className="notification-time show_mobile">
+                                                    {notification.time}
+                                                </div>
                                                 <p>{notification.message}</p>
                                             </div>
                                         </div>
-                                        <div className="notification-time w-25 text-end">
+                                        <div className="notification-time w-25 text-end hide_mobile">
                                             {notification.time}
                                         </div>
                                     </div>

@@ -1,7 +1,6 @@
 .page-title h3 {
     font-size: 18px;
     font-weight: bold;
-    text-transform: uppercase;
     margin-bottom: 0;
     color: #2B2C3E;
 }
@@ -320,5 +319,13 @@ ul.about-list li span {
     .user-details-inner .profile-image-inner img {
         max-width: 100px;
         height: 100px;
+    }
+
+    .card-about-body {
+        padding: 0px 16px;
+    }
+
+    .profile-banner img {
+        height: 140px;
     }
 }

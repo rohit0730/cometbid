@@ -387,20 +387,35 @@ button.btn-refresh svg {
 }
 
 
+.project-table-tabs::-webkit-scrollbar {
+    display: none;
+}
+
 /* Extra small devices (phones) */
 @media (max-width: 575px) {
     .table-btn-list {
         flex-wrap: wrap;
         justify-content: flex-start;
+        gap: 8px;
+    }
+
+    button.btn-refresh {
+        width: 38px;
+        height: 38px;
     }
 
     .table-btn-list div {
-        width: 45%;
+        width: auto;
+    }
+
+    .btn-dropdown {
+        width: 130px;
+        height: 38px;
     }
 
     .table-btn-list {
         width: 100% !important;
-        margin-top: 16px;
+        /* margin-top: 16px; */
     }
 
     .table-footer div {
@@ -413,6 +428,10 @@ button.btn-refresh svg {
 
     .step-header-card {
         padding: 10px 20px;
+    }
+
+    .btn-add {
+        height: 38px;
     }
 }
 
@@ -446,4 +465,23 @@ button.btn-refresh svg {
     .card-body {
         padding: 20px;
     }
+}
+
+
+@media (max-width: 991px) {
+    .project-table-tabs {
+        flex-direction: row !important;
+        overflow: auto;
+        flex-wrap: nowrap;
+    }
+
+    .project-table-tabs .nav-item {
+        width: fit-content;
+        white-space: nowrap;
+    }
+
+    .project-table-tabs .nav-item  {
+        font-size: 14px;
+    }
+
 }

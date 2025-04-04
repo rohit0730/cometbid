@@ -44,8 +44,8 @@ function OrganizationProfileData() {
                         <Row>
                             {/* Upload Logo for Print */}
                             <Col md={6}>
-                                <div className="upload-file">
-                                    <div className="d-flex align-items-center gap-3">
+                                <div className="upload-file mb-3">
+                                    <div className="d-flex align-items-center gap-3 flex-wrap">
                                         <div className="image-preview">
                                             {images.print ? (
                                                 <Image src={images.print} alt="Uploaded Print Logo" width={100} height={100} />
@@ -66,7 +66,7 @@ function OrganizationProfileData() {
                             {/* Upload Logo for Web */}
                             <Col md={6}>
                                 <div className="upload-file">
-                                    <div className="d-flex align-items-center gap-3">
+                                    <div className="d-flex align-items-center gap-3 flex-wrap">
                                         <div className="image-preview">
                                             {images.web ? (
                                                 <Image src={images.web} alt="Uploaded Web Logo" width={100} height={100} />

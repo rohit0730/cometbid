@@ -82,6 +82,15 @@
     .card-section .col-md-4 {
         margin-top: 16px;
     }
+
+    .notification-dropdown {
+        position: fixed;
+        top: 70px;
+        width: 95%;
+        margin: 0px auto;
+        right: 0;
+        left: 0;
+    }
 }
 
 /* Small devices (landscape phones) */

@@ -352,7 +352,7 @@ label {
 
 .btn-save {
   background-color: var(--primary);
-  padding: 10px 00px;
+  padding: 10px 30px;
   color: #fff;
   border-radius: 5px;
   font-weight: 600;
@@ -380,7 +380,6 @@ label {
 .page-title h3 {
   font-size: 18px;
   font-weight: bold;
-  text-transform: uppercase;
   margin-bottom: 0;
   color: #2B2C3E;
 }
@@ -924,6 +923,17 @@ button.btn-trigger {
   display: none;
 }
 
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-responsive {
+  width: 100%;
+  white-space: nowrap;
+}
+
 /* Extra small devices (phones) */
 @media (max-width: 575px) {
   .custom-modal .modal-header {
@@ -938,6 +948,11 @@ button.btn-trigger {
   .page-info .page-title h3 {
     font-size: 14px;
   }
+
+  .card-box {
+    padding: 16px;
+  }
+  
 }
 
 @media (min-width: 280px) and (max-width: 991px) {

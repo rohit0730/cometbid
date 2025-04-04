@@ -30,7 +30,7 @@ function SubscriptionData() {
 
                     <div className="row mx-n3 justify-content-center">
                         {/* PRICING CARD - Free Plan */}
-                        <div className="col-4 px-2 mb-4">
+                        <div className="col-lg-12 col-xl-4 px-2 mb-4">
                             <div className="card card-frame">
                                 <div className="row align-items-center">
                                     <div className="col-md-12">
@@ -70,7 +70,7 @@ function SubscriptionData() {
                         </div>
                         {/* END PRICING CARD - Free Plan */}
                         {/* PRICING CARD - Free Plan */}
-                        <div className="col-4 px-2 mb-4">
+                        <div className="col-lg-12 col-xl-4 px-2 mb-4">
                             <div className="card card-frame">
                                 <div className="row align-items-center">
                                     <div className="col-md-12">
@@ -110,7 +110,7 @@ function SubscriptionData() {
                         </div>
                         {/* END PRICING CARD - Free Plan */}
                         {/* PRICING CARD - Free Plan */}
-                        <div className="col-4 px-2 mb-4">
+                        <div className="col-lg-12 col-xl-4 px-2 mb-4">
                             <div className="card card-frame">
                                 <div className="row align-items-center">
                                     <div className="col-md-12">

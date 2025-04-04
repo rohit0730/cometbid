@@ -152,7 +152,7 @@ function ProjectData() {
                                 <Tab.Content>
                                     <Tab.Pane eventKey="first">
                                         <div className="table-container mt-20">
-                                            <NextDataTable2 columns={columns2} data={data2} />;
+                                            <NextDataTable2 columns={columns2} data={data2} />
                                         </div>
                                     </Tab.Pane>
                                     <Tab.Pane eventKey="second"></Tab.Pane>
