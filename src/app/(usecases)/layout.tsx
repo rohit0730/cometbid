@@ -4,10 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";
-import { RiDashboardLine } from "react-icons/ri";
+import { RiDashboardLine, RiUserSettingsFill  } from "react-icons/ri";
 import { FaRegUser, FaQuestionCircle } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
+import { PiTreeStructure } from "react-icons/pi";
 import { FiCalendar, FiLogOut } from "react-icons/fi";
 import { LuUserCog } from "react-icons/lu";
 import { MdOutlinePrivacyTip, MdContacts  } from "react-icons/md";
@@ -108,113 +109,113 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                             <ul className="nav-list">
                                 <li className="" onClick={() => setIsSidebarShow(false)}>
                                     <Link href="/dashboard">
-                                        <RiDashboardLine /> <div className="menu-name">Dashboard</div>
+                                        <div className="menu-icon"><RiDashboardLine /></div> <div className="menu-name">Dashboard</div>
                                     </Link>
                                 </li>
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("events")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <FaRegUser /> <div className="menu-name">Personal Information</div>
+                                        <div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Personal Information</div>
                                         </div>
                                         {!isSidebarOpen && (openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["events"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><CgProfile /> <div className="menu-name">My Profile</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><MdOutlineSettingsSuggest /> <div className="menu-name">My Roles</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><div className="menu-icon"><CgProfile /></div> <div className="menu-name">My Profile</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><div className="menu-icon"><MdOutlineSettingsSuggest /></div> <div className="menu-name">My Roles</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
                                 <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/notifications"> <HiOutlineBell /> <div className="menu-name">Notifications</div> 
+                                    <Link href="/notifications"> <div className="menu-icon"><HiOutlineBell /></div> <div className="menu-name">Notifications</div> 
                                     {/* <div className="count-notification">3</div> */}
                                     </Link>
                                 </li>
                                 <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/members"> <LuUsers /> <div className="menu-name">Members</div></Link>
+                                    <Link href="/members"> <div className="menu-icon"><LuUsers /></div> <div className="menu-name">Members</div></Link>
                                 </li>
                                 <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/schedules"> <FiCalendar /> <div className="menu-name">Schedules</div></Link>
+                                    <Link href="/schedules"> <div className="menu-icon"><FiCalendar /></div> <div className="menu-name">Schedules</div></Link>
                                 </li>
 
                                 <hr className="menu-divider" />
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <TbUsersGroup /> <div className="menu-name">Your Collaborations</div>
+                                        <div className="menu-icon"><TbUsersGroup /></div> <div className="menu-name">Your Collaborations</div>
                                         </div>
                                         {!isSidebarOpen && (openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["Collaborations"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><FaRegUser /> <div className="menu-name">Collaborations</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><FiBox /><div className="menu-name">Start Working Group</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><FiBox /><div className="menu-name">Start Interest Group</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><MdOutlineJoinFull /><div className="menu-name">Join Working Group</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><MdOutlineJoinFull /><div className="menu-name">Join Interest Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Collaborations</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Working Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Interest Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Working Group</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Interest Group</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <FaRegFilePowerpoint /> <div className="menu-name">Your Projects</div>
+                                        <div className="menu-icon"><FaRegFilePowerpoint /></div> <div className="menu-name">Your Projects</div>
                                         </div>
                                         {!isSidebarOpen && (openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["projects"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><FaRegFilePowerpoint /><div className="menu-name">Projects</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><FiBox /><div className="menu-name">Start Projects</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><MdOutlineJoinFull /><div className="menu-name">Join Projects</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><div className="menu-icon"><FaRegFilePowerpoint /></div><div className="menu-name">Projects</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Projects</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Projects</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                            <LuUsers /><div className="menu-name">Your Organization Profile</div>
+                                        <div className="menu-icon"><LuUsers /></div><div className="menu-name">Your Organization Profile</div>
                                         </div>
                                         {!isSidebarOpen && (openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                     </button>
                                     {openDropdowns["Organization"] && (
                                         <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><CgProfile /><div className="menu-name">Organization Profile</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><FiBox /><div className="menu-name">Manage Roles</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><MdOutlineJoinFull /><div className="menu-name">Organization Structure</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><div className="menu-icon"><CgProfile /></div><div className="menu-name">Organization Profile</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><div className="menu-icon"><RiUserSettingsFill /></div><div className="menu-name">Manage Roles</div></Link></li>
+                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><div className="menu-icon"><PiTreeStructure /></div><div className="menu-name">Organization Structure</div></Link></li>
                                         </ul>
                                     )}
                                 </li>
                                 <hr className="menu-divider" />
                                 <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/account-settings/account-details"> <LuUserCog /> <div className="menu-name">Account Settings</div></Link>
+                                    <Link href="/account-settings/account-details"> <div className="menu-icon"><LuUserCog /></div> <div className="menu-name">Account Settings</div></Link>
                                 </li>
                                 <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/privacy-settings"> <MdOutlinePrivacyTip /> <div className="menu-name">Privacy Settings</div></Link>
+                                    <Link href="/privacy-settings"> <div className="menu-icon"><MdOutlinePrivacyTip /></div> <div className="menu-name">Privacy Settings</div></Link>
                                 </li>
                                 <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/activity-logs"> <IoFileTrayStacked /> <div className="menu-name">Activity Logs</div></Link>
+                                    <Link href="/activity-logs"> <div className="menu-icon"><IoFileTrayStacked /></div> <div className="menu-name">Activity Logs</div></Link>
                                 </li>
                             </ul>
                         </div>
                         <div className="sidebar-footer sidebar-menu">
                             <ul className="nav-list">
                                 <li>
-                                    <Link href="/account-settings"><FaQuestionCircle /><div className="menu-name">FAQs</div></Link>
+                                    <Link href="/account-settings"><div className="menu-icon"><FaQuestionCircle /></div><div className="menu-name">FAQs</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/privacy-settings"><GrResources /><div className="menu-name">Resources</div></Link>
+                                    <Link href="/privacy-settings"><div className="menu-icon"><GrResources /></div><div className="menu-name">Resources</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/activity-logs"><TbNews /><div className="menu-name">News and blogs</div></Link>
+                                    <Link href="/activity-logs"><div className="menu-icon"><TbNews /></div><div className="menu-name">News and blogs</div></Link>
                                 </li>
                                 <li>
-                                    <Link href="/activity-logs"><MdContacts /><div className="menu-name">Contact us</div></Link>
+                                    <Link href="/activity-logs"><div className="menu-icon"><MdContacts /></div><div className="menu-name">Contact us</div></Link>
                                 </li>
                                 <li>
                                     <button className="dropdown-btn">
                                         <div className="menu-gap d-flex align-items-center">
-                                            <FiLogOut /> <div className="menu-name">Logout</div>
+                                        <div className="menu-icon"><FiLogOut /></div> <div className="menu-name">Logout</div>
                                         </div>
                                     </button>
                                 </li>

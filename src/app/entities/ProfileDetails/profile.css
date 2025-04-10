@@ -99,10 +99,10 @@ ul.about-list li {
 }
 
 ul.about-list li span {
-    color: var(--foreground);
+    color: var(--primary);
     font-weight: 600;
     font-size: 14px;
-    width: 50%;
+    width: 30%;
     display: inline-block;
 }
 
