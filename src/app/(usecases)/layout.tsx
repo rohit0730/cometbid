@@ -88,7 +88,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <li className="dropdown">
                                     <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
                                         <div className="menu-gap d-flex align-items-center">
-                                        <TbUsersGroup /> Your Collaborations
+                                            <TbUsersGroup /> Your Collaborations
                                         </div>
                                         {openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />}
                                     </button>
@@ -140,7 +140,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                             <div className="page-header-content">
                                 <div className="content-left d-flex align-items-center">
                                     <div className="toggle-sidebar">
-                                        <button type="button" className="btn-toggle">
+                                        < button type="button" className="btn-toggle">
                                             <Image
                                                 src={ToggleIcon}
                                                 alt="icon"

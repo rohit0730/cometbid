@@ -68,7 +68,7 @@ const JoinInterest = () => {
                         alt="arrow"
                     />
                     <div className="page-title">
-                        <h3> Join A Interest Group</h3> 
+                        <h3> Join A Interest Group</h3>
                     </div>
                 </div>
 
@@ -136,7 +136,7 @@ const JoinInterest = () => {
                                             </Col>
                                             <div className="step-subtitle">Each Working Group has different participation levels and restrictions on who can join at those levels (e.g., Guest Member level is typically restricted to non-profit organizations).See the charter for full details on which choice is best for you, and to see the working group fees associated with joining this working group</div>
                                             <div className="step-subtitle">
-                                            Please contact our membership team with any questions.</div>
+                                                Please contact our membership team with any questions.</div>
                                         </Row>
                                     </Form>
                                 </div>
@@ -180,6 +180,8 @@ const JoinInterest = () => {
                                                     <option value="2">Team Lead</option>
                                                     <option value="3">Developer</option>
                                                 </Form.Select>
+
+
                                             </Col>
                                         </Row>
                                     </Form>
@@ -195,34 +197,38 @@ const JoinInterest = () => {
                                     <Form className="mt-3">
                                         <Row>
                                             <Col md={6}>
-                                            <Form.Label>Witch Working Group would you like to join? </Form.Label>
-                                                    <Form.Select aria-label="Default select example" className="form-control">
-                                                        <option> Jakarta EE Working Group </option>
-                                                        <option value="1">Automotive & Mobility</option>
-                                                        <option value="2">Banking</option>
-                                                        <option value="3">Blockchain</option>
-                                                    </Form.Select>
+                                                <Form.Label>Witch Working Group would you like to join? </Form.Label>
+                                                <Form.Select aria-label="Default select example" className="form-control">
+                                                    <option> Jakarta EE Working Group </option>
+                                                    <option value="1">Automotive & Mobility</option>
+                                                    <option value="2">Banking</option>
+                                                    <option value="3">Blockchain</option>
+                                                </Form.Select>
                                             </Col>
                                             <Col md={6}>
-                                            <Form.Group className="mb-3" controlId="formGroupTechnology">
+                                                <Form.Group className="mb-3" controlId="formGroupTechnology">
                                                     <Form.Label> What Role Would ypu like to play on this Interest Group? </Form.Label>
                                                     <Form.Select aria-label="Default select example" className="form-control">
                                                         <option>Guest Member</option>
                                                         <option value="1">Automotive & Mobility</option>
                                                         <option value="2">Banking</option>
-                                                        <option value="3">Blockchain</option>
+                                                        <option value="3">Blockchain </option>
                                                     </Form.Select>
                                                 </Form.Group>
                                             </Col>
-                                           
-                                            
-                                           
+
+
+
                                             <Col md={6}>
                                                 <Form.Group className="mb-3" controlId="formGroupFirstName">
                                                     <Form.Label>First Name*</Form.Label>
                                                     <Form.Control type="name" placeholder="Mathew" />
                                                 </Form.Group>
                                             </Col>
+
+
+
+
                                             <Col md={6}>
                                                 <Form.Group className="mb-3" controlId="formGroupLastName">
                                                     <Form.Label>Last Name*</Form.Label>
@@ -243,9 +249,9 @@ const JoinInterest = () => {
                                                     <option value="2">Team Lead</option>
                                                     <option value="3">Developer</option>
                                                 </Form.Select>
-                                            </Col>   
+                                            </Col>
 
-                                            
+
                                             <Col md={6}>
                                                 <Form.Group className="mb-3" controlId="formGroupDate">
                                                     <Form.Check aria-label="option 1" label="I agree to abled by the code of conduct, rules and regulations by law binding on members of this working group" />
