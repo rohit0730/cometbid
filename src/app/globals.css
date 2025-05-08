@@ -74,12 +74,12 @@ a {
 }
 
 .sidebar-menu-scroll {
-  height: calc(100vh -140px);
+  height: calc(100vh - 140px);
   overflow-y: auto;
 }
 
 .page-inner.active .sidebar-menu-scroll {
-  height: calc(100vh -75px);
+  height: calc(100vh - 75px);
   overflow-y: auto;
 }
 
