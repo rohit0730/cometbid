@@ -69,7 +69,17 @@ a {
   width: 270px;
   height: 100vh;
   background-color: var(--primary);
+  /* overflow-y: auto; */
+  z-index: 999;
+}
+
+.sidebar-menu-scroll {
+  height: calc(100vh - 75px);
   overflow-y: auto;
+}
+
+.sidebar-menu-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar-header {
@@ -107,7 +117,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 20%;
 }
 
 .page-header {
@@ -216,6 +226,7 @@ a {
 
 .sidebar-menu li {
   margin-bottom: 5px;
+  position: relative;
 }
 
 .sidebar-menu li.active a {
@@ -278,6 +289,7 @@ a {
 
 .nav-list .dropdown-menu li {
   padding: 0px;
+  position: relative;
 }
 
 ul.dropdown-menu {
@@ -840,16 +852,20 @@ button.country-flag img {
 }
 
 .page-inner.active .sidebar {
-  width: 90px;
+  width: 70px;
+}
+
+.page-inner.active .sidebar .sidebar-menu {
+  padding: 24px 0px;
 }
 
 .page-inner.active .main-content {
-  margin-left: 90px;
+  margin-left: 70px;
 }
 
 .page-inner.active .page-header {
-  left: 90px;
-  width: calc(100% - 90px);
+  left: 70px;
+  width: calc(100% - 70px);
 }
 
 .page-inner.active .plan {
@@ -863,11 +879,12 @@ button.country-flag img {
 .page-inner.active .sidebar-menu a,
 .siebar-menu button {
   justify-content: center;
+  position: relative;
 }
 
 .page-inner.active .sidebar-menu .dropdown-menu a {
   justify-content: flex-start ! important;
-  width: auto;
+  width: min-content;
 }
 
 .page-inner.active .nav-list .dropdown-btn {

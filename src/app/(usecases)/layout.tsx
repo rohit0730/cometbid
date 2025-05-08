@@ -4,14 +4,14 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";
-import { RiDashboardLine, RiUserSettingsFill  } from "react-icons/ri";
+import { RiDashboardLine, RiUserSettingsFill } from "react-icons/ri";
 import { FaRegUser, FaQuestionCircle } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
 import { PiTreeStructure } from "react-icons/pi";
 import { FiCalendar, FiLogOut } from "react-icons/fi";
 import { LuUserCog } from "react-icons/lu";
-import { MdOutlinePrivacyTip, MdContacts  } from "react-icons/md";
+import { MdOutlinePrivacyTip, MdContacts, MdFeaturedPlayList } from "react-icons/md";
 import { IoFileTrayStacked } from "react-icons/io5";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
@@ -105,121 +105,138 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                 <p>Organization membership plan    <Link href="/dashboard">Monthley</Link></p>
                             </div>
                         </div>
-                        <div className="sidebar-menu">
-                            <ul className="nav-list">
-                                <li className="" onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/dashboard">
-                                        <div className="menu-icon"><RiDashboardLine /></div> <div className="menu-name">Dashboard</div>
-                                    </Link>
-                                </li>
-                                <li className="dropdown">
-                                    <button className="dropdown-btn" onClick={() => toggleDropdown("events")}>
-                                        <div className="menu-gap d-flex align-items-center">
-                                        <div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Personal Information</div>
-                                        </div>
-                                        {!isSidebarOpen && (openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
-                                    </button>
-                                    {openDropdowns["events"] && (
-                                        <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><div className="menu-icon"><CgProfile /></div> <div className="menu-name">My Profile</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><div className="menu-icon"><MdOutlineSettingsSuggest /></div> <div className="menu-name">My Roles</div></Link></li>
-                                        </ul>
-                                    )}
-                                </li>
-                                <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/notifications"> <div className="menu-icon"><HiOutlineBell /></div> <div className="menu-name">Notifications</div> 
-                                    {/* <div className="count-notification">3</div> */}
-                                    </Link>
-                                </li>
-                                <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/members"> <div className="menu-icon"><LuUsers /></div> <div className="menu-name">Members</div></Link>
-                                </li>
-                                <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/schedules"> <div className="menu-icon"><FiCalendar /></div> <div className="menu-name">Schedules</div></Link>
-                                </li>
+                        <div className="sidebar-menu-scroll">
+                            <div className="sidebar-menu">
+                                <ul className="nav-list">
+                                    <li className="" onClick={() => setIsSidebarShow(false)} data-tooltip-id="dashboard-tooltip" data-tooltip-content="Dashboard" data-tooltip-variant="info">
+                                        <Link href="/dashboard">
+                                            <div className="menu-icon"><RiDashboardLine /></div> <div className="menu-name">Dashboard</div>
+                                        </Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="dashboard-tooltip" place="right" />}
+                                    <li className="dropdown" data-tooltip-id="events-tooltip" data-tooltip-content="Personal Information" data-tooltip-variant="info">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("events")} >
+                                            <div className="menu-gap d-flex align-items-center">
+                                                <div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Personal Information</div>
+                                            </div>
+                                            {!isSidebarOpen && (openDropdowns["events"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
+                                        </button>
+                                        {openDropdowns["events"] && (
+                                            <ul className="dropdown-menu">
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><div className="menu-icon"><CgProfile /></div> <div className="menu-name">My Profile</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><div className="menu-icon"><MdOutlineSettingsSuggest /></div> <div className="menu-name">My Roles</div></Link></li>
+                                            </ul>
+                                        )}
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="events-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="notifications-tooltip" data-tooltip-content="Notifications" data-tooltip-variant="info">
+                                        <Link href="/notifications"> <div className="menu-icon"><HiOutlineBell /></div> <div className="menu-name">Notifications</div>
+                                            {/* <div className="count-notification">3</div> */}
+                                        </Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="notifications-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="members-tooltip" data-tooltip-content="Members" data-tooltip-variant="info">
+                                        <Link href="/members"> <div className="menu-icon"><LuUsers /></div> <div className="menu-name">Members</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="members-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="schedules-tooltip" data-tooltip-content="Schedules" data-tooltip-variant="info">
+                                        <Link href="/schedules"> <div className="menu-icon"><FiCalendar /></div> <div className="menu-name">Schedules</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="schedules-tooltip" place="right" />}
 
-                                <hr className="menu-divider" />
-                                <li className="dropdown">
-                                    <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
-                                        <div className="menu-gap d-flex align-items-center">
-                                        <div className="menu-icon"><TbUsersGroup /></div> <div className="menu-name">Your Collaborations</div>
-                                        </div>
-                                        {!isSidebarOpen && (openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
-                                    </button>
-                                    {openDropdowns["Collaborations"] && (
-                                        <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Collaborations</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Working Group</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Interest Group</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Working Group</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Interest Group</div></Link></li>
-                                        </ul>
-                                    )}
-                                </li>
-                                <li className="dropdown">
-                                    <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
-                                        <div className="menu-gap d-flex align-items-center">
-                                        <div className="menu-icon"><FaRegFilePowerpoint /></div> <div className="menu-name">Your Projects</div>
-                                        </div>
-                                        {!isSidebarOpen && (openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
-                                    </button>
-                                    {openDropdowns["projects"] && (
-                                        <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><div className="menu-icon"><FaRegFilePowerpoint /></div><div className="menu-name">Projects</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Projects</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Projects</div></Link></li>
-                                        </ul>
-                                    )}
-                                </li>
-                                <li className="dropdown">
-                                    <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
-                                        <div className="menu-gap d-flex align-items-center">
-                                        <div className="menu-icon"><LuUsers /></div><div className="menu-name">Your Organization Profile</div>
-                                        </div>
-                                        {!isSidebarOpen && (openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
-                                    </button>
-                                    {openDropdowns["Organization"] && (
-                                        <ul className="dropdown-menu">
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><div className="menu-icon"><CgProfile /></div><div className="menu-name">Organization Profile</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><div className="menu-icon"><RiUserSettingsFill /></div><div className="menu-name">Manage Roles</div></Link></li>
-                                            <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><div className="menu-icon"><PiTreeStructure /></div><div className="menu-name">Organization Structure</div></Link></li>
-                                        </ul>
-                                    )}
-                                </li>
-                                <hr className="menu-divider" />
-                                <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/account-settings/account-details"> <div className="menu-icon"><LuUserCog /></div> <div className="menu-name">Account Settings</div></Link>
-                                </li>
-                                <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/privacy-settings"> <div className="menu-icon"><MdOutlinePrivacyTip /></div> <div className="menu-name">Privacy Settings</div></Link>
-                                </li>
-                                <li onClick={() => setIsSidebarShow(false)}>
-                                    <Link href="/activity-logs"> <div className="menu-icon"><IoFileTrayStacked /></div> <div className="menu-name">Activity Logs</div></Link>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="sidebar-footer sidebar-menu">
-                            <ul className="nav-list">
-                                <li>
-                                    <Link href="/account-settings"><div className="menu-icon"><FaQuestionCircle /></div><div className="menu-name">FAQs</div></Link>
-                                </li>
-                                <li>
-                                    <Link href="/privacy-settings"><div className="menu-icon"><GrResources /></div><div className="menu-name">Resources</div></Link>
-                                </li>
-                                <li>
-                                    <Link href="/activity-logs"><div className="menu-icon"><TbNews /></div><div className="menu-name">News and blogs</div></Link>
-                                </li>
-                                <li>
-                                    <Link href="/activity-logs"><div className="menu-icon"><MdContacts /></div><div className="menu-name">Contact us</div></Link>
-                                </li>
-                                <li>
-                                    <button className="dropdown-btn">
-                                        <div className="menu-gap d-flex align-items-center">
-                                        <div className="menu-icon"><FiLogOut /></div> <div className="menu-name">Logout</div>
-                                        </div>
-                                    </button>
-                                </li>
-                            </ul>
+                                    <hr className="menu-divider" />
+                                    <li className="dropdown" data-tooltip-id="Collaborations-tooltip" data-tooltip-content="Your Collaborations" data-tooltip-variant="info">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
+                                            <div className="menu-gap d-flex align-items-center">
+                                                <div className="menu-icon"><TbUsersGroup /></div> <div className="menu-name">Your Collaborations</div>
+                                            </div>
+                                            {!isSidebarOpen && (openDropdowns["Collaborations"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
+                                        </button>
+                                        {openDropdowns["Collaborations"] && (
+                                            <ul className="dropdown-menu">
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Collaborations</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Working Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Interest Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Working Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Interest Group</div></Link></li>
+                                            </ul>
+                                        )}
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Collaborations-tooltip" place="right" />}
+                                    <li className="dropdown" data-tooltip-id="projects-tooltip" data-tooltip-content="Your Projects" data-tooltip-variant="info">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
+                                            <div className="menu-gap d-flex align-items-center">
+                                                <div className="menu-icon"><FaRegFilePowerpoint /></div> <div className="menu-name">Your Projects</div>
+                                            </div>
+                                            {!isSidebarOpen && (openDropdowns["projects"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
+                                        </button>
+                                        {openDropdowns["projects"] && (
+                                            <ul className="dropdown-menu">
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><div className="menu-icon"><MdFeaturedPlayList /></div><div className="menu-name">Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Projects</div></Link></li>
+                                            </ul>
+                                        )}
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="projects-tooltip" place="right" />}
+                                    <li className="dropdown" data-tooltip-id="Organization-tooltip" data-tooltip-content="Your Organization Profile" data-tooltip-variant="info">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
+                                            <div className="menu-gap d-flex align-items-center">
+                                                <div className="menu-icon"><LuUsers /></div><div className="menu-name">Your Organization Profile</div>
+                                            </div>
+                                            {!isSidebarOpen && (openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
+                                        </button>
+                                        {openDropdowns["Organization"] && (
+                                            <ul className="dropdown-menu">
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><div className="menu-icon"><CgProfile /></div><div className="menu-name">Organization Profile</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><div className="menu-icon"><RiUserSettingsFill /></div><div className="menu-name">Manage Roles</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><div className="menu-icon"><PiTreeStructure /></div><div className="menu-name">Organization Structure</div></Link></li>
+                                            </ul>
+                                        )}
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Organization-tooltip" place="right" />}
+                                    <hr className="menu-divider" />
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Account-tooltip" data-tooltip-content="Account Settings" data-tooltip-variant="info">
+                                        <Link href="/account-settings/account-details"> <div className="menu-icon"><LuUserCog /></div> <div className="menu-name">Account Settings</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Account-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Privacy-tooltip" data-tooltip-content="Privacy Settings" data-tooltip-variant="info">
+                                        <Link href="/privacy-settings"> <div className="menu-icon"><MdOutlinePrivacyTip /></div> <div className="menu-name">Privacy Settings</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Privacy-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Activity-tooltip" data-tooltip-content="Activity Logs" data-tooltip-variant="info">
+                                        <Link href="/activity-logs"> <div className="menu-icon"><IoFileTrayStacked /></div> <div className="menu-name">Activity Logs</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Activity-tooltip" place="right" />}
+                                </ul>
+                            </div>
+                            <div className="sidebar-footer sidebar-menu">
+                                <ul className="nav-list">
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="faq-tooltip" data-tooltip-content="FAQs" data-tooltip-variant="info">
+                                        <Link href="https://cometbid-web.netlify.app/faq"><div className="menu-icon"><FaQuestionCircle /></div><div className="menu-name">FAQs</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="faq-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Resources-tooltip" data-tooltip-content="Resources" data-tooltip-variant="info">
+                                        <Link href="https://cometbid-web.netlify.app/project/resources"><div className="menu-icon"><GrResources /></div><div className="menu-name">Resources</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Resources-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="News-tooltip" data-tooltip-content="News and blogs" data-tooltip-variant="info">
+                                        <Link href="https://cometbid-web.netlify.app/news"><div className="menu-icon"><TbNews /></div><div className="menu-name">News and blogs</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="News-tooltip" place="right" />}
+                                    <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Contact-tooltip" data-tooltip-content="Contact us" data-tooltip-variant="info">
+                                        <Link href="https://cometbid-web.netlify.app/about/contact-us"><div className="menu-icon"><MdContacts /></div><div className="menu-name">Contact us</div></Link>
+                                    </li>
+                                    {isSidebarOpen && <Tooltip id="Contact-tooltip" place="right" />}
+                                    <li>
+                                        <button className="dropdown-btn">
+                                            <div className="menu-gap d-flex align-items-center">
+                                                <div className="menu-icon"><FiLogOut /></div> <div className="menu-name">Logout</div>
+                                            </div>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div className="main-content">
@@ -362,7 +379,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                                     <li><Link href="/activity-logs"><Image src={LogoutIcon} alt="icon" /> Log Out</Link></li>
                                                 </ul>
                                             </div>
-                                         )}
+                                        )}
                                     </div>
                                 </div>
                             </div>
