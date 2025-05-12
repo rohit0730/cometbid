@@ -9,6 +9,7 @@ import { FaRegUser, FaQuestionCircle, FaProjectDiagram  } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
 import { PiTreeStructure } from "react-icons/pi";
+import { ImProfile } from "react-icons/im";
 import { SiOpenproject } from "react-icons/si";
 import { FiCalendar, FiLogOut } from "react-icons/fi";
 import { RiProfileLine } from "react-icons/ri";
@@ -126,7 +127,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </button>
                                         {openDropdowns["events"] && (
                                             <ul className="dropdown-menu">
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><div className="menu-icon"><CgProfile /></div> <div className="menu-name">My Profile</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><div className="menu-icon"><ImProfile /></div> <div className="menu-name">My Profile</div></Link></li>
                                                 <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><div className="menu-icon"><MdOutlineSettingsSuggest /></div> <div className="menu-name">My Roles</div></Link></li>
                                             </ul>
                                         )}
