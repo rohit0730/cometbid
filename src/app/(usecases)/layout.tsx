@@ -5,13 +5,14 @@ import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";
 import { RiDashboardLine, RiUserSettingsFill } from "react-icons/ri";
-import { FaRegUser, FaQuestionCircle } from "react-icons/fa";
+import { FaRegUser, FaQuestionCircle, FaProjectDiagram  } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
 import { PiTreeStructure } from "react-icons/pi";
+import { SiOpenproject } from "react-icons/si";
 import { FiCalendar, FiLogOut } from "react-icons/fi";
 import { LuUserCog } from "react-icons/lu";
-import { MdOutlinePrivacyTip, MdContacts, MdFeaturedPlayList } from "react-icons/md";
+import { MdOutlinePrivacyTip, MdContacts, MdFeaturedPlayList, MdGroupAdd } from "react-icons/md";
 import { IoFileTrayStacked } from "react-icons/io5";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
@@ -23,6 +24,7 @@ import { FaRegFilePowerpoint } from "react-icons/fa6";
 import { Tooltip } from 'react-tooltip';
 import { LuMenu } from "react-icons/lu";
 import { GrResources } from "react-icons/gr";
+import { PiIntersectThreeBold } from "react-icons/pi";
 import './responsive.css'
 
 // svg images 
@@ -156,9 +158,9 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             <ul className="dropdown-menu">
                                                 <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Collaborations</div></Link></li>
                                                 <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Working Group</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Interest Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><div className="menu-icon"><PiIntersectThreeBold /></div><div className="menu-name">Start Interest Group</div></Link></li>
                                                 <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Working Group</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Interest Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdGroupAdd /></div><div className="menu-name">Join Interest Group</div></Link></li>
                                             </ul>
                                         )}
                                     </li>
@@ -173,8 +175,8 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         {openDropdowns["projects"] && (
                                             <ul className="dropdown-menu">
                                                 <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><div className="menu-icon"><MdFeaturedPlayList /></div><div className="menu-name">Projects</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Projects</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><div className="menu-icon"><FaProjectDiagram /></div><div className="menu-name">Start Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><div className="menu-icon"><SiOpenproject /></div><div className="menu-name">Join Projects</div></Link></li>
                                             </ul>
                                         )}
                                     </li>
