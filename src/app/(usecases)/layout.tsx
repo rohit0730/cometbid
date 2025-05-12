@@ -11,6 +11,7 @@ import { LuUsers } from "react-icons/lu";
 import { PiTreeStructure } from "react-icons/pi";
 import { SiOpenproject } from "react-icons/si";
 import { FiCalendar, FiLogOut } from "react-icons/fi";
+import { RiProfileLine } from "react-icons/ri";
 import { LuUserCog } from "react-icons/lu";
 import { MdOutlinePrivacyTip, MdContacts, MdFeaturedPlayList, MdGroupAdd } from "react-icons/md";
 import { IoFileTrayStacked } from "react-icons/io5";
@@ -184,7 +185,7 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     <li className="dropdown" data-tooltip-id="Organization-tooltip" data-tooltip-content="Your Organization Profile" data-tooltip-variant="info">
                                         <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
                                             <div className="menu-gap d-flex align-items-center">
-                                                <div className="menu-icon"><LuUsers /></div><div className="menu-name">Your Organization Profile</div>
+                                                <div className="menu-icon"><RiProfileLine /></div><div className="menu-name">Your Organization Profile</div>
                                             </div>
                                             {!isSidebarOpen && (openDropdowns["Organization"] ? <IoIosArrowUp /> : <IoIosArrowDown />)}
                                         </button>
