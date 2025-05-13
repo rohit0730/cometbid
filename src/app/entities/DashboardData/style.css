@@ -320,7 +320,29 @@ p.description {
     height: 20px;
 }
 
+.faq-section .accordion-item {
+    margin-bottom: 16px;
+    border-radius: 5px !important;
+}
 
+.faq-section .accordion-item button.collapsed {
+    border-radius: 5px !important;
+    background-color: #fff;
+    color: var(--foreground);
+    font-weight: bold;
+}
+
+.faq-section .accordion-item button {
+    border-radius: 5px !important;
+    background-color: #fff;
+    color: var(--foreground);
+    font-weight: bold;
+    height: 65px;
+}
+
+.faq-section .accordion-item button:focus {
+    box-shadow: none !important;
+}
 
 
 /* Extra small devices (phones) */
