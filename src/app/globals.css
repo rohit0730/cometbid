@@ -881,6 +881,14 @@ button.country-flag img {
   display: none;
 }
 
+.page-inner.active .nav-list .dropdown-menu li {
+  width: min-content;
+}
+
+.page-inner.active .nav-list .dropdown-menu li a {
+  padding-right: 10px ! important;
+}
+
 .page-inner.active .sidebar-menu a,
 .siebar-menu button {
   justify-content: center;

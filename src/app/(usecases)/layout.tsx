@@ -5,7 +5,7 @@ import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";
 import { RiDashboardLine, RiUserSettingsFill } from "react-icons/ri";
-import { FaRegUser, FaQuestionCircle, FaProjectDiagram  } from "react-icons/fa";
+import { FaRegUser, FaQuestionCircle, FaProjectDiagram } from "react-icons/fa";
 import { HiOutlineBell } from "react-icons/hi2";
 import { LuUsers } from "react-icons/lu";
 import { PiTreeStructure } from "react-icons/pi";
@@ -117,9 +117,8 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             <div className="menu-icon"><RiDashboardLine /></div> <div className="menu-name">Dashboard</div>
                                         </Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="dashboard-tooltip" place="right" />}
-                                    <li className="dropdown" data-tooltip-id="events-tooltip" data-tooltip-content="Personal Information" data-tooltip-variant="dark">
-                                        <button className="dropdown-btn" onClick={() => toggleDropdown("events")} >
+                                    <li className="dropdown">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("events")} data-tooltip-id="events-tooltip" data-tooltip-content="Personal Information" data-tooltip-variant="dark">
                                             <div className="menu-gap d-flex align-items-center">
                                                 <div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Personal Information</div>
                                             </div>
@@ -127,30 +126,26 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </button>
                                         {openDropdowns["events"] && (
                                             <ul className="dropdown-menu">
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myprofile"><div className="menu-icon"><ImProfile /></div> <div className="menu-name">My Profile</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/personal-information/myrole"><div className="menu-icon"><MdOutlineSettingsSuggest /></div> <div className="menu-name">My Roles</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="profle-tooltip" data-tooltip-content="My Profile" data-tooltip-variant="dark"><Link href="/personal-information/myprofile"><div className="menu-icon"><ImProfile /></div> <div className="menu-name">My Profile</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="roles-tooltip" data-tooltip-content="My Roles" data-tooltip-variant="dark"><Link href="/personal-information/myrole"><div className="menu-icon"><MdOutlineSettingsSuggest /></div> <div className="menu-name">My Roles</div></Link></li>
                                             </ul>
                                         )}
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="events-tooltip" place="right" />}
+
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="notifications-tooltip" data-tooltip-content="Notifications" data-tooltip-variant="dark">
                                         <Link href="/notifications"> <div className="menu-icon"><HiOutlineBell /></div> <div className="menu-name">Notifications</div>
                                             {/* <div className="count-notification">3</div> */}
                                         </Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="notifications-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="members-tooltip" data-tooltip-content="Members" data-tooltip-variant="dark">
                                         <Link href="/members"> <div className="menu-icon"><LuUsers /></div> <div className="menu-name">Members</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="members-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="schedules-tooltip" data-tooltip-content="Schedules" data-tooltip-variant="dark">
                                         <Link href="/schedules"> <div className="menu-icon"><FiCalendar /></div> <div className="menu-name">Schedules</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="schedules-tooltip" place="right" />}
-
                                     <hr className="menu-divider" />
-                                    <li className="dropdown" data-tooltip-id="Collaborations-tooltip" data-tooltip-content="Your Collaborations" data-tooltip-variant="dark">
-                                        <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")}>
+                                    <li className="dropdown">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("Collaborations")} data-tooltip-id="YourCollaborations-tooltip" data-tooltip-content="Your Collaborations" data-tooltip-variant="dark">
                                             <div className="menu-gap d-flex align-items-center">
                                                 <div className="menu-icon"><TbUsersGroup /></div> <div className="menu-name">Your Collaborations</div>
                                             </div>
@@ -158,17 +153,16 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </button>
                                         {openDropdowns["Collaborations"] && (
                                             <ul className="dropdown-menu">
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/your-collaboration"><div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Collaborations</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-working-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Working Group</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/start-interest-group"><div className="menu-icon"><PiIntersectThreeBold /></div><div className="menu-name">Start Interest Group</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-working-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Working Group</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdGroupAdd /></div><div className="menu-name">Join Interest Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Collaborations-tooltip" data-tooltip-content="Collaborations" data-tooltip-variant="dark"><Link href="/collaborations/your-collaboration"><div className="menu-icon"><FaRegUser /></div> <div className="menu-name">Collaborations</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="StartWorkingGroup-tooltip" data-tooltip-content="Start Working Group" data-tooltip-variant="dark"><Link href="/collaborations/start-working-group"><div className="menu-icon"><FiBox /></div><div className="menu-name">Start Working Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="StartInterestGroup-tooltip" data-tooltip-content="Start Interest Group" data-tooltip-variant="dark"><Link href="/collaborations/start-interest-group"><div className="menu-icon"><PiIntersectThreeBold /></div><div className="menu-name">Start Interest Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="JoinWorkingGroup-tooltip" data-tooltip-content="Join Working Group" data-tooltip-variant="dark"><Link href="/collaborations/join-working-group"><div className="menu-icon"><MdOutlineJoinFull /></div><div className="menu-name">Join Working Group</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="JoinInterestGroup-tooltip" data-tooltip-content="Join Interest Group" data-tooltip-variant="dark"><Link href="/collaborations/join-interest-group"><div className="menu-icon"><MdGroupAdd /></div><div className="menu-name">Join Interest Group</div></Link></li>
                                             </ul>
                                         )}
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Collaborations-tooltip" place="right" />}
-                                    <li className="dropdown" data-tooltip-id="projects-tooltip" data-tooltip-content="Your Projects" data-tooltip-variant="dark">
-                                        <button className="dropdown-btn" onClick={() => toggleDropdown("projects")}>
+                                    <li className="dropdown">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("projects")} data-tooltip-id="your-projects-tooltip" data-tooltip-content="Your Projects" data-tooltip-variant="dark">
                                             <div className="menu-gap d-flex align-items-center">
                                                 <div className="menu-icon"><FaRegFilePowerpoint /></div> <div className="menu-name">Your Projects</div>
                                             </div>
@@ -176,15 +170,14 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </button>
                                         {openDropdowns["projects"] && (
                                             <ul className="dropdown-menu">
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects"><div className="menu-icon"><MdFeaturedPlayList /></div><div className="menu-name">Projects</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/start-project"><div className="menu-icon"><FaProjectDiagram /></div><div className="menu-name">Start Projects</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/projects/join-project"><div className="menu-icon"><SiOpenproject /></div><div className="menu-name">Join Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="projects-tooltip" data-tooltip-content="Projects" data-tooltip-variant="dark"><Link href="/projects"><div className="menu-icon"><MdFeaturedPlayList /></div><div className="menu-name">Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="start-projects-tooltip" data-tooltip-content="Start Projects" data-tooltip-variant="dark"><Link href="/projects/start-project"><div className="menu-icon"><FaProjectDiagram /></div><div className="menu-name">Start Projects</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="join-projects-tooltip" data-tooltip-content="Join Projects" data-tooltip-variant="dark"><Link href="/projects/join-project"><div className="menu-icon"><SiOpenproject /></div><div className="menu-name">Join Projects</div></Link></li>
                                             </ul>
                                         )}
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="projects-tooltip" place="right" />}
-                                    <li className="dropdown" data-tooltip-id="Organization-tooltip" data-tooltip-content="Your Organization Profile" data-tooltip-variant="dark">
-                                        <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")}>
+                                    <li className="dropdown">
+                                        <button className="dropdown-btn" onClick={() => toggleDropdown("Organization")} data-tooltip-id="YourOrganization-tooltip" data-tooltip-content="Your Organization Profile" data-tooltip-variant="dark">
                                             <div className="menu-gap d-flex align-items-center">
                                                 <div className="menu-icon"><RiProfileLine /></div><div className="menu-name">Your Organization Profile</div>
                                             </div>
@@ -192,22 +185,19 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                         </button>
                                         {openDropdowns["Organization"] && (
                                             <ul className="dropdown-menu">
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-profile"><div className="menu-icon"><CgProfile /></div><div className="menu-name">Organization Profile</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/manage-roles"><div className="menu-icon"><RiUserSettingsFill /></div><div className="menu-name">Manage Roles</div></Link></li>
-                                                <li onClick={() => setIsSidebarShow(false)}><Link href="/organization/organization-structure"><div className="menu-icon"><PiTreeStructure /></div><div className="menu-name">Organization Structure</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="OrganizationProfile-tooltip" data-tooltip-content="Organization Profile" data-tooltip-variant="dark"><Link href="/organization/organization-profile"><div className="menu-icon"><CgProfile /></div><div className="menu-name">Organization Profile</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="ManageRoles-tooltip" data-tooltip-content="Manage Roles" data-tooltip-variant="dark"><Link href="/organization/manage-roles"><div className="menu-icon"><RiUserSettingsFill /></div><div className="menu-name">Manage Roles</div></Link></li>
+                                                <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="OrganizationStructure-tooltip" data-tooltip-content="Organization Structure" data-tooltip-variant="dark"><Link href="/organization/organization-structure"><div className="menu-icon"><PiTreeStructure /></div><div className="menu-name">Organization Structure</div></Link></li>
                                             </ul>
                                         )}
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Organization-tooltip" place="right" />}
                                     <hr className="menu-divider" />
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Account-tooltip" data-tooltip-content="Account Settings" data-tooltip-variant="dark">
                                         <Link href="/account-settings/account-details"> <div className="menu-icon"><LuUserCog /></div> <div className="menu-name">Account Settings</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Account-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Privacy-tooltip" data-tooltip-content="Privacy Settings" data-tooltip-variant="dark">
                                         <Link href="/privacy-settings"> <div className="menu-icon"><MdOutlinePrivacyTip /></div> <div className="menu-name">Privacy Settings</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Privacy-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Activity-tooltip" data-tooltip-content="Activity Logs" data-tooltip-variant="dark">
                                         <Link href="/activity-logs"> <div className="menu-icon"><IoFileTrayStacked /></div> <div className="menu-name">Activity Logs</div></Link>
                                     </li>
@@ -219,19 +209,15 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="faq-tooltip" data-tooltip-content="FAQs" data-tooltip-variant="dark">
                                         <Link href="https://cometbid-web.netlify.app/faq"><div className="menu-icon"><FaQuestionCircle /></div><div className="menu-name">FAQs</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="faq-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Resources-tooltip" data-tooltip-content="Resources" data-tooltip-variant="dark">
                                         <Link href="https://cometbid-web.netlify.app/project/resources"><div className="menu-icon"><GrResources /></div><div className="menu-name">Resources</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Resources-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="News-tooltip" data-tooltip-content="News and blogs" data-tooltip-variant="dark">
                                         <Link href="https://cometbid-web.netlify.app/news"><div className="menu-icon"><TbNews /></div><div className="menu-name">News and blogs</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="News-tooltip" place="right" />}
                                     <li onClick={() => setIsSidebarShow(false)} data-tooltip-id="Contact-tooltip" data-tooltip-content="Contact us" data-tooltip-variant="dark">
                                         <Link href="https://cometbid-web.netlify.app/about/contact-us"><div className="menu-icon"><MdContacts /></div><div className="menu-name">Contact us</div></Link>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Contact-tooltip" place="right" />}
                                     <li data-tooltip-id="Logout-tooltip" data-tooltip-content="Logout" data-tooltip-variant="dark">
                                         <button className="dropdown-btn">
                                             <div className="menu-gap d-flex align-items-center">
@@ -239,9 +225,42 @@ export default function SetLayout({ children }: { children: React.ReactNode }) {
                                             </div>
                                         </button>
                                     </li>
-                                    {isSidebarOpen && <Tooltip id="Logout-tooltip" place="right" />}
                                 </ul>
                             </div>
+
+                            {isSidebarOpen &&
+                                <>
+                                    <Tooltip id="dashboard-tooltip" place="right" />
+                                    <Tooltip id="events-tooltip" place="right" style={{ zIndex: "999" }} />
+                                    <Tooltip id="profle-tooltip" place="right" />
+                                    <Tooltip id="roles-tooltip" place="right" />
+                                    <Tooltip id="notifications-tooltip" place="right" />
+                                    <Tooltip id="members-tooltip" place="right" />
+                                    <Tooltip id="schedules-tooltip" place="right" />
+                                    <Tooltip id="YourCollaborations-tooltip" place="right" />
+                                    <Tooltip id="Collaborations-tooltip" place="right" />
+                                    <Tooltip id="StartWorkingGroup-tooltip" place="right" />
+                                    <Tooltip id="StartInterestGroup-tooltip" place="right" />
+                                    <Tooltip id="JoinWorkingGroup-tooltip" place="right" />
+                                    <Tooltip id="JoinInterestGroup-tooltip" place="right" />
+                                    <Tooltip id="your-projects-tooltip" place="right" />
+                                    <Tooltip id="projects-tooltip" place="right" />
+                                    <Tooltip id="start-projects-tooltip" place="right" />
+                                    <Tooltip id="join-projects-tooltip" place="right" />
+                                    <Tooltip id="YourOrganization-tooltip" place="right" />
+                                    <Tooltip id="OrganizationProfile-tooltip" place="right" />
+                                    <Tooltip id="ManageRoles-tooltip" place="right" />
+                                    <Tooltip id="OrganizationStructure-tooltip" place="right" />
+                                    <Tooltip id="Account-tooltip" place="right" />
+                                    <Tooltip id="Privacy-tooltip" place="right" />
+                                    <Tooltip id="Resources-tooltip" place="right" />
+                                    <Tooltip id="faq-tooltip" place="right" />
+                                    <Tooltip id="News-tooltip" place="right" />
+                                    <Tooltip id="Contact-tooltip" place="right" />
+                                    <Tooltip id="Logout-tooltip" place="right" />
+                                </>
+                            }
+
                         </div>
                     </div>
                     <div className="main-content">
